@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Book Viewer</title>
+<script src="book-data.js"></script>
+<style>
+:root {
+  --sidebar-w: 280px;
+  --toolbar-h: 52px;
+  --accent: #2563eb;
+  --accent-light: #dbeafe;
+  --bg: #f1f5f9;
+  --sidebar-bg: #1e293b;
+  --sidebar-text: #e2e8f0;
+  --card: #ffffff;
+  --text: #1e293b;
+  --hl-color: rgba(255, 235, 59, 0.4);
+  --hl-colors: #ffeb3b, #4caf50, #2196f3, #ff5722, #e91e63;
+}
+[data-theme="dark"] {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --text: #e2e8f0;
+  --sidebar-bg: #0f172a;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background:var(--bg); color:var(--text); overflow:hidden; height:100vh; }
+
+/* SIDEBAR */
+#sidebar {
+  position:fixed; left:0; top:0; bottom:0; width:var(--sidebar-w);
+  background:var(--sidebar-bg); color:var(--sidebar-text);
+  display:flex; flex-direction:column; z-index:100;
+  transition: transform 0.3s; overflow:hidden;
+}
+#sidebar.collapsed { transform: translateX(calc(-1 * var(--sidebar-w))); }
+#sidebar .logo { padding:16px 20px; font-size:18px; font-weight:700; border-bottom:1px solid rgba(255,255,255,0.1); display:flex; justify-content:space-between; align-items:center; }
+#sidebar .logo .close-btn { cursor:pointer; opacity:0.6; font-size:20px; background:none; border:none; color:inherit; }
+#sidebar .logo .close-btn:hover { opacity:1; }
+#sidebar .nav-section { padding:12px 0; flex:1; overflow-y:auto; }
+#sidebar .nav-section::-webkit-scrollbar { width:4px; }
+#sidebar .nav-section::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.2); border-radius:2px; }
+.nav-group { margin-bottom:4px; }
+.nav-group-title { padding:8px 20px; font-size:11px; text-transform:uppercase; letter-spacing:1px; opacity:0.5; }
+.nav-item { padding:8px 20px; cursor:pointer; font-size:13px; display:flex; align-items:center; gap:8px; transition:background 0.15s; }
+.nav-item:hover { background:rgba(255,255,255,0.08); }
+.nav-item.active { background:var(--accent); color:#fff; border-radius:0; }
+.nav-item .page-num { font-size:11px; opacity:0.6; margin-left:auto; }
+.sidebar-footer { padding:12px 20px; border-top:1px solid rgba(255,255,255,0.1); font-size:12px; opacity:0.5; }
+.progress-bar { height:4px; background:rgba(255,255,255,0.1); border-radius:2px; margin-top:6px; }
+.progress-fill { height:100%; background:var(--accent); border-radius:2px; transition:width 0.3s; }
+
+/* TOOLBAR */
+#toolbar {
+  position:fixed; top:0; right:0; left:var(--sidebar-w); height:var(--toolbar-h);
+  background:var(--card); border-bottom:1px solid rgba(0,0,0,0.08);
+  display:flex; align-items:center; padding:0 16px; gap:8px; z-index:90;
+  transition: left 0.3s;
+}
+#toolbar.expanded { left:0; }
+.tb-btn { border:none; background:none; cursor:pointer; padding:6px 10px; border-radius:6px; font-size:13px; color:var(--text); display:flex; align-items:center; gap:4px; transition:background 0.15s; }
+.tb-btn:hover { background:rgba(0,0,0,0.06); }
+.tb-btn.active { background:var(--accent); color:#fff; }
+.tb-divider { width:1px; height:24px; background:rgba(0,0,0,0.1); margin:0 4px; }
+.tb-group { display:flex; align-items:center; gap:2px; }
+#pageIndicator { font-size:13px; font-weight:600; min-width:80px; text-align:center; }
+#searchBox { padding:6px 10px; border:1px solid rgba(0,0,0,0.15); border-radius:6px; font-size:13px; width:180px; outline:none; background:var(--bg); color:var(--text); }
+#searchBox:focus { border-color:var(--accent); }
+.color-dot { width:18px; height:18px; border-radius:50%; border:2px solid transparent; cursor:pointer; }
+.color-dot.active { border-color:var(--text); }
+select.tb-select { padding:4px 8px; border:1px solid rgba(0,0,0,0.15); border-radius:4px; font-size:12px; background:var(--bg); color:var(--text); }
+
+/* MAIN */
+#main {
+  position:fixed; top:var(--toolbar-h); left:var(--sidebar-w); right:0; bottom:0;
+  display:flex; transition:left 0.3s; overflow:hidden;
+}
+#main.expanded { left:0; }
+
+/* PAGE VIEWER */
+#pageViewer {
+  flex:1; display:flex; justify-content:center; align-items:flex-start;
+  overflow:auto; padding:20px; background:var(--bg);
+}
+#pageWrap {
+  position:relative; display:inline-block; box-shadow:0 4px 20px rgba(0,0,0,0.15);
+  border-radius:4px; overflow:hidden; background:#fff;
+}
+#pageImg {
+  display:block; height:calc(100vh - var(--toolbar-h) - 40px); width:auto;
+  user-select:none; -webkit-user-drag:none;
+}
+#wordLayer {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  z-index:10; cursor:default;
+}
+.word-zone {
+  position:absolute; cursor:text; border-radius:2px; transition:background 0.1s;
+}
+.word-zone:hover { background:rgba(37,99,235,0.08); }
+.word-zone.highlighted { background:var(--hl-color); }
+#highlightLayer {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  z-index:5; pointer-events:none;
+}
+.hl-rect {
+  position:absolute; border-radius:2px; pointer-events:auto; cursor:pointer;
+}
+.hl-rect:hover { filter:brightness(1.1); }
+#drawCanvas {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  z-index:15; cursor:crosshair; display:none;
+}
+#noteLayer {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  z-index:20; pointer-events:none;
+}
+
+/* STICKY NOTE */
+.sticky-note {
+  position:absolute; width:220px; min-height:120px; background:#fef3c7;
+  border:1px solid #fbbf24; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.15);
+  pointer-events:auto; cursor:move; z-index:25; font-size:12px;
+}
+[data-theme="dark"] .sticky-note { background:#78350f; border-color:#92400e; color:#fef3c7; }
+.sticky-note .note-header { padding:6px 8px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(0,0,0,0.1); }
+.sticky-note .note-header span { font-weight:600; font-size:11px; }
+.sticky-note .note-del { cursor:pointer; opacity:0.5; background:none; border:none; font-size:14px; color:inherit; }
+.sticky-note .note-del:hover { opacity:1; color:#ef4444; }
+.sticky-note textarea { width:100%; border:none; background:transparent; padding:6px 8px; font-size:12px; resize:none; outline:none; min-height:50px; font-family:inherit; color:inherit; }
+.sticky-note .note-draw-canvas { width:100%; height:60px; border-top:1px solid rgba(0,0,0,0.1); cursor:crosshair; }
+
+/* PANELS */
+#rightPanel {
+  width:0; overflow:hidden; background:var(--card); border-left:1px solid rgba(0,0,0,0.08);
+  transition:width 0.3s; flex-shrink:0;
+}
+#rightPanel.open { width:340px; }
+#rightPanel .panel-inner { width:340px; height:100%; overflow-y:auto; }
+.panel-header { padding:14px 16px; font-weight:700; font-size:15px; border-bottom:1px solid rgba(0,0,0,0.08); display:flex; justify-content:space-between; align-items:center; }
+.panel-close { cursor:pointer; opacity:0.5; background:none; border:none; font-size:18px; color:var(--text); }
+.panel-close:hover { opacity:1; }
+.panel-body { padding:16px; }
+
+/* SEARCH RESULTS */
+.search-result { padding:10px 12px; border-bottom:1px solid rgba(0,0,0,0.06); cursor:pointer; }
+.search-result:hover { background:rgba(37,99,235,0.05); }
+.search-result .sr-page { font-size:11px; color:var(--accent); font-weight:600; }
+.search-result .sr-text { font-size:13px; margin-top:2px; }
+.search-result mark { background:#fef08a; border-radius:2px; padding:0 1px; }
+
+/* QUIZ */
+.quiz-card { background:var(--bg); border-radius:8px; padding:14px; margin-bottom:12px; }
+.quiz-card .q-text { font-size:13px; font-weight:600; margin-bottom:10px; }
+.quiz-opt { padding:8px 10px; border:1px solid rgba(0,0,0,0.12); border-radius:6px; margin-bottom:6px; cursor:pointer; font-size:13px; transition:all 0.15s; }
+.quiz-opt:hover { border-color:var(--accent); background:var(--accent-light); }
+.quiz-opt.correct { border-color:#22c55e; background:#dcfce7; }
+.quiz-opt.wrong { border-color:#ef4444; background:#fef2f2; }
+.quiz-opt.disabled { pointer-events:none; opacity:0.7; }
+
+/* VIDEO */
+.vid-item { padding:10px; border:1px solid rgba(0,0,0,0.08); border-radius:8px; margin-bottom:8px; cursor:pointer; display:flex; align-items:center; gap:10px; }
+.vid-item:hover { border-color:var(--accent); }
+.vid-item .vid-icon { font-size:24px; }
+.vid-item .vid-title { font-size:13px; }
+.vid-frame { width:100%; aspect-ratio:16/9; border-radius:8px; overflow:hidden; margin-top:12px; }
+.vid-frame iframe { width:100%; height:100%; border:none; }
+
+/* MENU BUTTON */
+#menuBtn { display:none; }
+#sidebar.collapsed ~ #toolbar #menuBtn { display:flex; }
+
+/* LOADING */
+#loading { position:fixed; inset:0; background:var(--bg); z-index:999; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:16px; }
+#loading .spinner { width:40px; height:40px; border:4px solid rgba(0,0,0,0.1); border-top-color:var(--accent); border-radius:50%; animation:spin 0.8s linear infinite; }
+@keyframes spin { to { transform:rotate(360deg); } }
+#loading .load-text { font-size:14px; opacity:0.6; }
+
+/* TOAST */
+.toast { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#1e293b; color:#fff; padding:10px 20px; border-radius:8px; font-size:13px; z-index:999; opacity:0; transition:opacity 0.3s; }
+.toast.show { opacity:1; }
+
+/* SELECTION BOX */
+#selectionBox { position:absolute; border:2px dashed var(--accent); background:rgba(37,99,235,0.08); z-index:12; pointer-events:none; display:none; }
+</style>
+</head>
+<body>
+<!-- LOADING -->
+<div id="loading">
+  <div class="spinner"></div>
+  <div class="load-text">Loading book data...</div>
+</div>
+
+<!-- SIDEBAR -->
+<div id="sidebar">
+  <div class="logo">
+    <span id="bookTitle">Book Viewer</span>
+    <button class="close-btn" onclick="toggleSidebar()">&#x2715;</button>
+  </div>
+  <div class="nav-section" id="navList"></div>
+  <div class="sidebar-footer">
+    <span id="progressText">0% complete</span>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+  </div>
+</div>
+
+<!-- TOOLBAR -->
+<div id="toolbar">
+  <button class="tb-btn" id="menuBtn" onclick="toggleSidebar()" title="Menu">&#9776;</button>
+  <div class="tb-group">
+    <button class="tb-btn" onclick="prevPage()" title="Previous page">&#9664;</button>
+    <span id="pageIndicator">1 / 1</span>
+    <button class="tb-btn" onclick="nextPage()" title="Next page">&#9654;</button>
+  </div>
+  <div class="tb-divider"></div>
+  <div class="tb-group" id="modeGroup">
+    <button class="tb-btn active" data-mode="read" onclick="setMode('read')" title="Read mode">&#128196; Read</button>
+    <button class="tb-btn" data-mode="hl" onclick="setMode('hl')" title="Highlight">&#9998; Highlight</button>
+    <button class="tb-btn" data-mode="draw" onclick="setMode('draw')" title="Draw">&#9999; Draw</button>
+    <button class="tb-btn" data-mode="note" onclick="setMode('note')" title="Add note">&#128221; Note</button>
+  </div>
+  <div class="tb-divider"></div>
+  <!-- Highlight colors -->
+  <div class="tb-group" id="hlColors" style="display:none;">
+    <div class="color-dot active" style="background:rgba(255,235,59,0.6)" data-color="rgba(255,235,59,0.4)" onclick="setHlColor(this)"></div>
+    <div class="color-dot" style="background:rgba(76,175,80,0.6)" data-color="rgba(76,175,80,0.4)" onclick="setHlColor(this)"></div>
+    <div class="color-dot" style="background:rgba(33,150,243,0.6)" data-color="rgba(33,150,243,0.4)" onclick="setHlColor(this)"></div>
+    <div class="color-dot" style="background:rgba(255,87,34,0.6)" data-color="rgba(255,87,34,0.4)" onclick="setHlColor(this)"></div>
+    <div class="color-dot" style="background:rgba(233,30,99,0.6)" data-color="rgba(233,30,99,0.4)" onclick="setHlColor(this)"></div>
+  </div>
+  <!-- Draw tools -->
+  <div class="tb-group" id="drawTools" style="display:none;">
+    <input type="color" id="penColor" value="#ff0000" style="width:28px;height:28px;border:none;cursor:pointer;" title="Pen color">
+    <select class="tb-select" id="penSize" title="Pen size">
+      <option value="2">Thin</option>
+      <option value="4" selected>Medium</option>
+      <option value="8">Thick</option>
+    </select>
+    <button class="tb-btn" onclick="toggleEraser()" id="eraserBtn" title="Eraser">&#x1f9f9; Eraser</button>
+    <button class="tb-btn" onclick="undoDraw()" title="Undo last stroke">&#x21a9; Undo</button>
+    <button class="tb-btn" onclick="clearDrawPage()" title="Clear all drawings on page">&#x1f5d1; Clear</button>
+  </div>
+  <div style="flex:1"></div>
+  <input type="text" id="searchBox" placeholder="Search..." onkeydown="if(event.key==='Enter')doSearch()">
+  <button class="tb-btn" onclick="doSearch()" title="Search">&#128269;</button>
+  <button class="tb-btn" onclick="openPanel('quiz')" title="Quiz">&#127891; Quiz</button>
+  <button class="tb-btn" onclick="toggleTheme()" title="Dark mode" id="themeBtn">&#127769;</button>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+  <div id="pageViewer">
+    <div id="pageWrap">
+      <img id="pageImg" alt="Page">
+      <div id="highlightLayer"></div>
+      <div id="wordLayer"></div>
+      <canvas id="drawCanvas"></canvas>
+      <div id="noteLayer"></div>
+      <div id="selectionBox"></div>
+    </div>
+  </div>
+  <div id="rightPanel">
+    <div class="panel-inner" id="panelInner"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// =========================================================================
+// STATE
+// =========================================================================
+let BOOK = null;           // book-structure.json
+let SEARCH_INDEX = null;   // search-index.json
+let TOTAL_PAGES = 0;
+let curPage = 1;
+let mode = 'read';         // read | hl | draw | note
+let hlColor = 'rgba(255,235,59,0.4)';
+let erasing = false;
+
+// User data (persisted to localStorage)
+let userData = {
+  highlights: {},   // page -> [{words:[indices], color}]
+  drawings: {},     // page -> [{points:[{x,y}], color, size}]
+  notes: {},        // page -> [{x,y,text,drawData}]
+  visited: {},      // page -> true
+  quizAnswers: {},  // "page-qIdx" -> answerIdx
+};
+
+const DATA_BASE = 'book-data/';
+let pageWordCache = {};  // page -> word data (fetched on demand)
+
+// Drawing state
+let isDrawing = false;
+let currentStroke = null;
+
+// Highlight drag state
+let hlDragStart = null;
+let hlDragging = false;
+
+// =========================================================================
+// INIT
+// =========================================================================
+async function init() {
+  try {
+    // Use embedded data (works with file://) or fetch (works with http://)
+    if (typeof EMBEDDED_BOOK !== 'undefined') {
+      BOOK = EMBEDDED_BOOK;
+      SEARCH_INDEX = EMBEDDED_SEARCH;
+      // Pre-fill word cache from embedded data
+      if (typeof EMBEDDED_WORDS !== 'undefined') {
+        for (const [pg, data] of Object.entries(EMBEDDED_WORDS)) {
+          pageWordCache[parseInt(pg)] = data;
+        }
+      }
+    } else {
+      const [structRes, searchRes] = await Promise.all([
+        fetch(DATA_BASE + 'book-structure.json'),
+        fetch(DATA_BASE + 'search-index.json'),
+      ]);
+      BOOK = await structRes.json();
+      SEARCH_INDEX = await searchRes.json();
+    }
+    TOTAL_PAGES = BOOK.total_pages;
+
+    // Load user data
+    const saved = localStorage.getItem('bookViewer_' + BOOK.title);
+    if (saved) {
+      try { userData = JSON.parse(saved); } catch(e) {}
+    }
+    if (!userData.highlights) userData.highlights = {};
+    if (!userData.drawings) userData.drawings = {};
+    if (!userData.notes) userData.notes = {};
+    if (!userData.visited) userData.visited = {};
+    if (!userData.quizAnswers) userData.quizAnswers = {};
+
+    document.getElementById('bookTitle').textContent = BOOK.title?.substring(0, 30) || 'Book Viewer';
+    document.title = BOOK.title || 'Interactive Book Viewer';
+
+    buildNav();
+    loadPage(1);
+    document.getElementById('loading').style.display = 'none';
+    setupKeyboard();
+    setupDrawCanvas();
+
+    // Theme
+    if (localStorage.getItem('bookViewer_theme') === 'dark') {
+      document.body.setAttribute('data-theme', 'dark');
+      document.getElementById('themeBtn').innerHTML = '&#9728;';
+    }
+  } catch(e) {
+    document.querySelector('.load-text').textContent = 'Error loading data: ' + e.message;
+    console.error(e);
+  }
+}
+
+// =========================================================================
+// NAVIGATION
+// =========================================================================
+function buildNav() {
+  const nav = document.getElementById('navList');
+  let html = '';
+
+  // Chapters
+  if (BOOK.chapters && BOOK.chapters.length) {
+    html += '<div class="nav-group"><div class="nav-group-title">Sections</div>';
+    BOOK.chapters.forEach((ch, i) => {
+      const title = ch.title.length > 40 ? ch.title.substring(0, 40) + '...' : ch.title;
+      html += `<div class="nav-item" data-page="${ch.start_page}" onclick="loadPage(${ch.start_page})">
+        <span>${title}</span>
+        <span class="page-num">p.${ch.start_page}</span>
+      </div>`;
+    });
+    html += '</div>';
+  }
+
+  // All pages
+  html += '<div class="nav-group"><div class="nav-group-title">All Pages</div>';
+  for (let p = 1; p <= TOTAL_PAGES; p++) {
+    const meta = BOOK.page_metadata?.[p-1];
+    const label = meta?.first_line?.substring(0, 35) || `Page ${p}`;
+    html += `<div class="nav-item" data-page="${p}" onclick="loadPage(${p})">
+      <span>${label}</span>
+      <span class="page-num">${p}</span>
+    </div>`;
+  }
+  html += '</div>';
+  nav.innerHTML = html;
+}
+
+function updateNavActive() {
+  document.querySelectorAll('.nav-item').forEach(el => {
+    el.classList.toggle('active', parseInt(el.dataset.page) === curPage);
+  });
+  // Scroll active into view
+  const active = document.querySelector('.nav-item.active');
+  if (active) active.scrollIntoView({ block: 'nearest' });
+}
+
+function updateProgress() {
+  const visited = Object.keys(userData.visited).length;
+  const pct = Math.round((visited / TOTAL_PAGES) * 100);
+  document.getElementById('progressText').textContent = `${pct}% complete (${visited}/${TOTAL_PAGES})`;
+  document.getElementById('progressFill').style.width = pct + '%';
+}
+
+// =========================================================================
+// PAGE LOADING
+// =========================================================================
+async function loadPage(num) {
+  if (num < 1 || num > TOTAL_PAGES) return;
+  curPage = num;
+  userData.visited[num] = true;
+  saveUserData();
+
+  // Update UI
+  document.getElementById('pageIndicator').textContent = `${num} / ${TOTAL_PAGES}`;
+  updateNavActive();
+  updateProgress();
+
+  // Load page image
+  const img = document.getElementById('pageImg');
+  const imgPath = DATA_BASE + `pages/page-${String(num).padStart(3,'0')}.webp`;
+  img.src = imgPath;
+
+  // Wait for image to load to get dimensions
+  await new Promise(r => { img.onload = r; img.onerror = r; });
+
+  // Load word data (already in cache if embedded, otherwise fetch)
+  if (!pageWordCache[num]) {
+    try {
+      const res = await fetch(DATA_BASE + `words/page-${String(num).padStart(3,'0')}.json`);
+      pageWordCache[num] = await res.json();
+    } catch(e) {
+      pageWordCache[num] = { words: [], images: [], full_text: '' };
+    }
+  }
+
+  renderWordLayer();
+  renderHighlights();
+  renderDrawings();
+  renderNotes();
+}
+
+function prevPage() { loadPage(curPage - 1); }
+function nextPage() { loadPage(curPage + 1); }
+
+// =========================================================================
+// WORD LAYER
+// =========================================================================
+function renderWordLayer() {
+  const layer = document.getElementById('wordLayer');
+  layer.innerHTML = '';
+  const data = pageWordCache[curPage];
+  if (!data || !data.words) return;
+
+  data.words.forEach((w, idx) => {
+    const zone = document.createElement('div');
+    zone.className = 'word-zone';
+    zone.style.left = w.x0 + '%';
+    zone.style.top = w.y0 + '%';
+    zone.style.width = (w.x1 - w.x0) + '%';
+    zone.style.height = (w.y1 - w.y0) + '%';
+    zone.dataset.idx = idx;
+    zone.dataset.text = w.t;
+    zone.title = w.t;
+
+    // Highlight drag events
+    zone.addEventListener('mousedown', onWordMouseDown);
+    zone.addEventListener('mouseenter', onWordMouseEnter);
+    zone.addEventListener('mouseup', onWordMouseUp);
+
+    layer.appendChild(zone);
+  });
+
+  // Click on empty space for notes
+  layer.addEventListener('click', onLayerClick);
+}
+
+// =========================================================================
+// HIGHLIGHTING (word-level drag selection)
+// =========================================================================
+function onWordMouseDown(e) {
+  if (mode !== 'hl') return;
+  e.preventDefault();
+  hlDragStart = parseInt(e.target.dataset.idx);
+  hlDragging = true;
+  clearTempHighlight();
+  e.target.style.background = hlColor;
+}
+
+function onWordMouseEnter(e) {
+  if (!hlDragging || mode !== 'hl') return;
+  applyTempHighlight(hlDragStart, parseInt(e.target.dataset.idx));
+}
+
+function onWordMouseUp(e) {
+  if (!hlDragging || mode !== 'hl') return;
+  const end = parseInt(e.target.dataset.idx);
+  hlDragging = false;
+
+  const from = Math.min(hlDragStart, end);
+  const to = Math.max(hlDragStart, end);
+  const indices = [];
+  for (let i = from; i <= to; i++) indices.push(i);
+
+  // Save highlight
+  if (!userData.highlights[curPage]) userData.highlights[curPage] = [];
+  userData.highlights[curPage].push({ words: indices, color: hlColor });
+  saveUserData();
+  clearTempHighlight();
+  renderHighlights();
+}
+
+function applyTempHighlight(from, to) {
+  const lo = Math.min(from, to);
+  const hi = Math.max(from, to);
+  document.querySelectorAll('.word-zone').forEach(z => {
+    const idx = parseInt(z.dataset.idx);
+    z.style.background = (idx >= lo && idx <= hi) ? hlColor : '';
+  });
+}
+
+function clearTempHighlight() {
+  document.querySelectorAll('.word-zone').forEach(z => z.style.background = '');
+}
+
+// Global mouseup to handle drag ending outside words
+document.addEventListener('mouseup', () => { if (hlDragging) { hlDragging = false; clearTempHighlight(); } });
+
+function renderHighlights() {
+  const layer = document.getElementById('highlightLayer');
+  layer.innerHTML = '';
+  const hls = userData.highlights[curPage];
+  if (!hls) return;
+  const data = pageWordCache[curPage];
+  if (!data) return;
+
+  hls.forEach((hl, hlIdx) => {
+    hl.words.forEach(wIdx => {
+      const w = data.words[wIdx];
+      if (!w) return;
+      const rect = document.createElement('div');
+      rect.className = 'hl-rect';
+      rect.style.left = w.x0 + '%';
+      rect.style.top = w.y0 + '%';
+      rect.style.width = (w.x1 - w.x0) + '%';
+      rect.style.height = (w.y1 - w.y0) + '%';
+      rect.style.background = hl.color;
+      rect.title = 'Click to remove highlight';
+      rect.onclick = () => {
+        userData.highlights[curPage].splice(hlIdx, 1);
+        saveUserData();
+        renderHighlights();
+      };
+      layer.appendChild(rect);
+    });
+  });
+}
+
+function setHlColor(el) {
+  hlColor = el.dataset.color;
+  document.querySelectorAll('.color-dot').forEach(d => d.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// =========================================================================
+// DRAWING (stroke-based)
+// =========================================================================
+function setupDrawCanvas() {
+  const canvas = document.getElementById('drawCanvas');
+
+  canvas.addEventListener('mousedown', (e) => {
+    if (mode !== 'draw') return;
+    isDrawing = true;
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    if (erasing) {
+      eraseAt(x, y);
+      return;
+    }
+
+    currentStroke = {
+      points: [{ x, y }],
+      color: document.getElementById('penColor').value,
+      size: parseInt(document.getElementById('penSize').value),
+    };
+  });
+
+  canvas.addEventListener('mousemove', (e) => {
+    if (!isDrawing || mode !== 'draw') return;
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    if (erasing) {
+      eraseAt(x, y);
+      return;
+    }
+
+    if (currentStroke) {
+      currentStroke.points.push({ x, y });
+      drawStrokeSegment(currentStroke);
+    }
+  });
+
+  canvas.addEventListener('mouseup', () => {
+    if (currentStroke && currentStroke.points.length > 1) {
+      if (!userData.drawings[curPage]) userData.drawings[curPage] = [];
+      // Store as percentage of canvas dimensions
+      const canvas = document.getElementById('drawCanvas');
+      const cw = canvas.width;
+      const ch = canvas.height;
+      const saved = {
+        points: currentStroke.points.map(p => ({ x: p.x / cw * 100, y: p.y / ch * 100 })),
+        color: currentStroke.color,
+        size: currentStroke.size,
+      };
+      userData.drawings[curPage].push(saved);
+      saveUserData();
+    }
+    isDrawing = false;
+    currentStroke = null;
+  });
+
+  // Touch support
+  canvas.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    const touch = e.touches[0];
+    canvas.dispatchEvent(new MouseEvent('mousedown', { clientX: touch.clientX, clientY: touch.clientY }));
+  });
+  canvas.addEventListener('touchmove', (e) => {
+    e.preventDefault();
+    const touch = e.touches[0];
+    canvas.dispatchEvent(new MouseEvent('mousemove', { clientX: touch.clientX, clientY: touch.clientY }));
+  });
+  canvas.addEventListener('touchend', () => {
+    canvas.dispatchEvent(new MouseEvent('mouseup'));
+  });
+}
+
+function drawStrokeSegment(stroke) {
+  const canvas = document.getElementById('drawCanvas');
+  const ctx = canvas.getContext('2d');
+  const pts = stroke.points;
+  if (pts.length < 2) return;
+  ctx.strokeStyle = stroke.color;
+  ctx.lineWidth = stroke.size;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+  ctx.beginPath();
+  ctx.moveTo(pts[pts.length - 2].x, pts[pts.length - 2].y);
+  ctx.lineTo(pts[pts.length - 1].x, pts[pts.length - 1].y);
+  ctx.stroke();
+}
+
+function renderDrawings() {
+  const canvas = document.getElementById('drawCanvas');
+  const wrap = document.getElementById('pageWrap');
+  canvas.width = wrap.offsetWidth;
+  canvas.height = wrap.offsetHeight;
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  const strokes = userData.drawings[curPage];
+  if (!strokes) return;
+
+  const cw = canvas.width;
+  const ch = canvas.height;
+
+  strokes.forEach(stroke => {
+    const pts = stroke.points.map(p => ({ x: p.x / 100 * cw, y: p.y / 100 * ch }));
+    if (pts.length < 2) return;
+    ctx.strokeStyle = stroke.color;
+    ctx.lineWidth = stroke.size;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.beginPath();
+    ctx.moveTo(pts[0].x, pts[0].y);
+    for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y);
+    ctx.stroke();
+  });
+}
+
+function eraseAt(x, y) {
+  const strokes = userData.drawings[curPage];
+  if (!strokes || !strokes.length) return;
+  const canvas = document.getElementById('drawCanvas');
+  const cw = canvas.width;
+  const ch = canvas.height;
+  const threshold = 15;
+
+  for (let i = strokes.length - 1; i >= 0; i--) {
+    const pts = strokes[i].points;
+    for (const p of pts) {
+      const px = p.x / 100 * cw;
+      const py = p.y / 100 * ch;
+      if (Math.abs(px - x) < threshold && Math.abs(py - y) < threshold) {
+        strokes.splice(i, 1);
+        saveUserData();
+        renderDrawings();
+        return;
+      }
+    }
+  }
+}
+
+function undoDraw() {
+  const strokes = userData.drawings[curPage];
+  if (strokes && strokes.length) {
+    strokes.pop();
+    saveUserData();
+    renderDrawings();
+  }
+}
+
+function clearDrawPage() {
+  userData.drawings[curPage] = [];
+  saveUserData();
+  renderDrawings();
+}
+
+function toggleEraser() {
+  erasing = !erasing;
+  document.getElementById('eraserBtn').classList.toggle('active', erasing);
+  document.getElementById('drawCanvas').style.cursor = erasing ? 'cell' : 'crosshair';
+}
+
+// =========================================================================
+// NOTES
+// =========================================================================
+function onLayerClick(e) {
+  if (mode !== 'note') return;
+  if (e.target !== document.getElementById('wordLayer')) return;
+  const wrap = document.getElementById('pageWrap');
+  const rect = wrap.getBoundingClientRect();
+  const x = (e.clientX - rect.left) / wrap.offsetWidth * 100;
+  const y = (e.clientY - rect.top) / wrap.offsetHeight * 100;
+  addNote(x, y);
+}
+
+function addNote(x, y, text = '', drawData = null) {
+  if (!userData.notes[curPage]) userData.notes[curPage] = [];
+  userData.notes[curPage].push({ x, y, text, drawData });
+  saveUserData();
+  renderNotes();
+}
+
+function renderNotes() {
+  const layer = document.getElementById('noteLayer');
+  layer.innerHTML = '';
+  const notes = userData.notes[curPage];
+  if (!notes) return;
+
+  notes.forEach((note, idx) => {
+    const el = document.createElement('div');
+    el.className = 'sticky-note';
+    el.style.left = note.x + '%';
+    el.style.top = note.y + '%';
+
+    el.innerHTML = `
+      <div class="note-header">
+        <span>Note</span>
+        <button class="note-del" data-idx="${idx}">&times;</button>
+      </div>
+      <textarea placeholder="Type here...">${note.text || ''}</textarea>
+      <canvas class="note-draw-canvas" width="218" height="60"></canvas>
+    `;
+
+    // Delete
+    el.querySelector('.note-del').onclick = () => {
+      userData.notes[curPage].splice(idx, 1);
+      saveUserData();
+      renderNotes();
+    };
+
+    // Text save
+    const ta = el.querySelector('textarea');
+    ta.oninput = () => {
+      userData.notes[curPage][idx].text = ta.value;
+      saveUserData();
+    };
+
+    // Drag
+    let dragging = false, offX, offY;
+    el.querySelector('.note-header').onmousedown = (e) => {
+      dragging = true;
+      const rect = el.getBoundingClientRect();
+      offX = e.clientX - rect.left;
+      offY = e.clientY - rect.top;
+      e.preventDefault();
+    };
+    document.addEventListener('mousemove', (e) => {
+      if (!dragging) return;
+      const wrap = document.getElementById('pageWrap');
+      const wr = wrap.getBoundingClientRect();
+      const nx = (e.clientX - wr.left - offX) / wrap.offsetWidth * 100;
+      const ny = (e.clientY - wr.top - offY) / wrap.offsetHeight * 100;
+      el.style.left = nx + '%';
+      el.style.top = ny + '%';
+    });
+    document.addEventListener('mouseup', () => {
+      if (dragging) {
+        dragging = false;
+        const wrap = document.getElementById('pageWrap');
+        userData.notes[curPage][idx].x = parseFloat(el.style.left);
+        userData.notes[curPage][idx].y = parseFloat(el.style.top);
+        saveUserData();
+      }
+    });
+
+    // Mini draw canvas inside note
+    const mc = el.querySelector('.note-draw-canvas');
+    let mDrawing = false;
+    const mCtx = mc.getContext('2d');
+    mCtx.strokeStyle = '#333';
+    mCtx.lineWidth = 2;
+    mCtx.lineCap = 'round';
+
+    // Restore drawing
+    if (note.drawData) {
+      const img = new Image();
+      img.onload = () => mCtx.drawImage(img, 0, 0);
+      img.src = note.drawData;
+    }
+
+    mc.onmousedown = (e) => {
+      mDrawing = true;
+      const r = mc.getBoundingClientRect();
+      mCtx.beginPath();
+      mCtx.moveTo(e.clientX - r.left, e.clientY - r.top);
+      e.stopPropagation();
+    };
+    mc.onmousemove = (e) => {
+      if (!mDrawing) return;
+      const r = mc.getBoundingClientRect();
+      mCtx.lineTo(e.clientX - r.left, e.clientY - r.top);
+      mCtx.stroke();
+    };
+    mc.onmouseup = () => {
+      mDrawing = false;
+      userData.notes[curPage][idx].drawData = mc.toDataURL();
+      saveUserData();
+    };
+
+    layer.appendChild(el);
+  });
+}
+
+// =========================================================================
+// MODE SWITCHING
+// =========================================================================
+function setMode(m) {
+  mode = m;
+  document.querySelectorAll('#modeGroup .tb-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.mode === m);
+  });
+
+  const canvas = document.getElementById('drawCanvas');
+  const wordLayer = document.getElementById('wordLayer');
+  const noteLayer = document.getElementById('noteLayer');
+
+  // Show/hide context tools
+  document.getElementById('hlColors').style.display = m === 'hl' ? 'flex' : 'none';
+  document.getElementById('drawTools').style.display = m === 'draw' ? 'flex' : 'none';
+
+  // Canvas visibility
+  canvas.style.display = m === 'draw' ? 'block' : 'none';
+  if (m === 'draw') renderDrawings();
+
+  // Word layer interactivity
+  wordLayer.style.pointerEvents = (m === 'hl' || m === 'note') ? 'auto' : 'none';
+
+  // Note layer
+  noteLayer.style.pointerEvents = m === 'note' ? 'auto' : 'none';
+
+  // Eraser off when leaving draw mode
+  if (m !== 'draw') { erasing = false; document.getElementById('eraserBtn')?.classList.remove('active'); }
+}
+
+// =========================================================================
+// SEARCH
+// =========================================================================
+function doSearch() {
+  const query = document.getElementById('searchBox').value.trim().toLowerCase();
+  if (!query || !SEARCH_INDEX) return;
+
+  const results = [];
+  const seen = new Set();
+  SEARCH_INDEX.forEach(entry => {
+    if (entry.word.includes(query)) {
+      const key = entry.page + '-' + entry.word;
+      if (!seen.has(key)) {
+        seen.add(key);
+        results.push(entry);
+      }
+    }
+  });
+
+  // Show in panel
+  let html = `<div class="panel-header">Search: "${query}" <span style="font-weight:400;font-size:12px;">(${results.length} results)</span><button class="panel-close" onclick="closePanel()">&times;</button></div><div class="panel-body">`;
+
+  if (!results.length) {
+    html += '<p style="opacity:0.5;">No results found.</p>';
+  } else {
+    results.slice(0, 100).forEach(r => {
+      // Get surrounding text context
+      const data = pageWordCache[r.page];
+      let context = r.word;
+      if (data) {
+        const words = data.words.map(w => w.t);
+        const idx = words.findIndex(w => w.toLowerCase() === r.word);
+        if (idx >= 0) {
+          const start = Math.max(0, idx - 4);
+          const end = Math.min(words.length, idx + 5);
+          context = words.slice(start, end).join(' ');
+        }
+      }
+      html += `<div class="search-result" onclick="loadPage(${r.page})">
+        <div class="sr-page">Page ${r.page}</div>
+        <div class="sr-text">${context.replace(new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'gi'), '<mark>$1</mark>')}</div>
+      </div>`;
+    });
+  }
+  html += '</div>';
+  openPanelWithContent(html);
+}
+
+// =========================================================================
+// QUIZ
+// =========================================================================
+function openPanel(type) {
+  if (type === 'quiz') showQuiz();
+}
+
+function showQuiz() {
+  // Generate questions based on current page text
+  const data = pageWordCache[curPage];
+  if (!data || !data.full_text) {
+    openPanelWithContent(`<div class="panel-header">Quiz<button class="panel-close" onclick="closePanel()">&times;</button></div><div class="panel-body"><p>No content available for quiz on this page.</p></div>`);
+    return;
+  }
+
+  const questions = generateQuestions(data.full_text, curPage);
+  let html = `<div class="panel-header">Quiz - Page ${curPage}<button class="panel-close" onclick="closePanel()">&times;</button></div><div class="panel-body">`;
+
+  if (!questions.length) {
+    html += '<p>Not enough content to generate questions for this page.</p>';
+  } else {
+    questions.forEach((q, qi) => {
+      const key = curPage + '-' + qi;
+      const answered = userData.quizAnswers[key];
+      html += `<div class="quiz-card"><div class="q-text">${qi + 1}. ${q.question}</div>`;
+      q.options.forEach((opt, oi) => {
+        let cls = 'quiz-opt';
+        if (answered !== undefined) {
+          cls += ' disabled';
+          if (oi === q.correct) cls += ' correct';
+          if (answered === oi && oi !== q.correct) cls += ' wrong';
+        }
+        html += `<div class="${cls}" onclick="answerQuiz(${qi},${oi},${q.correct})">${opt}</div>`;
+      });
+      html += '</div>';
+    });
+  }
+  html += '</div>';
+  openPanelWithContent(html);
+}
+
+function answerQuiz(qIdx, aIdx, correct) {
+  const key = curPage + '-' + qIdx;
+  if (userData.quizAnswers[key] !== undefined) return;
+  userData.quizAnswers[key] = aIdx;
+  saveUserData();
+  showQuiz(); // re-render
+  if (aIdx === correct) showToast('Correct!');
+  else showToast('Incorrect. The correct answer is highlighted.');
+}
+
+function generateQuestions(text, page) {
+  // Simple question generation from page content
+  const sentences = text.split(/[.!?\n]/).filter(s => s.trim().length > 20);
+  const questions = [];
+
+  for (let i = 0; i < Math.min(sentences.length, 5); i++) {
+    const s = sentences[i].trim();
+    const words = s.split(/\s+/).filter(w => w.length > 3);
+    if (words.length < 4) continue;
+
+    // Pick a key term to quiz on
+    const keyWord = words[Math.floor(words.length / 2)];
+    const blanked = s.replace(new RegExp('\\b' + keyWord.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i'), '________');
+
+    // Generate wrong options from other words on the page
+    const otherWords = words.filter(w => w.toLowerCase() !== keyWord.toLowerCase() && w.length > 3);
+    const shuffled = otherWords.sort(() => Math.random() - 0.5).slice(0, 3);
+    while (shuffled.length < 3) shuffled.push('N/A');
+
+    const options = [...shuffled, keyWord].sort(() => Math.random() - 0.5);
+    const correctIdx = options.indexOf(keyWord);
+
+    questions.push({
+      question: `Fill in the blank: "${blanked}"`,
+      options,
+      correct: correctIdx,
+    });
+  }
+  return questions;
+}
+
+// =========================================================================
+// PANELS
+// =========================================================================
+function openPanelWithContent(html) {
+  document.getElementById('panelInner').innerHTML = html;
+  document.getElementById('rightPanel').classList.add('open');
+}
+
+function closePanel() {
+  document.getElementById('rightPanel').classList.remove('open');
+}
+
+// =========================================================================
+// SIDEBAR & THEME
+// =========================================================================
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('collapsed');
+  document.getElementById('toolbar').classList.toggle('expanded');
+  document.getElementById('main').classList.toggle('expanded');
+  // Re-render drawings on resize
+  setTimeout(renderDrawings, 350);
+}
+
+function toggleTheme() {
+  const isDark = document.body.getAttribute('data-theme') === 'dark';
+  if (isDark) {
+    document.body.removeAttribute('data-theme');
+    document.getElementById('themeBtn').innerHTML = '&#127769;';
+    localStorage.setItem('bookViewer_theme', 'light');
+  } else {
+    document.body.setAttribute('data-theme', 'dark');
+    document.getElementById('themeBtn').innerHTML = '&#9728;';
+    localStorage.setItem('bookViewer_theme', 'dark');
+  }
+}
+
+// =========================================================================
+// KEYBOARD
+// =========================================================================
+function setupKeyboard() {
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); nextPage(); }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); prevPage(); }
+    if (e.key === '1') setMode('read');
+    if (e.key === '2') setMode('hl');
+    if (e.key === '3') setMode('draw');
+    if (e.key === '4') setMode('note');
+    if (e.ctrlKey && e.key === 'z') { e.preventDefault(); undoDraw(); }
+    if (e.ctrlKey && e.key === 'f') { e.preventDefault(); document.getElementById('searchBox').focus(); }
+  });
+}
+
+// =========================================================================
+// PERSISTENCE
+// =========================================================================
+function saveUserData() {
+  try {
+    localStorage.setItem('bookViewer_' + (BOOK?.title || 'default'), JSON.stringify(userData));
+  } catch(e) { console.warn('Save failed:', e); }
+}
+
+// =========================================================================
+// TOAST
+// =========================================================================
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// =========================================================================
+// WINDOW RESIZE
+// =========================================================================
+window.addEventListener('resize', () => {
+  renderDrawings();
+});
+
+// =========================================================================
+// START
+// =========================================================================
+init();
+</script>
+</body>
+</html>

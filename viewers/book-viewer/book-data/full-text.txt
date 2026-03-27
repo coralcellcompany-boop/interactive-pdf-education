@@ -1,0 +1,3132 @@
+# Korina Villanueva (A4)
+# Author: Abdulrahmen Eldesoky
+# Pages: 134
+
+--- Page 1 ---
+T H I R D Y E A R
+I N V E S T I G A T I V E
+R A D I O L O G Y
+
+
+============================================================
+## ﺔﻣﺎﻫ تﺎﻤﻴﻠﻌﺗ — ﺔﺗﺎﻛﺮﺑ و ﻪﻠﻟا ﺔﻤﺣر و ﻢﻜﻴﻠﻋ مﻼﺴﻟا — بﺎﺘلكا ﻒﺻو
+============================================================
+
+--- Page 2 ---
+ﺔﻣﺎﻫ تﺎﻤﻴﻠﻌﺗ
+ﺔﺗﺎﻛﺮﺑ و ﻪﻠﻟا ﺔﻤﺣر و ﻢﻜﻴﻠﻋ مﻼﺴﻟا
+بﺎﺘلكا ﻒﺻو
+.ﻪﺘﻌﺟاﺮﻣ و لﺎﺗرﻮﺒﻟا ﺖﻨﻳﻮﺑروﺎﺑ ﻦﻣ ﻪﻠﻘﻧ ﻢﺗ ﺞﻬﻨﻤﻟا ﻊﻴﻤﺠﻟ ﻞﻣﺎﻛ و ﻞﻣﺎﺷ بﺎﺘﻛ
+.ﻆﻔﺤﻠﻟ ﺖﺴﻴﻟ و ﻂﻘﻓ ﻢﻬﻔﻠﻟ ﻲﻫ ﺮﻤﺣﻷا نﻮﻠﻟﺎﺑ تادﺎﻳﺰﻟا ﺾﻌﺑ ﻰﻠﻋ يﻮﺘﺤﻳ بﺎﺘﻜﻟا
+.لﺎﺗرﻮﺒﻟا تادﺎﻳز ﻞﻣﺎﺷ ﻮﻫ و هاﻮﺘﺤﻣ ﻦﻣ ﺪﻛﺄﺘﻟا و ﺮﺒﻛﻷا تﺎﻌﻓﺪﻟا ﻞﺋاوأ ﻦﻣ ﻪﺘﻌﺟاﺮﻣ ﻢﺗ
+ﻘﺣ
+ﺐﺘلكا قﻮ
+ﻰﻟﺎﻌﺗ ﷲ ﻪﺟﻮﻟ ﻞﻣﺎﺷ و ﻞﻣﺎﻛ بﺎﺘﻜﻟا
+2028 ﺐﻃ ﺔﺒﻠﻃ ﻦﻋ ﻒﻗو ﻮﻫ و بﺎﺘﻜﻟا اﺬﻫ ﻦﻣ ﺢﺑﺮﺘﻟا ﺔﻟوﺎﺤﻣ حﻮﻤﺴﻣ ﺮﻴﻏ
+نﺎﻀﻣر ﻲﻓ ﻢﻛؤﺎﻋد ﻦﻣ بﺎﺘﻜﻟا ﻰﻠﻋ ﻦﻴﻤﺋﺎﻘﻟا اﻮﺴﻨﺗ ﻻ
+For feedback
+ﻖ ﻖييﺮﺮﻓﻓ
+ﻒ ﻒﻗﻗوو
+ئك ﻟ ﻣ ﺴﻨﺗ
+ﻢ ﺎﻋود ﺢ ﺎﺻ ﻦ ﺎﻧﻮ ﻻ
+Good
+luck
+
+
+============================================================
+## PPPAAAGGGEEE — LLL E E ECCCTTTUUURRREEE::: — NNNUUUMMMBBBEEERRR::: — 1 1 — S — T — N — E
+============================================================
+
+--- Page 3 ---
+3
+4
+STNETNOC
+FO
+ELBAT
+PPPAAAGGGEEE
+LLL E E ECCCTTTUUURRREEE:::
+NNNUUUMMMBBBEEERRR:::
+1 1
+CT AND MRI
+2 10
+MUSCULOSKELETAL SYSTEM
+31
+NEURORADIOLOGY
+48
+HEAD AND NECK
+
+
+============================================================
+## 5 62 — S — T — 6 — 80 — N — E
+============================================================
+
+--- Page 4 ---
+7
+8
+9
+STNETNOC
+FO
+ELBAT
+5 62
+CHEST EXAMINATION
+6 80
+CARDIAC EXAMINATION
+88
+GASTROINTESTINAL TRACT
+103 WOMAN IMAGING
+117
+GENITOURINARY SYSTEM
+
+
+============================================================
+## Lecture — Introduction to CT AND MRI — 1
+============================================================
+
+--- Page 5 ---
+Lecture
+Introduction to CT AND MRI
+Radiology
+1
+Computed axial tomography (CT)
+Introduction
+• Synonym of computed axial tomography.
+• Provides us with slices (tomograms) of the body.
+• Axial plane is the most commonly used plane in CT.
+• Gives us 2D images
+How does CT work?
+▪ CT uses X-rays to produce an image. The same basic principles apply to CT as to
+all other X-ray studies. X-rays are blocked (attenuated) by tissues depending upon
+their density (atomic number). Air is black on CT and minerals are white.
+▪ To obtain a slice, an X-ray source rotates around the body in an arc while an X-ray
+detection source rotates opposite the source on the opposite side of the body. The
+computer analyzes the number and density of the transmitted X-rays, calculates
+the coordinates, and assigns a gray scale to individual picture elements (pixels) that
+will make the final picture.
+What are hounsfield units?
+1-His name is used for the numbers
+associated with the gray scale
+produced during CT scanning.
+2-All CT scanners are programmed
+such that water appears dark on the
+image; its attenuation value in
+Hounsfield units (HU) is 0.
+From this central point, HU range
+from calcium at approximately
++1,000 HU to air at approximately –
+1,000 HU.
+Common CT-assigned attenuation values:
+Air = –1,000 HU or less (black)
+Fat = –5 to –50 HU (dark gray)
+Water = 0 HU (gray)
+1
+
+--- Page 6 ---
+Radiology
+Window Settings
+What are the window settings?
+Window width Window level
+The window width refers to the number The window level refers to the midpoint
+of different HU units that will be HU value that is represented on the
+represented by different shades of grey. window setting. The lower the window
+level is set ↑, the brighter the entire
+Any HU value that falls below the lower
+image will become ↓.
+value of the window width will show up
+as BLACK on the scan while any HU
+Increasing the window level will
+value that is above the upper value of
+DECREASE the brightness of the
+the window width will be WHITE.
+image:
+Increasing
+the window
+width will
+DECREASE
+the contrast
+of the image:
+2
+
+--- Page 7 ---
+Radiology
+What parts of the body are best studied with CT?
+1-Head: An excellent screening modality for cranial trauma, suspected intracranial
+bleeding, or stroke
+2-Paranasal sinuses 3-Neck 4-Facial bones 5-Chest 6-Abdomen 7-Pelvis
+8-Knee: for evaluation of tibial plateau fractures; not good for cartilage or ligament
+injury evaluation
+9-Hip: specifically for assessment of acetabulum fracture
+Contrast
+A special dye called contrast material is needed for some CT scans to help highlight
+the areas of your body being examined. The contrast material blocks X-rays and
+appears white on images, which can help emphasize blood vessels, intestines or
+other structures
+What is it used for?
+1. In contrast CT, a fluid containing iodine (mineral density) is injected
+intravenously.
+2. Contrast is routinely employed during chest, abdomen, and pelvis CT.
+3. It helps to identify vascular structures so that they may be differentiated from
+other normal or abnormal structures.
+4. Contrast also helps to characterize certain types of pathology, such as
+infection or vascular malformations.
+5. It is not necessary to specify on the order whether you would like contrast to
+be administered.
+6. The exception is head CT, for which you do need to specify contrast.
+7. Contrast is indicated if you suspect primary or metastatic cancer, infection
+(abscess), vascular malformation, or aneurysm.
+How is it given to the patient?
+1. By mouth: If your esophagus or stomach is being scanned, you may need to
+swallow a liquid that contains contrast material. This may taste unpleasant.
+2. By injection: Contrast agents can be injected through a vein in your arm to
+help your gallbladder, urinary tract, liver or blood vessels stand out on the
+images. You may experience a feeling of warmth during the injection or a
+metallic taste in your mouth.
+3
+
+--- Page 8 ---
+Radiology
+3. By enema: A contrast material may be inserted in your rectum to help
+visualize your intestines. This can make you feel bloated and uncomfortable
+Side effects of Contrast
+1. Most reactions are mild and result in a rash or itchiness. In rare instances, an
+allergic reaction can be serious, even life-threatening.
+2. If you were given contrast material, you may receive special instructions. In
+some cases, you may be asked to wait for a short time before leaving to ensure
+that you feel well after the exam. After the scan, you'll likely be told to drink
+lots of fluids to help your kidneys remove the contrast material from your body
+Exceptions where contrast is usually not used:
+1. CT KUBs (looking for renal stones)
+2. CT heads (unless a mass lesion is suspected)
+3. Poor renal function (eGFR <30) – non-contrast CT or alternative modalities
+used
+Risks of contrast administration:
+1. Contrast-induced nephropathy – Creatinine increasing 25% within 3 days,
+with no other apparent reason. Usually self-limiting but can cause
+complications of kidney disease. Incidence of ~2% in patients without risk
+factors (e.g. diabetes)
+2. Anaphylaxis (immediate, within 1 hour)
+3. Allergy (delayed, up to 7 days)
+4
+
+--- Page 9 ---
+Radiology
+CT and sagittal and coronal reconstruction
+▪ Software provided on CT
+scanners allows for the
+conversion of axial images into
+images in any other plane
+desired.
+▪ Three-dimensional images—
+computer-generated pictures
+utilizing shading techniques to
+create the appearance of 3D—are
+sometimes helpful when evaluating facial bone fractures and acetabulum
+fractures of the hip prior to reconstruction surgery.
+CTA
+▪ Computed tomography angiography (CTA) is a computer-intensive
+reconstruction of the vascular structures in the body.
+▪ Both venous and arterial imaging can be performed using intravenous contrast.
+How is it used?
+1. Iodinated contrast is delivered through an
+18-gauge or larger intravenous catheter.
+2. A power injector is used to deliver the
+contrast. The computer can then subtract
+away any density that does not contain
+contrast.
+▪ The vascular system can be seen in excellent
+detail. CTA is used to detect thrombosis
+within veins or arteries, stenosis, aneurysms, and vascular malformations.
+▪ A common indication is for the detection of pulmonary embolism.
+5
+
+--- Page 10 ---
+Radiology
+What are the benefits of CT compared to plain X ray?
+1-By slicing the body into sections, it helps us to look inside the body with fewer
+overlapping shadows.
+2-We can know the compostion of a mass by measruing the HU.
+3-Simple cyst has water density. 4-Lipoma has fat density.
+5-Intracranial hemorrhage has blood density.
+6-CT is preferrred when more anatomical details are needed
+What are the benfits of CT compared to MRI?
+1. CT is quicker, less expensive and more available than MRI.
+2. CT is excellent for assessing cortical bone and detecting fractures and is preferred
+to MRI.
+3. CT is excellent in cases of intracranial hemorrahge.
+4. CT is favoured in the chest than MRI.
+Contraindica tions of CT:
+1. CT scans are almost always avoided during pregnancy unless the benefits of the
+test clearly outweigh the potential risks.
+2. A patient known iodine allergy
+3. A patient with hypothyroidism or an enlarged thyroid (goiter)
+4. In case of planned radioiodine treatment of thyroid cancer
+Magnetic resonance imaging (MRI)
+Mechanism of action
+▪ Getting an image from MRI depends upon the presence of protons in the body.
+▪ Protons are free hydrogen atoms (proton without electrons). They are abundant
+in the body. With their net positive charge, protons are small magnets, each
+having a north and a south pole.
+▪ When placed in a strong magnetic field, enough of these tiny proton magnets
+align to form a single magnetic vector. A radiofrequency pulse is added to this
+steady state and tips the net magnetic vector off axis.
+▪ As the vector returns to its alignment in the magnet, energy is released. It is this
+energy that is used to create the image.
+What is being imaged with MRI?
+▪ In general, MRI is water imaging.
+▪ Most pathologic conditions in the body are associated with edema, or water
+formation.
+6
+
+--- Page 11 ---
+Radiology
+▪ MRI is excellent for detecting this water.
+Feature T1 T2
+▪ T1 and T2 are the basic MR imaging
+Anatomy ✅ Best ❌
+sequences (although there are now many
+more variations in clinical use). Pathology ❌ ✅ Best
+With T1, water has no signal and is black.
+CSF Dark Bright
+With T2, water appears white.
+Edema Dark Bright
+So T1 is used for fat but T2 is used for water
+Fat Bright Bright
+What is meant by MRI signal?
+White vs WM > GM > WM
+▪ In CT and X-ray we use terms such as
+Gray GM
+density and attenuation
+matter
+▪ In MRI the term is signal.
+▪ It describes the shades of gray between bright white and black.
+Describing a white area on MRI, we say that there is high signal.
+Describing a dark gray or black area, we say that there is low or no signal.
+▪ T1 is often referred to as the anatomy sequence because water or edema is less
+conspicuous and anatomy is usually clearly delineated.
+▪ T2 is known as the pathologic sequence because the high signal (white) occurring
+when there is edema is very easy to see.
+▪ A good example is effusion in the knee joint. The fluid in the joint is very obvious
+as white or bright signal on T2-weighted images.
+▪ Today, there are many variations in MRI imaging sequences, and more are being
+discovered all the time. These sequences can be used to suppress signal from fat
+or from free fluid.
+7
+
+--- Page 12 ---
+Radiology
+What are the benefits of MRI compared to CT, X ray and
+ultrasound?
+1. MRI is a superior imaging modality.
+2. No radiation exposure.
+3. Better anatomic details.
+4. Better in evaluation of soft tissues such as cartilage, ligamnets, soft tissue
+tumours, fluid coleections, spinal cord and brain.
+5. It eliminates overlapping shadows in X ray.
+6. It utilises slices of the body to focus on specific anatomy and pathology without
+repositioning of the patient.
+7. MRI is not limited by bone or air, unlike US.
+8. Less artifacts than CT especially in the posterior fossa of the brain.
+What are the regions best imaged with MRI?
+1. Abdomen (to clarify CT or ultrasound findings)
+2. Bile ducts and pancreatic duct (magnetic resonance cholangiopancreatography
+[MRCP])
+3. Brain (especially the posterior fossa, nuclei, cranial nerves, and white matter tracts)
+4. Cervical, thoracic, and lumbar spine
+5. Female pelvis (to clarify ultrasound or CT findings)
+6. Joints
+A-Elbow B-Fingers C-Foot and ankle D-Hip E-Knee F-Shoulder
+G-Temporomandibular joint H-Wrist
+7. Staging endometrial cancer
+8. Staging prostate cancer
+9. Vascular structures (magnetic resonance arteriography and venography)
+Limitations of MRI: Safety considerations of MRI:
+▪ MRI costs twice as much as CT and, ▪ Never enter MRI room with anything
+▪ Not appropriate for people with metal that is ferromagnetic.
+implants (including some ▪ Magnetic strips on credit cards are
+pacemakers, artificial joints, and erased by magentic field.
+cochlear implants) because it employs ▪ Pacemakers malfunction, anuerysm
+strong magnetic waves clips dislodge.
+▪ Claustrophobia. ▪ Remove any metal objects before
+entering the scan room.
+8
+
+--- Page 13 ---
+Radiology
+Quadriceps tendon
+Anterior cruciate ligament (ACL)
+Posterior cruciate ligament (PCL)
+Gastrocnemius muscle (medial
+head)
+Hoffa’s fat pad (infrapatellar fat
+pad)
+MR X-Ray X-Ray MRI
+I
+1-Sometimes, MRI need to be done with contrast to help improve the diagnostic
+quality of the images. MRI with contrast can generate highly detailed visuals of
+internal organs and soft tissues.
+2-MRI contrast agents contain a rare earth metal called gadolinium that interacts
+with the magnetic field emitted by the MRI machines.
+3-Gadolinium-based contrast agents (GBCAs) are able to produce the most accurate
+MRI images possible. However, they do come with risks and aren't needed for every
+MRI.
+4-GBCAs are generally considered safe with relatively few side effects.
+5-If side effects do occur, they tend to be transient and resolve on their own without
+treatment.
+6-In rare instances, certain groups of people, including those with kidney
+dysfunction, may experience severe side effects or complications of renal failure.
+9
+
+
+============================================================
+## Lecture — Musculoskeletal system — 2
+============================================================
+
+--- Page 14 ---
+Lecture
+Musculoskeletal system
+Radiology
+2
+Anatomy of MSK SYSTEM
+SKELETAL SYSTEM
+BONES MUSCLES
+10
+
+--- Page 15 ---
+Radiology
+Supporting structures JOINTS
+Ligaments vs. Tendons
+• Both ligaments and tendons are
+c onnective tissue made up of
+collagen.
+• A ligament attaches bone to bone.
+• A tendons attaches muscle to bone.
+Musculoskeletal imaging modalities
+Significance of imaging in Emergency settings
+Rapid and
+Guide Avoid
+accurate
+management complications
+diagnosis
+11
+
+--- Page 16 ---
+Radiology
+Systematic approach to Emergency MSK imaging
+History &
+Mechanism Imaging
+clinical
+of injury strategy
+suspicion
+Common Emergency presentations
+Fractures
+▪ A fracture is a complete
+disruption in the continuity of
+the bone.
+▪ If only some of the trabeculae
+are severes while other is intact
+or just bent the fracture is
+incomplete an example of this
+is green stick fracture.
+▪ X-ray is first line imaging
+modality
+▪ CT & MRI complementary
+roles.
+Approach to describe a fracture
+1. Projections and clinical history What radiograph (or radiographs) are you looking
+at
+2. Fracture type When describing a fracture, the first thing to mention is what type of
+fracture it is. Broadly, these can be split into
+1. Complete
+2. Incomplete
+3. Salter Harris
+Complete: all the way through the bone
+▪ Transverse: straight across the bone
+▪ Oblique: an oblique line across the bone
+▪ Spiral: looks like a corkscrew
+▪ Comminuted: more than 2 parts to the fracture
+12
+
+--- Page 17 ---
+Radiology
+Incomplete: the whole cortex is not broken (usually in paediatric)
+▪ Bowing: the long bone has been bent (No break in bone)
+▪ Buckle: the fracture is of the concave surface
+▪ Greenstick: the fracture is on the convex surface
+Salter-Harris fractures that involve growth plate (epiphyseal break)
+We should have at least 2 views for the fracture:
+Transverse fracture
+A P view Lateral view
+Spiral corkscrew fracture
+AP Leg AP Thigh
+13
+
+--- Page 18 ---
+Radiology
+Oblique fracture
+Lateral
+AP
+Commuted fracture
+(more than 1 bony fragment
+AP of elbow LT of elbow
+14
+
+--- Page 19 ---
+Radiology
+Commuted fracture
+(both tibia and fibula)
+Incomplete greenstick
+(common in forearm)
+15
+
+--- Page 20 ---
+Radiology
+Bowing and Buckle fracture
+Sal ter-H arris
+Salter-Harris classification is used to describe physeal fractures. The classification can
+be remembered using the SALTR mnemonic:
+S: slipped (type I)
+A: above or away
+from joint (type II)
+L: lower (type III)
+T: through; transverse
+or together (type IV)
+R: rammed or ruined
+(type V)
+16
+
+--- Page 21 ---
+Radiology
+Inferior slippage
+Posterior slippage
+A P epiphyses of humerus
+Lateral of wrist
+Type 1
+Type 4
+Lateral foot
+17
+
+--- Page 22 ---
+Radiology
+Approach to describe a fracture (continue)
+3. Fracture location: The next thing to describe is the bone that is involved and what
+part of the bone is affected:
+A. Diaphysis: the shaft of the bone
+B. Metaphysis: the widening portion adjacent to the growth plate
+C. Epiphysis: the end of the bone adjacent to the joint
+Metaphysis
+Diaphysis
+Epiphysis
+4. Fracture displacement: Fracture displacement describes what has happened to the
+bone during the fracture. In general, when describing a fracture, the body is assumed
+to be in the anatomic position and the injury is then described in terms of the distal
+component displacement in
+relation to the proximal
+component.
+Displacement can include one
+or more of:
+• Angulation
+• Translation
+• Rotation
+• distraction or impaction
+18
+
+--- Page 23 ---
+Radiology
+Ant and mild lateral Displacement
+Inferior
+Lateral Displacement
+Displacement
+19
+
+--- Page 24 ---
+Radiology
+5. Anything else
+• Intraarticular extension
+• Other fractures
+• Underlying bone lesion (Pathological fracture)
+Intraarticular extension:
+Fracture in metaphysis
+and epiphyses reach RC Fracture in lateral tibial
+articulation plateau reaching knee
+Other Fractures:
+Multiple comp. trans fractures from 2nd to 4th MC
+shaft
+20
+
+--- Page 25 ---
+Radiology
+Underlying bone lesion (Pathological fracture):
+1. Fracture in a diseased bone by
+metabolic disorder or bony lesion
+2. Could be spontaneous without
+trauma
+3. Imaging is very important
+Pathologic fracture on top of
+osseous region
+Describing a bone lesion
+▪ Describing a bone lesion is an essential skill for the radiologist, used to form an
+accurate differential diagnosis for neoplastic entities,
+▪ The main features that should be assessed when a potentially neoplastic bone lesion
+is discovered include:
+1. location in the body (i.e. which bone)
+2. location within a bone
+3. zone of transition
+4. matrix
+5. morphology
+6. periosteal reaction
+7. size
+8. cortical involvement
+9. extra-osseous or soft-tissue component
+21
+
+--- Page 26 ---
+Radiology
+AP Shoulder
+و لهجلا و رقفلا عم عارص دعب
+هرم نم رتكا ويديفلا ةداعإو ضرملا
+هحرشتب هروتكدلا يللا لك نا تفشتكا
+فسلأل سب هروصلا سفن يف دوجوم
+رهاظ شم سواملا
+لك علطا و ريمضب ركاذا دعقا نكمم انا
+هحص شيفم فسلأل سبlesion
+انأف عاتب و ناضمر يف اننا ريغ هد
+نا امومع فرعا سب امدقم فسا
+اهيف يد هروصلا يف يللا لجرلا
+اهلك ضارملأا
+22
+
+--- Page 27 ---
+Radiology
+Osteosarcoma
+1. Lower femoral meta-
+diaphysis
+2. Central intramedullary
+3. Mixed lytic/sclerotic
+osteoid matrix
+4. Ill-defined margins
+5. Wide zone of transition
+6. Cortical invasion
+7. Aggressive periosteal
+reaction (Codman’s
+triangle)
+8. Extraosseous soft tissue
+component
+Codman triangle Spiculated Sunray
+23
+
+--- Page 28 ---
+Radiology
+Ewing Sarcoma
+1. Femoral diaphysis
+2. Central intramedullary
+3. Mixed lytic/sclerotic
+4. Ill-defined margins
+5. Wide zone of transition
+6. Cortical invasion
+7. Aggressive periosteal reaction
+(spiculated)
+8. Extraosseous soft tissue component
+Simple bone cyst
+1. Ulnar diaphysis
+2 . Central
+intramedullary
+3. Lytic
+4 . Well-defined margins
+5. Narrow zone of
+transition
+6. Intact cortex
+7. No periosteal reaction
+8. No extraosseous soft
+tissue
+24
+
+--- Page 29 ---
+Radiology
+CT
+▪ Especially in cases of polytrauma/multitrauma(also called trauma CT or whole
+body CT), often performed at the CT console with the patient still on the CT table.
+▪ It allows rapid communication of significant findings to the trauma team as well as
+the decision to perform additional phases
+Indication: complex fractures, Better assessment of pelvic & spine fractures,
+preoperative planning
+Advantages: Excellent bone details with 3D reconstruction.
+Limitations: Excellent bone details with 3D reconstruction. soft tissue evaluation,
+occult fractures , high radiation exposure.
+25
+
+--- Page 30 ---
+Radiology
+MRI
+Patients with high clinical suspicion of fracture but no injury demonstrated on plain
+radiograph are subjected to MR Imaging because of the ability of MRI changes related
+to acute injury and its ability to differentiate acute from chronic injury
+Indications: Occult fractures, stress/insufficiency fractures, Associated soft tissue
+injuries.
+Advantages: Best for soft tissue assessment, asses bone marrow edema.
+Limitations: expensive, longer scanning time, limited availability in emergency
+settings
+MRI distal Radial Fracture
+detected
+X-Ray nothing detected
+MRI detect joint effusion
+X-Ray nothing detected
+26
+
+--- Page 31 ---
+Radiology
+Soft tissue injuries
+1. Muscles: Tear, strain
+2. Tendons/ligament: partial / complete tears, avulsion.
+3. Vascular injury
+4. Nerve injury
+5. Hematoma
+6. Joint effusion.
+Ultrasound: First line for assessment of superficial soft tissue injuries & hematoma
+detection
+MRI: Gold standard for soft tissue injuries
+Ultrasound
+Advantages: non-ionizing and non-invasive technique, making it safe and suitable for
+patients of all ages, including children and pregnant women. cost-effective , provides
+real-time imaging allowing for dynamic assessments
+Limitations: operator dependent & limited assessment of deep soft tissue structures
+& bone injuries.
+27
+
+--- Page 32 ---
+Radiology
+MRI
+Advantages: gold standard in soft tissue assesment, bone marrow edema , no
+ioninzing radiation
+Limitations: expensive, limited availability in emergency settings, limited in complex
+fracture assessment, not practical in unstable patients.
+Musculoskeletal infection
+a. Osteomyelitis
+b. Infective arthritis
+c. Infective myositis
+d. Soft tissue abscess
+28
+
+--- Page 33 ---
+Radiology
+Osteomyelitis
+SEPTIC ARTHRITIS
+29
+
+--- Page 34 ---
+Radiology
+30
+
+
+============================================================
+## Lecture — Neuroradiology — 3
+============================================================
+
+--- Page 35 ---
+Lecture
+Neuroradiology
+Radiology
+3
+Imaging Modalities
+1. Conventional Radiography: Plain x-ray
+2. Computed Tomography: MDCT
+3. Magnetic Resonance Imaging: fMR, MRS
+Computed Tomography
+❖ Computed tomography (CT) works by using
+X-rays from multiple angles to create cross-
+sectional images of the body.
+❖ A CT scanner takes numerous X-ray
+measurements as it rotates around the patient,
+and a computer uses this data to reconstruct
+detailed 2D slices and 3D models of the
+body's internal structures.
+❖ The core principles rely on the attenuation of
+X-rays based on tissue density and the
+reconstruction of images from multiple projections.
+CT Tissue Characterization
+Tissue Contrast depends on Attenuation
+Number (Hounsfield Unit)
+o Air = -1000 HU
+o Fat = -50 HU
+o Water = 0 HU
+o
+o Soft Tissue = 25-35 HU
+o Acute Hemorrhage = 70-100 HU
+o Calcification = 200-300 HU
+o Cortical Bone >= 1000 HU Digital Image
+which is turned
+after wards to
+real image
+31
+
+--- Page 36 ---
+Radiology
+IV Contrast Enhancement
+1. Improves the soft tissue contrast.
+2. Enhancement depends on:
+a. Extra-axial tissue: vascularity
+b. Intra-axial tissue: BBB Breakdown
+Using CT
+❖ CT is best to diagnose bones lesions and fractures.
+❖ Intracerebral / intracranial hemorrhage.
+❖ Scan takes minutes; perfect for polytrauma and unstable patients.
+Normal Brain
+Magnetic Resonance (MR)
+Closed Magnet Open Magnet
+32
+
+--- Page 37 ---
+Radiology
+How does MR work?
+MRI uses a strong magnetic field and radio waves to create detailed images by
+aligning the body's hydrogen protons, causing them to spin.
+When a radiofrequency pulse is applied, the protons are knocked out of alignment
+and then release energy as they realign with the magnetic field.
+This released energy is measured by the MRI machine's coils, and different tissues
+return to their original state at different rates, which allows the system to
+differentiate between them and create an image.
+Protons (nuclei of hydrogen atoms) placed in a strong magnetic field are excited by
+a radio-frequency pulse, then allowed to loose energy.
+The loss of gained energy occurs either to the surrounding matrix (T1) or through
+interaction between each other (T2).
+The loss of energy is measured and used to produce images.
+Advantages of MR
+1. No ionizing radiation.
+2. High contrast resolution.
+3. Good spatial resolution.
+4. Multiplanar capabilities.
+5. Multi weighted sequences:
+a) Fluid attenuation (FLAIR).
+b) Fat suppression (STIR).
+c) Diffusion weighted (DWI), Diffusion Tensor (DTI).
+d) Functional MR (fMR: BOLD).
+e) Spectroscopy (MRS).
+When to use MRI?
+1. Soft tissue imaging for the brain and spinal cord.
+2. Detecting and characterizing intra-cranial or intra-spinal lesions/tumors.
+3. Acute ischemia
+4. White matter diseases, e.g. vasculitis, demyelinating diseases.
+33
+
+--- Page 38 ---
+Radiology
+Normal MR Brain
+Axial T1 Weighted Image Axial T2 Weighted Image
+T1 MRI T2 MRI CT
+Bones Black Black White dense
+Fluids Dark Bright Dark
+Gray\White matter Reversed Reversed Reversed
+34
+
+--- Page 39 ---
+Radiology
+Other Pulse Sequences
+Fluid Attenuation (FLAIR) Fat Suppression (T1)
+T2 but with fluid suppression
+Sagittal MR Brain
+(T1 WI)
+35
+
+--- Page 40 ---
+Radiology
+MR Tissues Signal Characteristics
+T1 T2
+Fluid Dark Bright
+Fat Bright Less Bright
+Solid Grey Bright
+Subacute Blood Bright Bright
+Calcifications Flowing Dark Dark
+Blood
+Acute, CH Blood Grey Dark
+T1 or T2 Weighted Images?
+When reviewing an MR image, the easiest way to determine the type of image,
+is to look at the cerebrospinal fluid (CSF).
+➢
+If the CSF is dark it is a T1-weighted image.
+➢
+If the CSF is bright, it is a T2-weighted image.
+IV Contrast Enhancement Gadolinium
+❖ Gadolinium increases signal intensity on T1-weighted images through shortening
+the T1 relaxation time of the tissue.
+❖ To assess dural venous sinuses and to differentiate cerebral tumors/lesions.
+BRAIN,TRAUMA
+Digital
+Image
+Soft Tissue Window Bone Window
+36
+
+--- Page 41 ---
+Radiology
+Traumatic Cranio-Cerebral Lesions
+Primary lesions:
+a) Skull fracture, scalp hematoma laceration
+b) Extracerebral hemorrhage
+1. Epidural hematoma
+2. Subdural hematoma
+3. Subarachnoid hemorrhage
+c) Intraaxial lesions
+1. Diffuse axonal injury
+2. Cortical contusion
+3. Deep cerebral gray matter injury
+4. Brainstem injury
+5. Intraventricular/choroid plexus hemorrhage
+Secondary lesions:
+a) Cerebral herniations
+b) Traumatic ischemia, infarction
+c) Diffuse cerebral edema
+d) Hypoxic injury
+Bilateral Frontal
+Bilateral Frontal
+Haemorrhage +
+Haemorrhage
+Intracerebral Haemorrhage
+Brain Contusions
+Due to injury with blunt
+object
+Hemorrhagic
+Contusions
+Due to injury with sharp
+object
+37
+
+--- Page 42 ---
+Radiology
+Extradural Hematoma
+(blood is collected bet the dura and brain)
+• Convex towards the brain.
+• Respects the sutures.
+• Usually associated with
+fractures.
+• Doesn’t cross the midline.
+• Significant mass effect(so
+if the patient is not treated
+quickly he will deteriorate)
+Subdural Hematoma
+• Concave or flat towards the
+brain.
+• Doesn’t respect the sutures
+• Can cross the midline and
+involve the dural folds.
+• Less severe mass effect.
+• Can be of different
+chronological age(may wait 1-2
+days)
+Subarachnoid Hemorrhage
+> Bleeding into the subarachnoid space
+> Linear or small foci within the cerebral
+sulci and CSF cisterns, can involve the
+dural folds.
+> Can be due to rupture aneurysm or AV
+malformation; Requires further CT
+angiography.
+Subacute Subdural
+Hematoma
+1. Asymmetrical brain
+2. It has been there for weeks
+3. No ventricle on one side
+4. Blood ages so it becomes darker
+in colour (Fresh blood appears
+white) so we rely on the mass
+effect
+38
+
+--- Page 43 ---
+Radiology
+Generalized Brain Edema
+• Effacement of sulci and
+ventricles.
+• Loss of basal ganglia
+differentiation.
+Mass Effect
+Brain Herniation:
+It occurs when the brain cross to the other side
+due to pressure as in:
+Subfalcine herniation: Medial displacement of
+the cingulate gyrus under the falx cerebri,
+compressing the anterior cerebral artery.
+Transtentorial herniation: Downward
+displacement of the temporal lobe through the
+tentorial notch, compressing midbrain and CN III.
+Tonsillar herniation: Displacement of cerebellar
+tonsils in foramen magnum, compressing the
+medulla causing serious brainstem dysfunction.
+Decompressive Craniectomy
+Diffuse Edema Remove ant. skull Healing
+It is a procedure used to dec the intracranial pressure by removing the anterior part
+of the skull (It is very serious but effective)
+39
+
+--- Page 44 ---
+Radiology
+Non-Traumatic Hemorrhage
+Non-Traumatic Intracranial Hemorrhage
+Very Common:
+1. Hypertension.
+2. Aneurysm.
+3. Vascular Malformation AVM.
+Common:
+1. Embolic stroke with reperfusion Amyloid.
+2. angiopathy Prematurity (Germinal Matrix Hemorrhage).
+3. Coagulopathies.
+4. Drug abuse.
+5. Tumor.
+Uncommon:
+1. Venous infarct.
+2. Vasculitis.
+Hypertensive Hemorrhage Subarachnoid
+Massive
+Hemorrhage due to
+Hypertensive
+vascular anomaly
+Hemorrhage
+e.g: ruptured aneurysm
+(next step is CT
+angiography)
+Clinical history of hypertension.
+Haemorhage replacing the
+Deeply seated hemorrhage near basal ganglia and ventricles
+the basal ganglia or brain stem.
+40
+
+--- Page 45 ---
+Radiology
+Infarct
+Ischemic Infarct
+On CT:
+a) Appears as cortical and subcortical hypodensity.
+b) Involving a vascular territory.
+c) Associated with mass effect in the form of effaced sulci and ventricles.
+d) If sizable could lead to midline shift.
+Cerebral Arteries Territories
+Anterior CA
+🔴 ACA – Anterior Cerebral Artery
+• Medial surface of frontal lobe
+• Medial surface of parietal lobe
+• Paracentral lobule
+🟰 Supplies:
+• Lower limb motor cortex
+• Lower limb sensory cortex
+• Micturition center
+Middle CA
+🔵 MCA – Middle Cerebral Artery
+• Lateral surface of:
+o Frontal lobe
+o Parietal lobe
+o Temporal lobe
+🟰 Supplies:
+• Face motor and sensory cortex
+• Broca’s area
+• Wernicke’s area
+Posterior CA
+🟢 PCA – Posterior Cerebral Artery
+• Occipital lobe
+• Inferior surface of temporal
+lobe
+🟰 Supplies:
+• Visual cortex
+41
+
+--- Page 46 ---
+Radiology
+Anterior Cerebral Infarct Early Infarct
+Normal on
+CT
+Start with
+CT; to rule
+out
+hemorrhage
+Then use MRI
+Acute Middle Cerebral Infarct
+(T2 derived):
+Diffusion or
+Restriction
+(Most sensitive
+can detect 30
+min post infarct)
+Old Infarct
+-Becomes
+Posterior Cerebral Infarct
+more
+hypodense
+nearing
+CSF
+density
+-Negative
+mass
+effect:
+widened
+sulci and
+ventricles.
+42
+
+--- Page 47 ---
+Radiology
+Brain Tumors
+Parameters Used In Lesi ons Dia gnosis
+1. Age.
+2. Clinical presentation.
+3. Location.
+4. Characteristic imaging features.
+Similar lesions have Similar imaging features
+Glioma
+T1 WI T2 WI T1 WI Post-Contrast
+Oligodendroglioma Glioblastoma
+Multiforme
+Common to see calcifications on CT
+43
+
+--- Page 48 ---
+Radiology
+Sellar & Suprasellar Tumors
+Pituitary Adenoma
+SPINE
+Spine anatomy
+44
+
+--- Page 49 ---
+Radiology
+Plain X-Ray
+A-P view Lateral view Oblique view
+CT
+MRI
+T1 T2
+W1 W1
+45
+
+--- Page 50 ---
+Radiology
+Sagittal View, T2 W1 ,MR
+Spinal Trauma
+CT
+Unstable fracture
+Retro-pusled
+Plain x-ray fragment displaced T1 WI
+Anterior wedge into the spinal
+Spinal fracture/dislocation
+Fracture of vertebra canal
+Complete cord transection
+46
+
+--- Page 51 ---
+Radiology
+Disc Herniation
+Spinal fracture/dislocation
+Complete cord transect
+T1
+T2
+W1
+W1
+Listhesis i.e sliding vertebrae
+Spondylolisthesis
+Spondylolisthesis
+is forward sliding of
+a vertebra over the
+vertebra below.
+Retrolisthesis
+Is backwards sliding of
+a vertebra over the
+vertebra below.
+X-ray CT
+47
+
+
+============================================================
+## Lecture 4TH GRADE HEAD AND — 4 NECK IMAGING
+============================================================
+
+--- Page 52 ---
+4TH GRADE HEAD AND
+Lecture
+Radiology
+4 NECK IMAGING
+Common uses of plain X RAY in the Head and neck
+Lateral plain x ray of the Retropharyngeal abscess post
+neck showing enlarged traumatic (foreign body ingestion)
+adenoid encroaching upon or in case of complicated tonsillitis
+the nasopharyngeal air way or pharyngitis
+WHEN SHOULD CT BE ORDERED IN HEAD AND NECK?
+CT is excellent in evaluation of:
+1. Sinusitis; it can differentiate between acute and chronic sinusitis and can
+detect sinonasal polyposis and retention cysts.
+Acute sinusitis: frothy
+Chronic sinusitis: opacified sinuses
+secretions and air fluid level
+and sclerosing of bone.
+48
+
+--- Page 53 ---
+Radiology
+Left maxillary retention cyst Sinonasal polyposis: opacified sinuses
+symmetrically with widening and expansion.
+Oblitered and widened ostia.
+Opacified and expanded nasal cavities.
+2.
+CT is excellent in evaluation of salivary glands, neck masses, laryngeal cancer and
+cancers of the mouth, tongue and larynx.
+Left parotid abscess: Right nodal mass in
+Left submandibular
+hypodense cyst with lymphoma with internal
+gland stone
+enhancing wall. breaking down
+Cancer
+Right
+tongue: Left
+supraglottic
+lingual
+cancer
+enhancing
+mass
+49
+
+--- Page 54 ---
+Radiology
+3.
+CT can evaluate facial bone fractures and orbital blow out fractures.
+WHEN IS US HELPFUL IN HEAD AND NECK?
+1.
+US is very accurate in evaluation of thyroid gland: size of the gland, characterize
+thyroid nodules.
+Benign thyroid nodule: isoechoic, Malignant thyroid nodule:
+oval, complete hypoechoic halo, hypoechoic, irregular outline,
+no calcification. incomplete halo, microcalcifications.
+Grave’s disease
+Normal thyroid gland by
+Gray scale US shows diffuse
+US homogenously
+enlargement of thyroid gland with
+echogenic
+hypoechoic texture.
+Doppler US shows increased vascularity.
+50
+
+--- Page 55 ---
+Radiology
+2.
+US in useful in evaluation of parathyroid hyperplasia or adenoma in cases of
+elevated serum calcium.
+Right parathyroid adenoma: behind the right thyroid lobe.
+3.
+US is accurate in evaluation of carotid stenosis in cases of transient ischemic attack
+or stroke.
+4.
+No radiation and good spatial resolution.
+5.
+US is accurate in differentiating solid and cystic neck lesions.
+Carotid stenosis due to calcified plaque by gray scale and doppler US
+51
+
+--- Page 56 ---
+Radiology
+IS MRI USEFUL IN HEAD AND NECK?
+1.
+Lack of radiation.
+2.
+Multiplanar capability.
+3.
+Excellent in salivary glands and neck masses.
+Right parotid benign looking mass: well, defined lobulated borders,
+hypointense in T1, hyperintense in T2 and moderate enhancement
+Malignant left parotid mass: hypointense in T2 with irregular ill-defined
+outline and moderate enhancement
+52
+
+--- Page 57 ---
+Radiology
+Neck lymphoma: multiple lymph nodes globular in shape with lost hilum,
+hypointense in T1 and T2 with mild enhancement and restricted diffusion.
+Left lingual cancer: MRI has better soft tissue contrast resolution than CT.
+53
+
+--- Page 58 ---
+Radiology
+EMERGENCY IMAGING IN HEAD AND NECK
+1. Injury
+2. Inflammation
+3. Infection
+CT is the first choice:
+• Speed
+• Large field of view
+• High spatial resolution.
+• Bone imaging
+• With IV contrast in settings of infection and inflammation.
+• Without IV contrast in fractures.
+MRI has higher soft tissue contrast resolution but less attractive in
+emergency settings:
+• Higher acquisition time
+• Higher motion artifacts
+• Metallic foreign bodies cause artifacts
+EMERGENCIES OF THE TEMPORAL BONE AND SKULL BASE
+Longitudinal fracture of right Acute coalescent mastoiditis showing
+temporal bone cortical erosions of the right mastoid
+54
+
+--- Page 59 ---
+Radiology
+EMERGENCIES OF THE MAXILLOFACIAL REGION, MANDIBLE AND
+ORBIT
+Orbital blowout fracture: fracture of the orbital floor with orbital fat
+herniation in the maxillary sinus.
+Limited eye movement and diplopia.
+Le Forte fractures: fracture of the pterygoid plates
+Le forte II Nasal bone and orbital Le forte I Maxillary bone
+floor
+55
+
+--- Page 60 ---
+Radiology
+Le Forte III Zygoma.
+Nasoorbitoethmoid fracture
+Right zygomaticomaxillary complex Mandibular fracture.
+fracture
+56
+
+--- Page 61 ---
+Radiology
+EMERGENCIES OF THE SINONASAL REGION
+Acute maxillary sinusitis: CT
+Acute maxillary sinusitis
+shows air fluid level
+complicated by facial abscess.
+CT shows fluid surrounded
+by enhancing wall.
+Frontal sinusitis complicated by Pott’s puffy tumor.
+CT shows frontal abscess and frontal bone erosion and osteomyelitis.
+57
+
+--- Page 62 ---
+Radiology
+Acute invasive fungal sinusitis (AIFS): life threating condition.
+CT shows premaxillary fat infiltration and orbital fat infiltration.
+It is angioinvasive infection.
+Frontal sinusitis complicated by left
+Intracranial abscess better
+frontal lobe abscess.
+detected by MRI as a
+CT shows cortical and subcortical
+complication of AIFS
+hypodensity of the left frontal lobe.
+Intracranial complications are better
+detected by MRI.
+58
+
+--- Page 63 ---
+Radiology
+AIFS complicated by right temporal hemorrhagic infarction, thrombosed right
+ICA, left meningeal thickening and infiltration of right pterygopalatine fossa.
+JUVENILE ANGIOFIBROMA
+Cases of epistaxis require emergency CT.
+CT shows large aggressive mass in the right pterygopalatine fossa, the mass is
+hypervascular in adult male patient.
+59
+
+
+============================================================
+## EMERGENCIES OF THE NECK
+============================================================
+
+--- Page 64 ---
+Radiology
+EMERGENCIES OF THE NECK
+Acute sialadenitis and sialadenitis Acute tonsillitis and peritonsillar
+complicated by abscess. abscess.
+CT shows left submandibular CT shows bilateral intratonsillar
+abscess. abscess encroaching upon the airway.
+CT showing retropharyngeal
+Lateral cervical x ray showing
+abscess with multiple air foci
+retropharyngeal abscess; air
+and compression of the
+fluid level and thickening of the
+airway.
+anterior cervical tissue.
+60
+
+--- Page 65 ---
+Radiology
+Vascular emergencies include acute internal jugular vein thrombosis and
+carotid artery traumatic injuries
+CT carotid angiography: Traumatic internal carotid artery pseudoaneurysm.
+Take home messages
+• Plain x ray in the head and neck has limited uses. It is mostly used to detect adenoid
+hypertrophy and retropharyngeal abscess.
+• CT has the advantage of being fast, high spatial resolution and detection of bone
+fractures.
+• It has a disadvantage of radiation exposure.
+• US has the advantage of being cheap, no radiation exposure and can differentiate
+cystic form solid neck lesions.
+• US has main role in thyroid and parathyroid gland lesions.
+• MRI has the advantage of lack of radiation exposure and higher soft tissue contrast
+resolution.
+• It is excellent in salivary glands and neck masses.
+• In emergency settings; CT is the first imaging modality while MRI is kept for more
+complicated cases such as intracranial complications.
+61
+
+
+============================================================
+## Lecture — Basics of Chest Imaging — 5
+============================================================
+
+--- Page 66 ---
+Lecture
+Basics of Chest Imaging
+Radiology
+5
+Chest imaging modalities
+Chest imaging modalities
+• Chest X-ray: PA and lateral chest X-ray, AP portable chest X-ray, Expiratory PA chest
+X-ray
+• Chest CT
+• Chest MRI
+• PET scanning
+Chest X-ray
+• The most commonly ordered X-ray is a chest X-ray, which is the quickest and most
+cost-effective way to begin imaging the thorax.
+• PA and lateral chest X-ray gives valuable information and serves as a baseline to
+confirm the effectiveness of treatment.
+• An AP chest is done when the patient is unable to be moved, usually because of
+the illness severity.
+PA: stands for posterior to anterior. As the patient stands with the anterior chest wall
+closest to the film. X-rays pass from posterior to anterior to expose the film.
+In this position, the heart is closer to the film than on an AP view and there is less
+magnification of the cardiac silhouette.
+62
+
+--- Page 67 ---
+Radiology
+Lateral view: the patient stands with the left side closest to the film, again to reduce
+magnification of the heart shadow.
+When would I order an AP portable chest?
+If a patient is too unstable or too ill to be transported to the radiology department, this
+frequently occurs in the emergency department, in surgery, or in an intensive care unit.
+An AP portable chest is inferior to a PA or lateral. Problems with an AP chest include
+the following:
+• Magnification of the heart shadow
+• Artifacts from lead wires, lines, bedsheets, and skin folds
+• Patient motion artifacts
+• Visualization of the chest in one plane only (a lateral is not performed mobile)
+• Variable exposure factors related to the equipment used
+63
+
+--- Page 68 ---
+Radiology
+A AP view B PA view C Lateral view
+A radiographic image is composed of a 'map' of X-rays that have either passed freely
+through the body or have been variably attenuated (absorbed or scattered) by anatomical
+structures.
+The denser the tissue, the more X-rays are attenuated. For example, X-rays are
+attenuated more by bone than by lung tissue.
+1. Air/Lung
+2. Fat (layer between soft tissues)
+3. Soft tissues
+4. Bones
+64
+
+--- Page 69 ---
+Radiology
+Anatomy
+Chest cage:
+Ribs – sternum – clavicle dorsal
+spine – soft tissue
+Lungs
+Mediastinum:
+Heart and great vessels – Trachea –
+eosohagus
+65
+
+--- Page 70 ---
+Radiology
+66
+
+--- Page 71 ---
+Radiology
+The Costophrenic angle is blunt in cases with
+minimal pleural effusion (200-300 ml of fluid in
+pleural space).
+Chest CT
+CT is generally the imaging procedure of choice after chest X-ray. CT provides
+excellent anatomic detail of the mediastinum, hemidiaphragms, pleura, lungs, osseous
+structures, trachea, and soft tissues.
+It is higher resolution than x-ray. It provides multiplaner image of the examined
+structures.
+67
+
+--- Page 72 ---
+Radiology
+What is CTA?
+1. Computed tomography angiography (CTA) is a computer-intensive reconstruction
+of the vascular structures in the body. Both venous and arterial imaging can be
+performed using intravenous contrast. Iodinated contrast is delivered through
+intravenous catheter.
+2. The vascular system can be seen in excellent detail.
+3. CTA is used to detect thrombosis within veins or arteries, stenosis, aneurysms, and
+vascular malformations.
+4. A common indication is for the detection of pulmonary embolism.
+CT Windows
+Windowing displays the image in different shades of grey correspond to brightness and
+contrast
+Lung (air) window
+Soft tissue window
+68
+
+--- Page 73 ---
+Radiology
+Normal Anatomy - Mediastinum
+Right Ascending Right
+atrium aorta ventricle
+Left atrium Descending
+aorta
+Radiology Right and Left
+Axial/Transverse image
+Left
+Right
+You are looking at the patient lying on their back from the
+“feet first” perspective when viewing axial images
+69
+
+--- Page 74 ---
+Radiology
+70
+
+--- Page 75 ---
+Radiology
+What are the indications for chest MRI?
+A chest MRI is indicated for:
+• evaluating soft tissues, such as the heart, blood vessels, lymph nodes, and
+mediastinum
+• To diagnose tumors
+• Assess congenital heart conditions
+Indications for PET imaging:
+• Evaluation of a focal pulmonary abnormality, as in diagnosis of a solitary
+pulmonary nodule (SPN)
+• Preoperative staging for bronchogenic carcinoma, which includes mediastinal
+and hilar staging as well as extrathoracic staging
+• Detection of recurrent tumor
+71
+
+--- Page 76 ---
+Radiology
+Chest
+emergency
+Traumatic Non Traumatic
+Non Non
+Cardiovascular Cardiovascular
+cardiovascular cardiovascular
+Traumatic chest emergency
+Cardiovascular Trauma
+• Cardiovascular injuries representing the second most common cause of traumatic
+death after CNS injuries.
+• The presence of hemopericardium in bed side US (FAST), with or without cardiac
+tamponade, is one of the most significant findings of cardiac injury.
+• In hemodynamically stable patients with suspected cardiac injury; contrast
+enhanced CT has become one of the most valuable imaging tools for evaluation.
+Hemopericardium
+Note that the ventricles are
+not collapsed
+72
+
+--- Page 77 ---
+Radiology
+Contrast enhanced chest CT axial (A) and coronal (B) planes in a
+patient with penetrating injury. There is rupture of the lateral wall of
+the left ventricle (white arrow) with contrast extravasation and
+tamponade (arrowhead). Left pleural collection is also demonstrated
+(black arrow).
+Non Cardiovascular Trauma
+1. Pulmonary parenchymal injury: The most common types of lung parenchymal
+injury are: contusions, lacerations, and hematomas, each having characteristic
+imaging appearances.
+2. Pleural: pneumothorax and hemothorax
+3. Airway injury
+4. Oesophageal perforation
+Pulmonary contusions
+• The most common type of pulmonary parenchymal injury, occurring in up to 75%
+of blunt chest trauma cases
+• The characteristic radiologic feature of lung contusions on chest radiographs is
+that of focal patchy or diffuse non-segmental hazy airspace opacities. Opacities
+may become consolidative when bleeding is more extensive, in which case air
+bronchograms may be evident when regional airways are clear.
+73
+
+--- Page 78 ---
+Radiology
+Pneumothorax
+• Pneumothorax, an abnormal collection of air in
+the pleural space, is commonly seen after both
+blunt and penetrating trauma.
+• Upright postero-anterior radiographs have
+more than 90% sensitivity for detection of
+pneumothorax, which generally accumulates
+along the apical and lateral portions of the lungs.
+Supine radiographs
+• It is important to be familiar with findings that may be present on supine
+radiographs that reflecting presence of pneumothorax.
+Tension pneumothorax
+• Is due to a one-way valve mechanism that
+allows air into but not out of the pleural space,
+thereby allowing the pleural pressure to exceed
+atmospheric pressure.
+• Findings at chest radiography that may suggest a
+tension pneumothorax include:
+1. collapse of the ipsilateral lung
+2. contralateral mediastinal deviation
+3. inversion of the ipsilateral diaphragm.
+74
+
+--- Page 79 ---
+Radiology
+Hydropneumothorax
+Hemothorax
+• Hemothorax occurs in approximately one-third of patients with thoracic trauma,
+often in combination with pneumothorax.
+• Signs of hemothorax at radiography include:
+1. blunting of the costophrenic angle
+2. obscuration of the hemidiaphragm
+3. homogeneous opacity of the hemithorax
+4. fluid within the interlobar fissures.
+75
+
+--- Page 80 ---
+Radiology
+Non traumatic chest emergency
+While the majority of patients have underlying cardiovascular aetiologies, but a
+subset of patients have underlying non-cardiovascular conditions although they
+present with similar symptoms of chest pain, dyspnoea, cough, hemoptysis and
+haematemesis.
+Thoracic emergencies are mainly diagnosed and differentiated through:
+1. Clinical history
+2. Physical examination
+3. Electrocardiography
+4. Laboratory investigations
+5. Imaging: when specific diagnosis remains elusive imaging plays an important
+role in the assessment of patients with cardiac and non-cardiac chest conditions.
+Acute pulmonary embolism
+• Acute PE is associated with high
+morbidity and mortality, particularly in
+the acute care setting.
+• the patient presented with sudden-
+onset chest pain. CT Pulmonary
+Angiography demonstrates emboli in
+right main pulmonary artery (arrow).
+Aortic dissection and aneurysm
+• Any mechanism that weakens the media of the aorta may result in aortic dilatation
+and aneurysm formation and, eventually, intramural hemorrhage, aortic
+dissection, or rupture.
+• The patient can present with sudden severe chest pain.
+Massively aneurysmal aorta displacing the
+CTA: The true lumen (more dense)
+trachea to the right. Consolidation in the left
+The false lumen (less dense).
+lower lobe. Small adjacent left pleural
+effusion.
+76
+
+--- Page 81 ---
+Radiology
+Infection
+• Chest radiography remains the initial investigation of choice for all patients
+presenting with signs of pneumonia at the ED.
+• Frontal radiography of the chest provides useful information about the extent and
+severity of the pneumonia and associated pleural effusions.
+• Chest radiography followed by CT can help in identifying the source and
+aetiology of the pneumonia and detect the complications.
+Benign lung abscess
+• Smooth thin wall.
+• Air fluid levelling.
+• Clear surrounding lung parenchyma.
+77
+
+--- Page 82 ---
+Radiology
+Foreign body aspiration
+• A foreign body lodged in the tracheobronchial tree can be life threatening due to
+airway obstruction.
+• Imaging is useful to localize radio-opaque foreign bodies and evaluate any
+associated complications.
+Coin aspiration by a 51-year-old man. (a) Frontal chest radiograph shows the
+metallic foreign body projected over the right hilum (black arrow). (b) Axial
+CT image shows the coin lodged in the bronchus intermedius (white arrow).
+➢ If cardiac patient presented to the ER with severe dyspnea you can suspect
+congestive heart failure and ask for chest X-ray then CT.
+78
+
+--- Page 83 ---
+Radiology
+Aortic aneurysm Chest CT/CTA/angiography
+Chest pain Chest X-ray
+Expiratory PA if suspect pneumothorax
+CTA if suspect PE
+Cough/fever Chest X-ray
+Dyspnea Chest X-ray
+Lung nodule/mass Chest CT followed by PET
+Pleural effusion Chest X-ray
+Chest CT (malignant effusion)
+Trauma Chest X-ray/Chest CT
+Unresolving cough Chest CT
+Wheezing Chest X-ray
+Expiratory if suspect foreign body
+79
+
+
+============================================================
+## Lecture — Imaging of the CVS — 6
+============================================================
+
+--- Page 84 ---
+Lecture
+Imaging of the CVS
+Radiology
+6
+Anatomical Foundation
+The CVS is structurally composed of the heart and its associated vessels, including
+arteries, veins, and lymphatics
+Heart Chambers and Septa
+The heart is divided into four main chambers:
+-Right and left atria -Right and left ventricles.
+• Interatrial Septum: Separates the two atria.
+• Interventricular Septum: Separates the two
+ventricles.
+• Atrio-ventricular Valve Groove: Defines the
+boundary between the atria and the ventricles.
+Valvular Structure and Blood Flow
+Valves ensure unidirectional blood flow through the
+system:
+• Atrio-ventricular (A-V) Valves:
+-Tricuspid valve (right) -Mitral/bicuspid valve (left).
+• Semilunar Valves:
+at the base of the aorta and pulmonary arteries, each
+possessing three cusps.
+Radiographic Borders and Surfaces
+When viewed via imaging, specific anatomical
+structures form the cardiac silhouette:
+• Right Border: mainly of the right atrium
+with smaller contributions from the SVC and IVC.
+• Left Border:
+-the left ventricle -the left atrial appendage
+-the aortic knuckle -the pulmonary artery.
+• Inferior and Anterior Surfaces: the right ventricle.
+• Posterior Surface (Base): Primarily the left atrium,
+with parts of the left ventricle and inferior vena cava.
+80
+
+--- Page 85 ---
+Radiology
+Coronaries
+• Right sinus of the aorta → right coronary artery (RCA)
+• Left sinus of the aorta → left coronary artery (LCA)
+consists of the following key branches:
+❖ Left main coronary artery (LMCA), which divides to:
+• Left anterior descending artery (LAD), which includes:
+o Diagonal branches (D1, D2)
+o Septal perforators (S1, S2).
+• Circumflex artery (LCx), which gives off:
+o Obtuse marginal branches (OM1, OM2).
+• Ramus intermedius artery (RI).
+❖ The right coronary system includes:
+• Conus artery
+• sinoatrial nodal artery.
+• Acute marginal branches (AM1, AM2, etc..).
+• Inferior interventricular artery (PDA)
+• posterior left ventricular (PLV) branch
+81
+
+--- Page 86 ---
+Radiology
+Cardiac Imaging Modalities
+The selection of an imaging modality depends on the clinical requirement for spatial
+resolution, functional data, or tissue viability.
+Plain X-Ray When we image the heart, we check:
+The Posteroanterior (PA) view is the -Position -Size, borders and chamber enlargement
+-Calcifications
+standard for cardiac X-ray. It is performed
+at a distance of 150 cm with the beam Others:
+directed from the back (posterior) of -Aortic shadow -Pulmonary trunk -Pulmonary vascularity
+-Other lung anomalies -Rib cage
+the patient while they hold the cassette.
+Clinical Assessment Criteria:
+• Position: Normally, the cardiac apex is on the left.
+• Size: Measured via the Cardiothoracic Ratio (Maximum horizontal cardiac width /
+Maximum horizontal thoracic width).
+◦ Normal: <50% in adults.
+◦ Children: Up to 60% is considered normal.
+• Gross enlargement of the heart:
+-Pericardial effusion -Multivalvular disease -Cardiomyopathy -Ischaemia
+-Epstein anomaly -Atrial septal defect -Pulmonary stenosis -Myxoedema.
+Echocardiography (ECHO)
+Utilizing grey scale and Color Doppler, ECHO is the most
+common modality for examining cardiac disease.
+• Capabilities: Assesses
+-anatomy -structure -valvular pathology -blood flow
+-tumors -thrombi -cardiac contractility/function.
+• Limitations:
+◦ Operator-dependent results.
+◦ "Acoustic window" issues caused by obesity or burns.
+◦ Difficulty imaging hidden areas like the cardiac apex and right ventricle.
+82
+
+--- Page 87 ---
+Radiology
+◦ Inability to assess extra-cardiac pathology.
+Grey scale Colour Doppler
+Radioisotope Study (Thallium)
+This nuclear medicine technique is specifically used to detect myocardial viability.
+• Mechanism: Normal areas show tracer uptake; ischemic areas present as defects.
+• Limitation: Involves exposure to radioactive materials.
+Cardiac CT
+Cardiac CT provides high spatial resolution and multiplanar capability, including 3D
+reconstructions.
+Feature Details
+-Excellent anatomical detail
+Advantages -Simultaneous examination of the heart and coronary arteries
+-Assessment of cardiac structure, function, and extra-cardiac problems.
+-Exposure to ionizing radiation
+Disadvantages -Requires contrast media (with potential hazards)
+-limited information about tissue viability.
+Other benefits: -Determining Calcium score
+-Tracing the vessels
+Calcium score
+83
+
+--- Page 88 ---
+Radiology
+-determined using a non-contrast cardiac CT study to detect the degree of
+calcification within the coronary arteries. The amount of calcium present is then
+scored according to the Agatston scale.
+-This scoring system provides risk stratification to help predict the likelihood of a
+coronary accident occurring within the next five years
+Tracing the vessels
+-determined using a contrast enhanced coronary CT
+-To evaluate the anatomy, identify congenital anomalies, and detect various
+pathologies such as atherosclerosis, stenosis, occlusions, and vasculitis
+Cardiac MRI
+Cardiac MRI is a comprehensive modality that can assess
+morphology, function, viability, and valvular pathology in a
+single examination.
+• Key Clinical Uses: Detection of Ischemic Heart Disease (IHD)
+and viability, diagnosis and risk stratification of
+cardiomyopathies, and postoperative assessment of congenital
+heart disease (including extra-cardiac shunts).
+• Technical Advantages:
+◦ No ionizing radiation or radioactive materials (as
+thallium).
+◦ Not restricted by the acoustic window issues that affect
+ECHO.
+84
+
+--- Page 89 ---
+Radiology
+Vascular Imaging Modalities
+Plain X-ray: generally considered not important for detailed vascular evaluation.
+Doppler Ultrasound:
+This is a non-invasive technique used to assess blood flow and structure. It can
+identify findings such as an aneurysmal dilatation of the abdominal aorta
+Conventional Angiography:
+A traditional method for visualizing the inside of blood vessels.
+CT Angiography (CTA):
+This is the modality of choice for diagnosing conditions like aortic dissection. It is
+also highly effective for identifying aortic aneurysms, pulmonary embolisms,
+mesenteric vascular occlusions (such as a clot in the superior mesenteric artery), and
+lower limb ischemia.
+Aortic aneurysms Aortic dissection
+85
+
+--- Page 90 ---
+Radiology
+MR Angiography (MRA):
+An advantage of MRA is that it involves no ionizing radiation and can be performed
+with or without contrast
+CVS emergencies
+Aortic Dissection
+Aortic dissection is the most common cause of
+aortic emergencies. It occurs when an intimal tear
+allows blood to enter the medial layer of the aorta,
+creating a true lumen and a false lumen. It is
+classified as acute if symptoms last less than two
+weeks.
+• Predisposing Factors: Hypertension is the most frequent factor, but other
+conditions like Marfan syndrome, Turner syndrome, pregnancy, and cocaine use also
+increase risk.
+• Imaging Findings:
+◦ CT Angiography is the modality of choice. It reveals an intimal
+flap separating the two lumina. The true lumen is typically smaller
+and surrounded by calcifications, while the false lumen is larger,
+shows delayed enhancement, and may contain "cobwebs"
+(collagenous media remnants).
+◦ Plain X-ray may show a widened mediastinum,
+obliteration of the aortic knuckle, or the "calcium
+sign" (inward displacement of atherosclerotic
+calcification >1 cm from the aortic margin).
+86
+
+--- Page 91 ---
+Radiology
+◦ Ultrasound/Doppler can detect an aneurysmal dilatation with a mobile
+echogenic intimal flap.
+Abdominal Aortic Aneurysm (AAA) Rupture
+The most common imaging finding for a ruptured AAA is a retroperitoneal
+hematoma adjacent to the aneurysm. Other primary signs detectable via CT include:
+• Peri-aortic stranding.
+• Acute extravasation of contrast into the hematoma.
+Other Major Emergencies:
+Pulmonary Embolism: This is a critical vascular emergency
+often evaluated via CT.
+Mesenteric Vascular Occlusion: This involves a clot
+obstructing blood flow to the bowel, frequently seen in the
+superior mesenteric artery (SMA).
+Lower Limb Ischemia: Imaging is used to identify the site of
+occlusion or stenosis causing a sudden loss of blood flow to
+the extremities
+87
+
+
+============================================================
+## Lecture — Gastrointestinal system — 7
+============================================================
+
+--- Page 92 ---
+Lecture
+Gastrointestinal system
+Radiology
+7
+Imaging modalities of GIT pathologies:
+1. X-ray.
+2. Barium studies.
+3. Ultrasound.
+4. Computed tomography (CT).
+5. Magnetic Resonance Imaging (MRI)
+Plain X-ray
+Although abdominal radiography has lower sensitivity
+and specificity than a CT of the abdomen, it still has
+certain uses, like:
+1. A preliminary evaluation of bowel gas in an
+emergent setting like Multiple air fluid levels (in
+intestinal obstruction).
+2. Evaluation of radiopaque tubes and lines.
+3. Evaluation for radiopaque foreign bodies.
+4. Evaluation for presence of free gas (Air under
+diaphragm in hollow organ perforation).
+Multiple air fluid levels
+Air under diaphragm
+Barium studies
+1. Barium swallow: (for evaluation of oesophagus)
+2. Barium meal: (evaluation of stomach)
+3. Barium follow through: (for evaluation of small bowel)
+4. Barium enema: (for evaluation of large bowel)
+88
+
+--- Page 93 ---
+Radiology
+Main uses of barium studies
+Barium swallow and meal:
+1. GERD and gastric hiatal hernia
+assessment.
+2. Swallowing difficulties
+Barium follow through:
+1. Strictures and obstruction.
+2. Polyps Normal barium swallow
+Barium enema:
+1. Diverticulosis.
+2. Polyps and tumors
+Gastric hiatal hernia
+Achalasia Normal barium meal
+Ultrasound
+Uses of ultrasound:
+Ultrasound is the 1st line modality for evaluation of most of the GIT pathologies.
+89
+
+--- Page 94 ---
+Radiology
+Liver Gallbladder Spleen
+Ultrasound in gallbladder stones:
+Stones in ultrasound appear as
+echogenic structures with acoustic
+shadow
+Computed tomography (CT)
+1. CT is the gold standard imaging modalities in GIT emergencies.
+2. Rapid and non-invasive.
+3. Multiplanar reconstruction (axial, coronal and sagittal) improves accuracy of
+reporting.
+4. Generally not portable
+5. Exposes patient to moderate dose of ionizing radiation.
+6. Intravenous contrast should be administered to improve sensitivity of the test for
+solid organ injury and vessel injury.
+7. Multiphasic scan is the accurate form of imaging (for the diagnosis or exclusion of
+vascular injury or active intra-abdominal hemorrhage). This may include all or
+some of the following phases: non-contrast, arterial, portal venous. A 5–10 min
+delayed urographic phase can be performed if urinary tract injury is suspected
+clinically.
+90
+
+--- Page 95 ---
+Radiology
+Non-contrast CT Contrast-enhanced CT
+Magnetic Resonance Imaging (MRI)
+1. Usually, MRI is a problem-solving imaging tool.
+2. No ionizing radiations.
+3. Safe for pregnant women and children
+91
+
+--- Page 96 ---
+Radiology
+Imaging of traumatic and non-
+traumatic GIT emergencies
+Traumatic Non-Traumatic
+Blunt trauma 1. The most common
+cause is:
+1. RTA
+2. itis (inflammation)
+2. Falling from height
+3. Assaults
+4. Sports
+Penetrating trauma
+1. Stab
+2. Gun shot
+Traumatic GIT emergencies Imaging modalities
+Ultrasonography
+Used at the time of primary survey, to detect free fluid with the abdominal or pleural
+space (may be due to bleeding or bowel perforation), cardiac hemopericardium.
+Advantage: Fast Does not expose the patient to ionizing radiation.
+Limitations: depends on operator skill and patient factors such as bowel gas and
+obesity.
+Good at detecting free abdominal fluid, but cannot out rule bleeding or organ
+damage (good positive but not a good negative test)
+This is called a Focused Assessment with Sonography for Trauma (FAST) scan.
+92
+
+--- Page 97 ---
+Radiology
+Extended Focused Assessment with Sonography for Trauma (FAST):
+Evaluate all 4 regions (RUQ, left upper
+quadrant [LUQ], cardiac, and suprapubic
+views)
+Intraperitoneal fluid is anechoic
+(black); it appears as a black stripe on
+standard machine settings.
+Intraparenchymal or clotted blood can
+become more echogenic and
+heterogeneous
+Right upper quadrant
+Normal RUQ Free fluid in Moris on’s pouch
+(between liver and kidney) and in
+the chest cephalad to the diaphragm
+(hemothorax)
+Left upper quadrant
+Normal LUQ Abnormal LUQ view: free fluid (arrow)
+in spleen in a pediatric trauma patient
+93
+
+--- Page 98 ---
+Radiology
+Suprapubic view
+Normal Positive suprapubic view: free fluid
+(yellow arrow) behind the bladder (blue
+arrow). (Double wall sign)
+Subxyphoid view
+Normal Positive subxiphoid view for pericardial
+fluid (yellow arrow). Of note, a clot
+sealing a penetrating wound in the right
+ventricle is also present (blue arrow)
+Traumatic GIT emergencies Imaging modalities
+CT
+• CT is the gold standard of care for imaging of the major trauma patient.
+• Rapid and non-invasive.
+Patterns of trauma:
+• Solid organ injuries.
+• Bowel injuries.
+• Vascular injuries.
+94
+
+--- Page 99 ---
+Radiology
+Splenic injury (most Liver injury
+common solid organ
+injury 25%)
+The findings are:
+The findings are the following:
+1.Green arrow: oval shaped
+1.Linear hypodense areas hypodense area consistent with
+reaching the splenic surfaces hematoma
+consistent with lacerations.
+2.Yellow arrow: linear shaped
+2.Round and oval hypodense hypodense area consistent with
+areas consistent with laceration. Notice that this
+intrasplenic hematoma. laceration crosses the left portal vein
+3.Hemoperitoneum. 3.Blue arrow: vague ill defined
+hypodense area consistent with
+Depending on the clinical
+contusion
+condition this patient will be
+managed non-operatively, 4.Fluid around the liver
+because there is no active
+5.There is almost a transsection of
+bleeding.
+the liver, but both lobes do enhance
+so there is still normal vascular
+supply
+Non-Trau ma tic GIT emergencies Imaging modalities
+1. Acute cholecystitis.
+2. Acute pancreatitis.
+3. Acute appendicitis.
+4. Acute diverticulitis
+95
+
+--- Page 100 ---
+Radiology
+Acute cholecystitis
+Presentation
+▪ Right upper quadrant pain, fever and raised white cell count (WCC).
+▪ Positive Murphy’s sign: Pain and inspiratory arrest on palpation of the right upper
+quadrant
+Key imaging
+▪ Ultrasound is considered the initial imaging test of choice. (first-line diagnosis)
+▪ Computed Tomography (CT) plays a secondary but vital role in the diagnosis of
+acute cholecystitis, especially when the clinical presentation is atypical or
+complications are suspected, or when the initial ultrasound is inconclusive
+Ultrasound showing acute calculous cholecystitis;
+1. Distended gallbladder full of hypoechoic bile,
+2.Hyperechoic calculus with posterior acoustic
+shadowing (dashed arrow)
+3. Sludge
+4. Thickened gallbladder wall
+CECT showing acute calculous cholecystitis;
+1. Distended gallbladder
+2. Hyperdense calculus
+3. Thickened gallbladder wall
+4. CT rim sign (hepatic hyperemia)
+96
+
+--- Page 101 ---
+Radiology
+CECT showing acute cholecystitis complicated
+by perforation and starting abscess formation;
+1. Distended thick-walled gallbladder
+2. Mural discontinuity
+3. Fat stranding
+4. Abscess formation
+Acute pancreatitis
+Presentation
+1. Severe epigastric pain, radiating through to the back, relieved by sitting up and
+leaning forward.
+2. Nausea, vomiting.
+3. Raised WCC, lipase, amylase.
+4. Ranges from a mild, self-limiting condition (80–90%) to a severe condition with
+multiorgan failure and a mortality of up to 25%.
+Key imaging
+1. Diagnosis is usually made on the basis of clinical and laboratory findings alone,
+without the need for imaging.
+2. However, CT is important in assessing disease severity in patients with severe
+acute pancreatitis and in identifying complications.
+Axial contrast-enhanced CT abdomen
+d emonstrates mild acute uncomplicated
+pancreatitis:
+1 . An enlarged, oedematous pancreas (solid
+arrow)
+2 . Surrounding inflammatory fat stranding
+(dashed arrow)
+3. Small volume upper abdominal free fluid
+(curved arrow).
+(See normal pancreas (solid arrow) for
+c omparison)
+97
+
+--- Page 102 ---
+Radiology
+Axial contrast-enhanced CT demonstrates
+acute necrotizing pancreatitis:
+1. lack of enhancement (low attenuation) in the
+pancreatic head and proximal body (dashed
+arrow)
+2. Surrounding fat stranding
+3. Free fluid
+( Note :normal enhancement (high attenuation)
+of the distal pancreatic body for comparison)
+Acute appendicitis
+Presentation
+1. Periumbilical abdominal pain localizing to the right lower quadrant
+2. Nausea, vomiting.
+3. Fever.
+4. Abdominal tenderness—maximal over McBurney’s point, guarding, rigidity.
+5. Raised inflammatory markers.
+Key imaging
+US
+▪ Generally, the first imaging test of choice due to its safety. (esp. children and
+pregnant females).
+▪ Good positive but not a good negative test.
+Contrast-enhanced CT
+▪ The most accurate diagnostic tool in adults .
+▪ For children, it is typically reserved for cases where US is inconclusive or
+complications are suspected (rupture, abscess, phlegmon)
+▪ Identification of alternative diagnoses when a patient's symptoms mimic
+appendicitis
+Normal compressible
+appendix on transverse US
+(a) 4 mm diameter on
+compression
+(b) 3mm diameter after
+compression
+98
+
+--- Page 103 ---
+Radiology
+Longitudinal (A) and
+transverse (B) real-time US
+scan of acute appendicitis:
+1. thickening of the wall
+2. target sign
+3. diameter > 6 mm
+4. increased echogenicity of
+the periappendiceal fat
++/- fecolith
+(Calcified faecal matter)
+Contrast-enhanced CT that demonstrates acute uncomplicated
+appendicitis:
+1.A dilated, fluid-filled appendix that is greater than 6 mm in width
+2.Inflammation around the appendix (stranding or wavy lines and
+haziness of the fat surrounding the appendix)
+3.Bright, calcified deposit(s) in the appendix (i.e., appendicolith)
+which can obstruct the lumen and be the cause of appendicitis
+99
+
+--- Page 104 ---
+Radiology
+Contras t enhanced CT that
+demonstrates acute complicated
+a ppendicitis with perforation and
+abscess formation:
+1 .Discontinuous wall of the appendix
+at the site of perforation
+2 .large amount of inflammation in
+the right
+lo wer quadrant affecting nearby
+structures,
+3. Abscess formation from the
+contents that
+leaked out of the ruptured appendix.
+A fluid density collection with a wall
+that is variably thick and enhancing
+(depending on how organized or
+Acute diverticulitis walled-off the collection is)
+Presentation
+▪ Abdominal pain, typically in the left lower quadrant (LLQ).
+▪ Altered bowel habit.
+▪ Nausea, vomiting.
+▪ Low-grade fever.
+▪ Tenderness, guarding, rigidity and/or a palpable mass in the LLQ.
+▪ Raised inflammatory markers.
+Key imaging
+Contrast-enhanced computed tomography (CT) is the preferred imaging method for
+diagnosing acute diverticulitis, distinguishing it from other conditions, and assessing
+its severity and complications (e.g. perforation, abscess and fistula formation)
+Contrast-enhanced CT shows
+acute diverticulitis:
+1. multiple gas-filled
+outpouchings from the sigmoid
+colon
+2. stranding of the fat around
+the sigmoid colon (arrow)
+100
+
+--- Page 105 ---
+Radiology
+Imaging modalities of GIT malignancies
+Radiological imaging has advanced role in diagnosis of tumors of hepatic
+gastrointestinal region, using the ultrasound, CT and MRI.
+Examples:
+Hepatocellular carcinoma (HCC)
+Typical characteristic
+features of HCC:
+▪ Arterial wash in
+▪ Delayed wash out
+Pancreatic adenocarcinoma
+•Cancer pancreas is mainly
+located at its head,
+presented as hypoattenuating
+indistinct mass lesion (yellow
+circle).
+101
+
+--- Page 106 ---
+Radiology
+Cancer colon in CT
+Apple core sign of cancer
+transverse colon.
+Take home messages
+In traumatic GIT In non-traumatic GIT
+emergencies: emergencies
+1. Contrast enhanced CT is the most
+important imaging modality in the
+1. Ultrasound is the initial first line
+work-up of patients with acute
+imaging (FAST scan):
+abdominal pain.
+▪ Detects free fluid
+2. Ultrasonography
+▪ Good positive but not good
+• First line in patients with
+negative
+suspected acute cholecystitis.
+2. CT is the gold standard of care
+• First imaging test of choice due to
+for imaging of the major trauma
+its safety. (esp. children and
+patient.
+pregnant females) with suspected
+▪ Multiphasic scan is the
+acute appendicitis.
+accurate form of imaging (for
+3. Conventional radiography
+the diagnosis or exclusion of
+• Erect chest radiography may identify
+vascular injury or active intra-
+subdiaphragmatic free air in patients
+abdominal hemorrhage)
+with hollow viscus perforation.
+• Abdominal radiography should be
+limited to patients with suspected
+bowel obstruction
+102
+
+
+============================================================
+## Lecture Women's Imaging — 8
+============================================================
+
+--- Page 107 ---
+Lecture Women's Imaging
+Radiology
+8
+( FEMALE PELVIS IMAGING & BREAST IMAGING )
+IMAGING of FEMALE PELVIS
+Imaging of female pelvis
+Modalities and Indications:
+1. US: is the initial imaging modality (Safe)
+2. MRI: is problem-solving to determine
+origin of lesion and tissue
+characterization (Safe)
+3. Hysterosalpingography: is for tubal
+patency assessment.
+4. CT: is for distant staging and in
+acute abdomen following US
+(Ionizing so dangerous for
+reproductive)
+Indications:
+1. Infertility
+2. Menstrual irregularities/ bleeding
+per vagina
+3. Acute abdomen
+4. Pregnancy
+5. Gyne-Oncology
+The arrangement of used modalities in Female
+reproductive imaging:
+US MRI CT
+Usually we use CT first but due to radiation MRI is Safer
+Ultrasound
+▪ High-frequency sound waves to produce pictures of the inside of the body
+▪ No ionizing radiation
+▪ Real-time - structure and movement (Doppler)
+▪ Non-invasive
+103
+
+--- Page 108 ---
+Radiology
+Ultrasound- Pros & cons
+US = Excellent first line examination tool to image the uterus & ovaries
+Gray scale image
+Isoechoic=Intermediate Grey
+Hypoechoic=close to black
+Anechoic=black
+Hyperechoic=close to white
+Pros Cons
+Available Operator- and patient- dependent
+low cost Inconsistent visibility = obesity, gaseous distension
+Non-Ionizing Inadequate visualization of the fallopian tubes
+No contrast materials
+Ultrasound- Transabdominal vs Transvaginal
+▪ To overcome the inadequate assessment through transabdominal (TA) US (gases,
+fat,) the best imaging modality will be the Transvaginal US in non-virgins.
+▪ Upper aspect of image half-circle (TA flatter), no UB (TA UB), targeted
+Abdominal affected by the fat and gas Vaginal can have better view of ovary and uterus
+104
+
+--- Page 109 ---
+Radiology
+Transabdominal US
+▪ Notice the full urinary bladder
+▪ TA needs a full urinary
+bladder (UB)
+→ acts as an acoustic window
+to push bowel away and transmit
+sound.
+Transvaginal US
+▪ No UB (Urinary bladder appears
+as a flat hallow part on the top
+but here we have a semi-circle)
+▪ Detailed uterine anatomy
+(different layers of the
+endometrium, myometrium)
+Transvaginal US
+▪ No UB
+▪ Detailed ovarian anatomy
+ovarian follicles (blue arrows)
+105
+
+--- Page 110 ---
+Radiology
+Ultrasound- Uterus
+➢ Assess uterine size:
+• Varies with age
+• Detect Müllerian duct anomalies
+(congenital); present by infertility
+➢ Assess endometrial
+thickness:
+• Cyclic variation
+• Detect abnormal thickening and
+endometrial cancer; present by
+bleeding
+➢ Assess myometrial lesions
+• Fibroid commonest; present by
+infertility, bleeding &/or pain
+Ultrasound-Ovaries
+➢ Assess ovarian follicles:
+• Cyclic variation
+• Ovarian follicular scanning in
+cases of infertility eg. Polycystic
+ovaries (PCO)
+➢ Assess ovarian lesions:
+• Torsion, complicated cysts, pelvic
+inflammatory disease (PID) or
+ectopic pregnancy presenting by
+acute abdomen
+• Cysts and soft tissue lesions
+(benign & malignant neoplasms)
+Conventional Radiographs (CRX): with contrast
+Hysterosalpingography = uterine cavity, cervical cavity + fallopian tubes
+= detection of tubal obstruction for cases of infertility (hydrosalpinx)
+Pros Cons
+Shows lumen of the Ionizing
+fallopian tubes Lack soft tissue details
+Invasive
+Contraindicated in active pelvic infection or pregnancy
+106
+
+--- Page 111 ---
+Radiology
+• Normal uterine cavity
+• Normal tubal cavity
+• Normal peritoneal spillage
+• Normal uterine cavity Normal reference image
+• Dilated tubal cavity (dt hydrosalpinx)
+• No spillage (dt obstruction)
+Magnetic Resonance Imaging (MRI)
+• Used in characterization of uterine and ovarian lesions
+• The best imaging modality for local staging of tumors
+• No CT unless distant staging (bone, lung) to avoid radiation to the female genitalia
+Pros Cons
+Superb details resolution Expensive
+No ionizing radiation Longer examinations than CT
+Not tolerated by some patients
+Not possible in some patients
+107
+
+--- Page 112 ---
+Radiology
+MRI – T2 sequence MRI – T2 sequence
+Hyperintense (bright) Hyperintense (bright)
+Fluid – sagittal view Fluid – coronal view
+MRI-ovaries
+MR imaging can be helpful especially in visualizing the full morphology of the
+ovaries when transvaginal US can’t be performed .
+Normal ovaries on
+MRI T2 sequence with
+hyperintense (white)
+follicles
+Computed Tomography (CT)
+CT is considered the best imaging modality for distant staging ovarian cancer
+A scheme for CT staging of
+o varian cancer (BEST
+modality)
+108
+
+--- Page 113 ---
+Radiology
+Miscellaneous-Pregnancy
+• Pregnancy: detection/fetal assessment.
+• Early pregnancy: (1st trimester) anomaly scan
+between 11 &13th weeks of gestation.
+• Late pregnancy (2nd and 3rd trimester):
+anomaly scan between 18 &23 weeks of
+gestation with doppler parameters.
+TAKE HOME MESSAGES:
+• Ultrasound (US): Primary tool for initial assessment, especially in pregnancy.
+Offers real-time imaging, crucial for emergency conditions like ovarian torsion.
+• MRI is Ideal for complex gynaecological cancers (endometrial, ovarian) due to
+superior soft tissue contrast. Useful in differentiating benign from malignant pelvic
+masses.
+• Computed Tomography (CT): Employed for evaluating advanced stages of
+gynecological cancers and detecting metastasis. Limited use in pregnancy due to
+radiation exposure.
+• The first line depends on the type of organ you are imaging:
+• Uterus = Ultrasound (better transvaginal in non-virgin)
+• Ovary = Ultrasound (better transvaginal in non-virgin)
+• Fallopian tubes = hysterosalpingography is the best identify tubal patency
+• Complimentary imaging modalities:
+• Uterus = MRI the best to characterize lesions and stage tumors
+• Ovary = MRI the best to characterize lesions + CT to stage tumors
+• Fallopian tubes = US can identify pathological dilated tubes + MRI can
+differentiate hydrosalpinx from hematosalpinx
+109
+
+--- Page 114 ---
+Radiology
+BREAST IMAGING
+Breast Imaging Modalities
+• Mammography
+• Digital Breast Tomosynthesis
+• Ultrasonography
+• Magnetic Resonance Imaging (MRI)
+Breast Imaging Indications
+➢ Screening:
+• No symptoms, searching for early signs before complaints calcifications
+Mammography
+• At 40 years old unless having family history 30 or 35 years
+➢ Diagnostic :
+• Lump
+• Discharge per nipple
+• Skin changes
+• Axillary lymph nodes
+Mammography
+X-ray based only for breast
+110
+
+--- Page 115 ---
+Radiology
+• Two views = CC (craniocaudal) and MLO (mediolateral oblique)
+• To differentiate look at the pectoral muscle (axilla) present in MLO view
+Mammosonography (US)
+US is mostly used in addition to mammography and MRI.
+Pros Cons
+Safe, cheap and mobile Time-consuming
+Guide aspiration Poor assessment of small calcifications
+(early sign of small cancer seen on
+mammography)
+Noionizing radiation
+Magnetic Resonance Mammography (MRI)
+Pros Cons
+Superb details resolution Expensive
+No ionizing radiation Longer examinations than CT
+Not tolerated by some patients (claustrophobia)
+Not possible in some patients (obese)
+MRI machine with additional breast coil
+Patient lies supine
+111
+
+--- Page 116 ---
+Radiology
+Mammography- anatomy
+1-Only fat appears lucent = dark grey
+2-All other structures appear
+radio-opaque/ dense = bright grey
+Mammographic breast density
+1-Mammographic parenchymal density
+2-When the parenchymal density
+increases it can mask lesions (lesions
+appear dense)
+3-That’s why when we have dense breast,
+we need further imaging by another
+modality
+1- Mammography- calcifications
+1-Calcifications are a common
+finding
+2-It can be benign in nature (with
+fat necrosis with fibroadenoma)
+3-If suspicious (malignant) it
+reflects DCIS
+That’s why when we find
+suspicious calcifications we need
+further imaging and biopsy
+112
+
+--- Page 117 ---
+Radiology
+2- Mammography- Mass
+lesions
+• It can be benign in nature
+(classical benign = fibroadenoma
+suspicious looking = fat necrosis)
+• If suspicious (malignant) it
+reflects IDC or ILC
+• That’s why when we find a
+mass
+on mammography, we need
+further imaging and biopsy
+• Left breast dense mass
+• It can be solid or cystic
+• It can be benign or suspicious
+• That’s why when we find a
+mass on mammography, we
+need further imaging and biopsy
+3- Mammography- Other lesions
+• Skin thickening e.g(peu de orange)
+• Enlarged axillary lymph nodes
+113
+
+--- Page 118 ---
+Radiology
+Mammosonography (US) -lesions
+A nechoic lesion = cyst = benign looking
+Well-defined lesion hypoechoic =
+benign looking
+Malignant Lesions:
+1. Irregular lesion hypoechoic = suspicious looking
+2. Irregular lesion hypoechoic with high vascularity = suspicious looking
+3. Irregular lesion hypoechoic, taller than wider with posterior shadowing =
+suspicious looking
+114
+
+--- Page 119 ---
+Radiology
+Magnetic Resonance Mammography (MRI)-lesions
+• Due to its superb details' resolution, it’s considered the best imaging modality as
+problem solving tool
+1-Used in certain indications 2-Not first line of imaging
+MRI sagittal view showing
+MRI axial view showing tiny inframammary lesion
+axillary lymph nodes not identified on
+mammography or US
+BI-RADS
+• Due to the overlap between the lesion’s different morphological changes, the
+Breast Imaging-Reporting and Data System (BI-RADS) was developed, providing a
+systematic and standardized approach in the acquisition, interpretation, and reporting
+of breast lesions
+115
+
+--- Page 120 ---
+Radiology
+• Each lesion is assigned an BI-RADS Assessment Category using a 5-point scale
+based on the likelihood that findings correlates with the presence of a clinically
+significant ovarian cancer
+TAKE HOME MASSAGES :
+Breast cancer
+• Screening is done for totally asymptomatic females (start above the age of 40 years
+but earlier in high risk females)
+• The aim of screening is to detect breast lesions early before the female feels a lump
+• Screening is done using Mammography
+• Mammography is the best modality to detect calcifications of DCIS which is the
+earliest signs of malignancy.
+• Diagnostic mammography is done for patients with symptoms (i.e. those with a
+breast lump, focal pain, nipple inversion, bloody nipple discharge).
+• US is complimentary to mammography to differentiate between cystic and
+solid lesions and characterize a mass as benign or malignant
+• Contrast–enhanced breast MR imaging is used selectively to improve breast
+cancer staging (i.e. to detect multifocal tumours).
+• BI-RADS system (Breast imaging reporting and data system) = to stratify breast
+lesions = from benign to malignant spectrum
+• Abnormalities visible on US are biopsied under US guidance. If no abnormality is
+seen on US in a region of concern, a stereotactic biopsy can be performed, using
+mammographic images to localise the abnormality and guide the biopsy.
+116
+
+
+============================================================
+## Lecture — Imaging of the Genitourinary system — 9
+============================================================
+
+--- Page 121 ---
+Lecture
+Imaging of the GenitouRraidnioalorygy system
+9
+Anatomy
+1. Urinary system is composed of kidney, ureter
+& bladder
+2. Kidney is a retroperitoneal organ with helium
+towards medial
+3. Cross section shows kidney composed of
+Cortex & medulla
+4. Kidney is surrounded by pararenal &
+perinephric fat & suprarenal gland above
+Kidney cross section
+5. Most ant structure to kidney is renal vein &
+artery
+6. Most post structure to kidney is
+pelvis
+7. Kidney has relations with great
+vessels & rectum (showed in
+images below)
+Pararenal & perinephric Medullary pyramid
+fat with suprarenal
+gland
+Relations to rectum
+Relation to Great
+vessels
+117
+
+--- Page 122 ---
+Radiology
+Radiologica l Examination
+1. KUB
+2. IVU
+3. Retrograde Pyelography
+4. Antegrade Pyelography
+5. Cystography
+6. Urethrography
+7. Ultrasonography/Doppler
+8. CT
+9. MRI
+1- Kidney ureter bladder X-ray {KUB}
+▪ KUB is an X-ray to examine GUT system
+▪ Radio-density structures (ex.
+Bones/stones) appear white
+▪ Radio lucent structures (ex. Tissues/fat)
+appear black
+• Advantages:
+▪ Initial modality to visualize calcifications
+& radio-opaque stones along urinary tract
+▪ Inexpensive
+▪ Available
+• Disadvantages:
+▪ Ionizing radiation exposure
+▪ No soft tissue details (no evaluation
+of backpressure changes)
+KUB is used to detect Stones:
+Urinary bladder stone
+1- Urinary bladder stone
+Ureteric stone
+1. Radio-opaque=white
+2. Sharply defined
+3. At anatomical site of bladder
+4. Can be large
+2- Renal Stones
+1. At anatomical site of kidney
+2. Can be branching “staghorn”
+3- Ureteric Stones
+1. Along the course of ureter
+2. Smaller than renal stones
+Renal stone
+3. Oblong Ureteric stone
+118
+
+--- Page 123 ---
+Radiology
+2- Intra venous urography {IVU}
+• Contrast dye is injected IV, filtered by kidneys, then
+excreted into urinary tract, allowing X-ray visualization
+of GUT.
+•Advantages
+- Visualize urinary tract lesions as filling defects
+(stones, tumors, blood clots, fungal balls, foreign bodies)
+- Back-pressure changes assessed
+- Inexpensive, available
+• Disadvantages
+- Ionizing radiation exposure
+- Contrast exposure
+- Need good kidney function
+- No assessment beyond obstruction
+IVU has 5 stages:
+IVU can detect:
+1- hydro-uretero-nephrosis
+Dilated right pelvi-calyceal
+Normal pelvicalyceal system and upper ureter (hydro-
+system uretero-nephrosis)
+2- Ureters persistent filling defects
+Ureters with fixed filling defects
+119
+
+--- Page 124 ---
+Radiology
+3- Urinary bladder filling defects
+Normal cystogram phase:
+*Contrast filling
+Urinary bladder filling defects
+* no filling defects
+* average capacity
+*Smooth outlines
+*No diverticula
+4- Bladder increased post–voiding residual urine
+We can see
+Normal post voiding residual urine volume
+-Elevated base - tiny diverticulae
+-wall irregularities, -“fish hook” ureters
+→Benign prostatic hyperplasia (BPH)
+3- Pyelography
+• imaging technique in which contrast dye is used to outline renal pelvis and calyces to
+visualize the collecting system and ureters on X-ray.
+• Contrast can be injected :
+* Antegrade : in same direction of urine
+* Retrograde : in opposite direction of urine
+• Used in case of :
+- non functioning kidney
+anterograde
+- Visualising one side only
+Retrograde
+120
+
+--- Page 125 ---
+Radiology
+4- Cystogram
+• Contrast is instilled directly
+into bladder through a catheter
+Can be either:
+Retrograde through transurethral
+catheter Retrograde cystogram
+Supra-pubic cystogram
+Supra-pubic through supra-pubic catheter
+• Detect bladder outlines, filling defects, diverticulae, fistulous tracts or leaks etc
+5- Urethrography
+• Retrograde injection of contrast to delineate urethral
+lumen
+• Detect irregularities, strictures, lesions (filling defects),
+fistulous tracts or leaks
+6- Ultrasonography (US) Urethrography
+• Depends on Ultrasound waves
+• NO radiation (safe for paediatrics & pregnant)
+• Generate Real time image
+• Detect vascularity by doppler
+•Disadvantages:
+- Operator dependent
+- Limited by abdominal fat and gases
+Normal kidney
+- Limited assessment of ureters
+• Kidney Ultrasonography
+* Normal Kidney
+- Central echogenic (white) sinus fat
+- collapsed collecting system
+- Outer parenchyma (normal echogenicity)
+- No stones
+Hydronephrosis
+- No masses or cysts
+* Hydronephrosis
+- Hydronephrosis Pelvicalyceal system dilated and
+anechoic (black)
+* Renal stone
+Renal stone
+- Echogenic (white) with posterior shadowing (black)
+121
+
+--- Page 126 ---
+Radiology
+* Renal simple cyst
+-Renal simple cyst (anechoic= black)
+-Renal mass of different echogenicities
+• Urinary bladder Ultrasonography
+Renal simple cyst
+* Normal urinary Bladder
+- Clear fluid (urine) → anechoic (black)
+- Must be full (retain urine)
+* Bladder mass
+- Masses are mural attached (fixed on moving the
+patient), - different
+Bladder stone Normal bladder
+echogenicity,
+- Vascularized on doppler
+* Bladder stone
+- Echogenic with posterior shadowing (black)
+Bladder mass
+• Prostate Ultrasonography
+- Can be observed in 2 ways:
+1- Trans-abdominal →
+-urinary bladder appear
+- flattened image with no details
+2- Trans-rectal →
+Trans-abdominal
+- no urinary bladder
+- semi circle image
+-more details
+• Testis Ultrasonography
+*Normal testis
+-Symmetric homogenous parenchyma
+-On doppler: Trans-rectal
+.Bilaterally detected
+.symmetric average vascularity
+Normal testis
+122
+
+--- Page 127 ---
+Radiology
+7- Computed Tomography (CT)
+• Advantage:
+- Rotating X-ray tube and detectors
+- Decreased artefacts with more details
+- Fast and multiplanar (axial, sagittal & coronal)
+- Increased coverage area
+• Disadvantage:
+- Ionizing radiation exposure
+• CT has 2 protocols according to the indication:
+1-Non-contrast CT (stone protocol)
+→ for Renal colic suspicious for stones
+Non-contrast
+2- Contrast-enhanced CT
+→ Hematuria suspecting tumor (detection & staging)
+→Trauma with organ injury
+→Complicated infections
+NOTE!!: contrast protocol can affect renal function so
+it should Not be used with Non-functioning kidney
+Contrast enhanced
+• CT can detect:
+1-Urinary tract stones
+-done by non-contrast CT protocol
+-appear hyperdense (white)
+- Back-pressure changes (upstream dilatation) Left Renal stone
+in obstructing stones→ Renal colic (obstructive
+uropathy)
+Left ureteric stone with
+Bladder stone upstream dilatation
+2- Renal mases
+- masses Show post-contrast
+enhancement (vascularized)
+- Benign or malignant
+- May present by pain or hematuria
+Renal mass
+123
+
+--- Page 128 ---
+Radiology
+3-Renal trauma
+- Show post-contrast
+- Non-enhancing linear parenchymal lacerations
+- Perinephric collections
+- Delayed contrast extravasation (urine leak) if
+collecting system injury
+8- Magnetic Resonance imaging (MRI)
+•Magnet and coils → signal → image
+• Advantages
+-No radiation exposure (safe for pregnant & pediatrics)
+-Higher soft tissue contrast and resolution
+-Non-iodinated contrast (different from CT contrast)
+• Disadvantages
+-Longer time → May need sedation
+- Claustrophobia
+- Higher cost, less available
+• MRI has 3 Protocols according to indication:
+1-Non-contrast MRI or Contrast-enhanced MRI
+2- MR urography (MRU)
+→ collecting system pathologies (congenital anomalies, strictures, tumors),
+→can be done WITHOUT contrast
+3- Multiparametric MRI studies (contrast-enhanced)
+→ Multiparametric bladder MRI à bladder tumors
+• Urinary tract injury
+→ Multiparametric prostate MRI → prostatic lesions
+(renal collecting system,
+(BEST modality to characterize prostatic lesions) ureters, bladder or
+→ Multiphasic renal MRI à renal lesions urethra)
+→Delayed extraluminal
+Acute emergent genitourinary conditions
+contrast denoting urine
+1-Trauma leak
+Initial technique US
+Main technique contrast enhanced multiphasic CT
+Suspect if:
+• Hematuria
+• Anuria
+• Abdominal collection
+Laceration is linear and non-enhancing
+Vascular injury causes infarction (lack of Enhancement)
+124
+
+--- Page 129 ---
+Radiology
+2- Renal colic & obstructive uropathy
+• Present with Acute colicky flank pain
+• US → show renal stones and backpressure changes
+• KUB → detect only radio-dense stones
+•CT stone protocol → preferred modality to assess case
+3- Infection
+• Uncomplicated cases → diagnosed
+clinically with no imaging
+• Complicated infections → CT
+• One of serious infections is emphysematous
+pyelonephritis
+(immuno-compromised diabetic by gas-forming
+organism) Axial CT post-contrast showing enlarged
+right kidney with heterogenous parenchyma
+containing air foci (similar density to the air
+in bowel loops)
+4- Testicular torsion
+• Present with Acute severe pain at
+ipsilateral hemi-scrotum
+• Diagnosed clinical→ if unsure use
+US
+• Doppler reduced vascularity
+compared to other side, enlarged
+hypoechoic (darker) later
+Testicular torsion Normal Us & doppler
+heterogenous
+Take home messages
+• There are different imaging modalities to assess the genitourinary system each has its
+specific indications and limitations
+• X-ray (KUB) is mainly to detect stones but their detailed assessment is done by CT
+stone protocol.
+• Ultrasound is the preferred modality to differentiate solid from cystic lesions (eg.
+renal tumor and renal cyst)
+• The collecting system assessment can be done intravenous urogram (IVU) showing
+lesions as fixed (persistent) filling defects. This can also be done without the use of
+125
+
+--- Page 130 ---
+Radiology
+contrast nor exposure to ionizing radiation by MR urogram (MRU).
+• Tumors of the urinary tract show vascularity on doppler and postcontrast
+enhancement on contrast-enhanced CT and MRI studies.
+• Prostatic lesions are best assessed by multiparametric MRI.
+• Distant staging (metastatic work-up) of tumors is done by CT due to its wide
+coverage area.
+• Genitourinary acute and emergent conditions include trauma, some infections,
+obstructive uropathy and testicular torsion
+MCQs!
+1-How can a calcific urinary stone appear on plain X-ray abdomen (KUB)?
+• A) An ill-defined radio-opaque structure
+• B) A sharply defined radio-lucent structure
+• C) An ill-defined radio-lucent structure
+• D) A sharply defined radio-opaque structure
+2- What is the preferred modality to differentiate renal cyst from renal tumor?
+• A) Kidney, ureter and bladder X-ray (KUB)
+• B) Computed Tomography (CT)
+• C) Magnetic Resonance Imaging (MRI)
+• D) Ultrasonography (US)
+3-What is the advantage of the intra-venous urography (IVU) in genitourinary
+imaging?
+• A) No need for contrast exposure
+• B) No exposure to ionizing radiation
+• C) Urinary tract lesions are visualized as filling defects
+• D) Poorly- functioning kidney can be imaged safely
+4-What is the type of catheter used to perform a retrograde cystography study?
+• A) Supra-pubic catheter
+• B) Transurethral catheter
+• C) Nephrostomy tube
+• D) Angiographic catheter
+5-To examine the urinary bladder by ultrasound, what is the patient asked to do?
+• A) Fast
+• B) Urinate to have an empty bladder
+126
+
+--- Page 131 ---
+Radiology
+• C) Retain urine to have a full bladder
+• D) To place a urinary catheter
+6-How do urinary stones appear on ultrasonography?
+• A) Hypoechoic with posterior shadowing
+• B) Hyperechoic with posterior shadowing
+• C) Hypoechoic with posterior enhancement
+• D) Hyperechoic with posterior enhancement
+7-What does it reflect to have a delayed contrast extravasation around the kidney
+on a CT urogram in a setting of trauma?
+• A) Renal infarction
+• B) Absent renal injury but systemic hypotension
+• C) Collecting system injury and urinary leak
+• D) Obstructive uropathy
+7-Which technique can study the entire length of the urinary tract collecting system
+without contrast?
+• A) X-ray kidney, ureter and bladder (KUB)
+• B) Intravenous urography (IVU)
+• C) Ascending pyelography
+• D) MR urography (MRU)
+8-What is the best modality to characterize a prostatic lesion?
+• A) Ultrasound
+• B) Intravenous urogram (IVU)
+• C) Computed tomography (CT)
+• D) Magnetic resonance Imaging (MRI)
+9- A pregnant women is clinically suspected to have a ureteric stricture. Which of
+the following modalities is the safest for diagnosis in this situation?
+• A) Multiphasic renal MRI
+• B) Kidney, ureter, bladder X-ray (KUB)
+• C) MR urography (MRU)
+• D) CT stone protocol
+10-What is the value of antegrade and retrograde pyelography?
+• A) Can be used in non-functioning kidney
+• B) Visualizes both sides simultaneously by one injection
+• C) No exposure to ionizing radiation
+• D) Detailed assessment of renal masses
+127
+
+--- Page 132 ---
+Radiology
+11- What does this X-ray abdomen shows?
+• A) Right renal staghorn stone
+• B) Left renal staghorn stone
+• C) Right ureteric stone
+• D) Left ureteric stone
+12- A 30 years old male patient presented by acute right flank colicky abdominal
+pain. An ultrasound was performed. What is the
+diagnosis?
+• A) Right renal tumor
+• B) Right renal laceration
+• C) Right renal obstructive uropathy
+• D) Right renal cyst
+13- A 70 years old male patient presented by lower urinary tract irritative
+symptoms with weak urine stream. Intravenous urography (IVU) was done.What is
+the diagnosis?
+• A) Bladder filling defect
+• B) Urine leak from bladder rupture
+• C) Benign prostatic hyperplasia
+• D) urinary bladder stone
+14- Which technique does the opposite image
+represent?
+• A) Urethrogram
+• B) Cystogram
+• C) Pyelogram
+• D) Intravenous Urogram
+15- A 60 years old male patient presented by painless hematuria. Ultrasound examination of the
+pelvis was done. What is the suggested cause of his hematuria?
+• A) Urinary bladder tumor
+• B) Urinary bladder stone
+• C) Urinary bladder diverticulum
+• D) Renal pelvic tumor
+128
+
+--- Page 133 ---
+Radiology
+16- A 40 years old female patient presented complaining
+of right-sided abdominal pain. Ultrasound abdomen was
+done. What does this finding represent?
+• A) Renal stone
+• B) Renal tumor
+• C) Renal laceration
+• D) Renal simple cyst
+17- A 50 years old male patient presented by left sided abdominal pain and
+hematuria. He was referred to the Radiology department.
+According to this image what was the radiologic
+examination and what was finding?
+• A) Non-contrast CT, renal cyst
+• B) Contrast-enhanced CT, renal tumor
+• C) Non-contrast MRI, renal tumor
+• D) Contrast-enhanced MRI, renal cyst
+18-A 20 years old male patient presented to the emergency department following
+road traffic accident. Ultrasound was done then he
+was referred to do a contrast enhanced CT study.
+What are the main findings in the CT?
+• A) Renal laceration with intact collecting system
+• B) Renal calcifications
+• C) Renal infarction
+• D) Renal laceration, collecting system injury with urine leak
+19- A 60 years old diabetic male patient presented by fever and worsening general
+condition. Contrast enhanced CT study was done.
+What is the cause of his bad general condition?
+• A) Right emphysematous pyelonephritis
+• B) Multiple right renal stones with obstruction
+• C) Simple right renal infection
+• D) Multiple right renal masses
+129
+
+--- Page 134 ---
+Radiology
+20-A 30 years old female patient presented by a colicky
+left flank pain. This radiologic examination was
+performed. What is the imaging modality and
+what is the finding?
+• A) Contrast- enhanced CT, right ureteric obstructing
+stone.
+• B) Non-contrast CT, left ureteric obstructing stone.
+• C) Non-contrast MRI, left ureteric obstructing stone.
+• D) Contrast-enhanced CT, left ureteric obstructing stone
+21- A teenager presented to the emergency department complaining of acute
+scrotal pain. Ultrasound was done. What
+is the suggested diagnosis?
+• A) Left testicular infection
+• B) Left testicular torsion
+• C) Right testicular infection
+• D) Rig
+Answers
+1- D 7- C 12- C 18-D
+2- D 7- D 13- C 19- A
+3- C 8- D 14- A 20- B
+4- B 9- C 15- A 21- B
+5- C 10-A 16-D
+6- B 11- B 17- B
+130

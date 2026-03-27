@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Quiz Viewer</title>
+<script src="quiz-embedded.js"></script>
+<style>
+:root {
+  --accent: #e91e63;
+  --green: #4caf50;
+  --red: #f44336;
+  --blue: #2196f3;
+  --orange: #ff9800;
+  --bg: #f5f5f5;
+  --card: #ffffff;
+  --text: #1e293b;
+  --sidebar-w: 240px;
+  --toolbar-h: 50px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); color: var(--text); overflow: hidden; height: 100vh; direction: rtl; }
+
+/* SIDEBAR */
+#sidebar {
+  position: fixed; right: 0; top: 0; bottom: 0; width: var(--sidebar-w);
+  background: #1e293b; color: #e2e8f0; display: flex; flex-direction: column; z-index: 100;
+}
+.logo { padding: 14px 16px; font-size: 16px; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.nav-list { flex: 1; overflow-y: auto; padding: 8px 0; }
+.nav-item {
+  padding: 10px 16px; cursor: pointer; font-size: 13px; display: flex;
+  justify-content: space-between; align-items: center; transition: background 0.15s;
+}
+.nav-item:hover { background: rgba(255,255,255,0.08); }
+.nav-item.active { background: var(--accent); }
+.nav-item .badge {
+  font-size: 10px; padding: 2px 6px; border-radius: 10px;
+  background: rgba(255,255,255,0.15);
+}
+.nav-item .badge.mcq { background: rgba(33,150,243,0.3); }
+.nav-item .badge.fill { background: rgba(255,152,0,0.3); }
+.nav-item .badge.open { background: rgba(76,175,80,0.3); }
+.sidebar-footer {
+  padding: 12px 16px; border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 12px;
+}
+.score-bar { height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; margin-top: 6px; }
+.score-fill { height: 100%; background: var(--green); border-radius: 2px; transition: width 0.3s; }
+
+/* TOOLBAR */
+#toolbar {
+  position: fixed; top: 0; right: var(--sidebar-w); left: 0; height: var(--toolbar-h);
+  background: var(--card); border-bottom: 1px solid rgba(0,0,0,0.08);
+  display: flex; align-items: center; padding: 0 16px; gap: 10px; z-index: 90;
+}
+.tb-btn {
+  border: none; background: none; cursor: pointer; padding: 6px 12px;
+  border-radius: 6px; font-size: 13px; color: var(--text); transition: background 0.15s;
+}
+.tb-btn:hover { background: rgba(0,0,0,0.06); }
+#pageInfo { font-size: 14px; font-weight: 600; }
+.spacer { flex: 1; }
+#pageHint { font-size: 12px; opacity: 0.5; }
+
+/* MAIN */
+#main {
+  position: fixed; top: var(--toolbar-h); right: var(--sidebar-w); left: 0; bottom: 0;
+  display: flex; justify-content: center; align-items: flex-start;
+  overflow: auto; padding: 20px; background: var(--bg);
+}
+
+/* PAGE */
+#pageWrap {
+  position: relative; display: inline-block;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15); border-radius: 4px; overflow: hidden;
+}
+#pageImg {
+  display: block; height: calc(100vh - var(--toolbar-h) - 40px); width: auto;
+  user-select: none;
+}
+#quizLayer {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10;
+}
+
+/* MCQ OPTION ZONES */
+.opt-zone {
+  position: absolute; cursor: pointer; border-radius: 50%;
+  border: 3px solid transparent; transition: all 0.2s;
+  display: flex; align-items: center; justify-content: center;
+}
+.opt-zone:hover { background: rgba(33,150,243,0.15); border-color: rgba(33,150,243,0.5); box-shadow: 0 0 8px rgba(33,150,243,0.3); }
+.opt-zone.selected { border-color: #2196f3; background: rgba(33,150,243,0.2); box-shadow: 0 0 10px rgba(33,150,243,0.4); }
+.opt-zone.correct { border-color: var(--green) !important; background: rgba(76,175,80,0.3) !important; box-shadow: 0 0 12px rgba(76,175,80,0.5) !important; }
+.opt-zone.wrong { border-color: var(--red) !important; background: rgba(244,67,54,0.25) !important; box-shadow: 0 0 12px rgba(244,67,54,0.4) !important; }
+
+/* QUESTION ROW HIGHLIGHT */
+.q-row {
+  position: absolute; left: 0; width: 100%; pointer-events: none;
+  border-radius: 4px; transition: background 0.2s;
+}
+.q-row.answered-correct { background: rgba(76,175,80,0.08); }
+.q-row.answered-wrong { background: rgba(244,67,54,0.06); }
+
+/* OPEN/FILL-IN QUESTION ROW */
+.open-q-row {
+  position: absolute; left: 0; width: 100%;
+  display: flex; align-items: flex-start; justify-content: flex-start;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+/* Reveal button on the left side of each open question */
+.reveal-btn {
+  position: absolute; left: 1%; top: 50%; transform: translateY(-50%);
+  z-index: 20; cursor: pointer;
+  background: var(--blue); color: #fff;
+  border: none; border-radius: 20px;
+  padding: 5px 14px; font-size: 11px; font-weight: 600;
+  box-shadow: 0 2px 8px rgba(33,150,243,0.4);
+  transition: all 0.2s; white-space: nowrap;
+  font-family: inherit;
+}
+.reveal-btn:hover { background: #1976d2; transform: translateY(-50%) scale(1.05); }
+.reveal-btn.revealed {
+  background: var(--green);
+  box-shadow: 0 2px 8px rgba(76,175,80,0.4);
+}
+
+/* Write button */
+.write-btn {
+  position: absolute; left: 1%; z-index: 20; cursor: pointer;
+  background: var(--orange); color: #fff;
+  border: none; border-radius: 20px;
+  padding: 5px 12px; font-size: 11px; font-weight: 600;
+  box-shadow: 0 2px 8px rgba(255,152,0,0.4);
+  transition: all 0.2s; white-space: nowrap;
+  font-family: inherit;
+}
+.write-btn:hover { background: #f57c00; transform: scale(1.05); }
+
+/* Answer overlay */
+.answer-overlay {
+  position: absolute; left: 0; width: 100%; z-index: 15;
+  pointer-events: none; overflow: hidden;
+  border: 2px solid var(--green); border-radius: 4px;
+  box-shadow: 0 2px 12px rgba(76,175,80,0.3);
+  opacity: 0; transition: opacity 0.3s;
+  background: #fff;
+}
+.answer-overlay.show { opacity: 1; }
+
+/* Writing panel — positioned to the left of the page */
+.write-panel {
+  position: absolute; z-index: 25;
+  background: #fff; border: 2px solid var(--orange);
+  border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  padding: 10px; display: none; direction: rtl;
+}
+.write-panel.show { display: block; }
+.write-panel-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 8px; font-size: 12px; font-weight: 600;
+}
+.write-panel-close {
+  background: none; border: none; cursor: pointer; font-size: 16px;
+  color: #999; padding: 0 4px;
+}
+.write-canvas {
+  border: 1px solid #ddd; border-radius: 6px; cursor: crosshair;
+  background: #fafafa; touch-action: none;
+}
+.write-tools {
+  display: flex; gap: 6px; margin-top: 6px; justify-content: center;
+}
+.write-tools button {
+  border: none; background: #eee; cursor: pointer; padding: 4px 10px;
+  border-radius: 4px; font-size: 11px; font-family: inherit;
+  transition: background 0.15s;
+}
+.write-tools button:hover { background: #ddd; }
+.write-tools button.active { background: var(--orange); color: #fff; }
+
+/* RESULT BADGE */
+.result-badge {
+  position: absolute; font-size: 11px; font-weight: 700; padding: 3px 10px;
+  border-radius: 12px; pointer-events: none; z-index: 15;
+  opacity: 0; transition: opacity 0.3s;
+}
+.result-badge.show { opacity: 1; }
+.result-badge.correct { background: var(--green); color: #fff; }
+.result-badge.wrong { background: var(--red); color: #fff; }
+
+/* TOAST */
+.toast {
+  position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+  padding: 10px 24px; border-radius: 8px; font-size: 14px; font-weight: 600;
+  z-index: 999; opacity: 0; transition: opacity 0.3s; pointer-events: none;
+}
+.toast.show { opacity: 1; }
+.toast.correct-toast { background: var(--green); color: #fff; }
+.toast.wrong-toast { background: var(--red); color: #fff; }
+.toast.info-toast { background: var(--blue); color: #fff; }
+
+/* STATS MODAL */
+#statsModal {
+  display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+  z-index: 200; justify-content: center; align-items: center;
+}
+#statsModal.show { display: flex; }
+.stats-card {
+  background: var(--card); border-radius: 16px; padding: 30px; min-width: 340px;
+  text-align: center; box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+.stats-card h2 { font-size: 20px; margin-bottom: 16px; }
+.stat-num { font-size: 48px; font-weight: 800; }
+.stat-num.good { color: var(--green); }
+.stat-num.bad { color: var(--red); }
+.stat-num.info { color: var(--blue); }
+.stat-label { font-size: 13px; opacity: 0.6; margin-top: 4px; }
+.stats-row { display: flex; gap: 30px; justify-content: center; margin: 20px 0; }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div id="sidebar">
+  <div class="logo">بنك أسئلة المتميز</div>
+  <div class="nav-list" id="navList"></div>
+  <div class="sidebar-footer">
+    <div id="scoreText">النتيجة: 0 / 0</div>
+    <div class="score-bar"><div class="score-fill" id="scoreFill" style="width:0%"></div></div>
+    <div style="margin-top:8px">
+      <button class="tb-btn" onclick="resetAll()" style="background:rgba(255,255,255,0.1);color:#fff;width:100%">إعادة الاختبار</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOOLBAR -->
+<div id="toolbar">
+  <button class="tb-btn" onclick="prevPage()">&#9654;</button>
+  <span id="pageInfo">1 / 11</span>
+  <button class="tb-btn" onclick="nextPage()">&#9664;</button>
+  <span class="spacer"></span>
+  <span id="pageHint"></span>
+  <button class="tb-btn" onclick="showStats()">📊 النتائج</button>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+  <div id="pageWrap">
+    <img id="pageImg">
+    <div id="quizLayer"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<div id="statsModal" onclick="if(event.target===this)this.classList.remove('show')">
+  <div class="stats-card">
+    <h2>نتائج الاختبار</h2>
+    <div class="stats-row">
+      <div><div class="stat-num good" id="statCorrect">0</div><div class="stat-label">صحيح ✓</div></div>
+      <div><div class="stat-num bad" id="statWrong">0</div><div class="stat-label">خطأ ✗</div></div>
+      <div><div class="stat-num info" id="statRevealed">0</div><div class="stat-label">تم كشف الإجابة</div></div>
+    </div>
+    <div id="statPct" style="font-size:24px;font-weight:700;margin:10px 0">0%</div>
+    <button class="tb-btn" onclick="document.getElementById('statsModal').classList.remove('show')" style="background:#eee;padding:8px 24px;margin-top:10px">إغلاق</button>
+  </div>
+</div>
+
+<script>
+// ===================== STATE =====================
+let curPage = 1;
+let studentAnswers = {};   // "page-qNum" -> optionIndex (MCQ)
+let revealed = {};          // "page-qNum" -> true (MCQ revealed)
+let openRevealed = {};      // "page-qNum" -> true (open/fill revealed)
+let drawings = {};          // "page-qNum" -> dataURL of canvas
+
+// Load saved state
+try {
+  const s1 = localStorage.getItem('quizV2_answers');    if (s1) studentAnswers = JSON.parse(s1);
+  const s2 = localStorage.getItem('quizV2_revealed');   if (s2) revealed = JSON.parse(s2);
+  const s3 = localStorage.getItem('quizV2_open');       if (s3) openRevealed = JSON.parse(s3);
+  const s4 = localStorage.getItem('quizV2_drawings');   if (s4) drawings = JSON.parse(s4);
+} catch(e) {}
+
+function saveState() {
+  localStorage.setItem('quizV2_answers', JSON.stringify(studentAnswers));
+  localStorage.setItem('quizV2_revealed', JSON.stringify(revealed));
+  localStorage.setItem('quizV2_open', JSON.stringify(openRevealed));
+  localStorage.setItem('quizV2_drawings', JSON.stringify(drawings));
+}
+
+// ===================== HELPERS =====================
+function getPageTypeLabel(type) {
+  if (type === 'mcq') return 'اختيار متعدد';
+  if (type === 'fill_in_blank') return 'أكمل';
+  if (type === 'open_ended') return 'أجب';
+  return '';
+}
+function getPageTypeBadgeClass(type) {
+  if (type === 'mcq') return 'mcq';
+  if (type === 'fill_in_blank') return 'fill';
+  if (type === 'open_ended') return 'open';
+  return '';
+}
+
+// Map display page number (1-based) to actual PDF page number
+const allDisplayPages = [1, ...(QUIZ_DATA.question_pages || [])];
+function getActualPageNum(displayNum) { return allDisplayPages[displayNum - 1] || 1; }
+function getDisplayPageCount() { return allDisplayPages.length; }
+
+// ===================== NAV =====================
+function buildNav() {
+  const nav = document.getElementById('navList');
+  let html = '';
+  for (let i = 0; i < allDisplayPages.length; i++) {
+    const p = allDisplayPages[i];
+    const displayNum = i + 1;
+    const qd = QUIZ_DATA.pages[String(p)];
+    const qCount = qd ? qd.questions.length : 0;
+    const pType = qd ? qd.type : '';
+    let label, badge = '';
+    if (p === 1) {
+      label = 'الغلاف';
+    } else {
+      label = `صفحة ${p}`;
+      if (qCount > 0) {
+        const typeLabel = getPageTypeLabel(pType);
+        const badgeClass = getPageTypeBadgeClass(pType);
+        badge = `<span class="badge ${badgeClass}">${qCount} — ${typeLabel}</span>`;
+      }
+    }
+    html += `<div class="nav-item${displayNum === curPage ? ' active' : ''}" onclick="loadPage(${displayNum})">${label}${badge}</div>`;
+  }
+  nav.innerHTML = html;
+}
+
+// ===================== PAGE LOADING =====================
+function loadPage(num) {
+  const maxPages = getDisplayPageCount();
+  if (num < 1 || num > maxPages) return;
+  curPage = num;
+  const actualPage = getActualPageNum(num);
+  document.getElementById('pageInfo').textContent = `${num} / ${maxPages}`;
+  document.getElementById('pageImg').src = PAGE_IMAGES[actualPage];
+
+  const pageData = QUIZ_DATA.pages[String(actualPage)];
+  const hint = document.getElementById('pageHint');
+  if (pageData) {
+    if (pageData.type === 'mcq') {
+      hint.textContent = 'اختر الإجابة ثم انقر مرتين لكشف الحل';
+    } else {
+      hint.textContent = 'اكتب إجابتك ✏️ ثم اكشف الحل 👁️';
+    }
+  } else {
+    hint.textContent = '';
+  }
+
+  buildNav();
+  renderQuizLayer();
+  updateScore();
+}
+
+function prevPage() { loadPage(curPage - 1); }
+function nextPage() { loadPage(curPage + 1); }
+
+// ===================== QUIZ LAYER =====================
+function renderQuizLayer() {
+  const layer = document.getElementById('quizLayer');
+  layer.innerHTML = '';
+
+  const actualPage = getActualPageNum(curPage);
+  const pageData = QUIZ_DATA.pages[String(actualPage)];
+  if (!pageData || !pageData.questions) return;
+
+  if (pageData.type === 'mcq') {
+    renderMCQLayer(layer, pageData, actualPage);
+  } else {
+    renderOpenLayer(layer, pageData, actualPage);
+  }
+}
+
+// ===================== MCQ RENDERING =====================
+function renderMCQLayer(layer, pageData, actualPage) {
+  pageData.questions.forEach((q) => {
+    if (!q.options || q.options.length === 0) return;
+
+    const key = `${actualPage}-${q.number}`;
+    const studentAns = studentAnswers[key];
+    const isRevealed = revealed[key];
+
+    // Row background
+    const row = document.createElement('div');
+    row.className = 'q-row';
+    row.style.top = q.y0 + '%';
+    row.style.height = (q.y1 - q.y0) + '%';
+    if (isRevealed && studentAns !== undefined) {
+      row.className += studentAns === q.correct ? ' answered-correct' : ' answered-wrong';
+    }
+    layer.appendChild(row);
+
+    // Option zones
+    q.options.forEach((opt, oi) => {
+      const zone = document.createElement('div');
+      zone.className = 'opt-zone';
+      zone.style.left = opt.x0 + '%';
+      zone.style.top = opt.y0 + '%';
+      zone.style.width = (opt.x1 - opt.x0) + '%';
+      zone.style.height = (opt.y1 - opt.y0) + '%';
+
+      if (studentAns === oi && !isRevealed) zone.classList.add('selected');
+      if (isRevealed) {
+        if (oi === q.correct) zone.classList.add('correct');
+        if (studentAns === oi && oi !== q.correct) zone.classList.add('wrong');
+      }
+
+      zone.onclick = (e) => {
+        e.stopPropagation();
+        if (isRevealed) return;
+        studentAnswers[key] = oi;
+        saveState();
+        renderQuizLayer();
+      };
+      zone.ondblclick = (e) => {
+        e.stopPropagation();
+        if (studentAnswers[key] === undefined) {
+          showToast('اختر إجابة أولاً', 'wrong');
+          return;
+        }
+        revealed[key] = true;
+        saveState(); renderQuizLayer(); updateScore();
+        showToast(studentAnswers[key] === q.correct ? 'إجابة صحيحة! ✓' : 'إجابة خاطئة ✗',
+                  studentAnswers[key] === q.correct ? 'correct' : 'wrong');
+      };
+      layer.appendChild(zone);
+    });
+
+    // Result badge
+    if (isRevealed && studentAns !== undefined) {
+      const badge = document.createElement('div');
+      badge.className = 'result-badge show ' + (studentAns === q.correct ? 'correct' : 'wrong');
+      badge.textContent = studentAns === q.correct ? 'صحيح ✓' : 'خطأ ✗';
+      badge.style.left = '2%';
+      badge.style.top = (q.cy - 1) + '%';
+      layer.appendChild(badge);
+    }
+  });
+}
+
+// ===================== OPEN/FILL-IN RENDERING =====================
+// Preload answer page images into Image objects for canvas clipping
+const answerImageCache = {};
+function getAnswerImage(pageNum) {
+  if (!ANSWER_IMAGES || !ANSWER_IMAGES[pageNum]) return null;
+  if (!answerImageCache[pageNum]) {
+    const img = new Image();
+    img.src = ANSWER_IMAGES[pageNum];
+    answerImageCache[pageNum] = img;
+  }
+  return answerImageCache[pageNum];
+}
+
+function renderOpenLayer(layer, pageData, actualPage) {
+  const answerPageNum = pageData.answer_page;
+
+  // Preload the answer image
+  getAnswerImage(answerPageNum);
+
+  pageData.questions.forEach((q) => {
+    const key = `${actualPage}-${q.number}`;
+    const isRevealed = openRevealed[key];
+    const hasDrawing = !!drawings[key];
+
+    // --- REVEAL BUTTON (left side, vertically centered) ---
+    const revBtn = document.createElement('button');
+    revBtn.className = 'reveal-btn' + (isRevealed ? ' revealed' : '');
+    revBtn.textContent = isRevealed ? '👁️ إخفاء' : '👁️ كشف الحل';
+    revBtn.style.top = ((q.y0 + q.y1) / 2) + '%';
+    revBtn.onclick = (e) => {
+      e.stopPropagation();
+      if (isRevealed) {
+        delete openRevealed[key];
+      } else {
+        openRevealed[key] = true;
+        showToast('تم كشف الإجابة', 'info');
+      }
+      saveState(); renderQuizLayer(); updateScore();
+    };
+    layer.appendChild(revBtn);
+
+    // --- WRITE BUTTON (below reveal button) ---
+    const writeBtn = document.createElement('button');
+    writeBtn.className = 'write-btn';
+    writeBtn.textContent = hasDrawing ? '✏️ تعديل' : '✏️ اكتب';
+    writeBtn.style.top = ((q.y0 + q.y1) / 2 + 3) + '%';
+    writeBtn.onclick = (e) => {
+      e.stopPropagation();
+      openWritePanel(key, q, layer);
+    };
+    layer.appendChild(writeBtn);
+
+    // --- DRAWING PREVIEW (if student has drawn something) ---
+    if (hasDrawing) {
+      const drawPreview = document.createElement('img');
+      drawPreview.src = drawings[key];
+      drawPreview.style.position = 'absolute';
+      drawPreview.style.top = q.y0 + '%';
+      drawPreview.style.left = '5%';
+      drawPreview.style.width = '60%';
+      drawPreview.style.height = (q.y1 - q.y0) + '%';
+      drawPreview.style.objectFit = 'contain';
+      drawPreview.style.opacity = '0.85';
+      drawPreview.style.pointerEvents = 'none';
+      drawPreview.style.zIndex = '12';
+      layer.appendChild(drawPreview);
+    }
+
+    // --- ANSWER OVERLAY (using canvas to clip the answer page image) ---
+    if (isRevealed) {
+      const ansImg = getAnswerImage(answerPageNum);
+      if (ansImg) {
+        // Create a canvas that shows just this question's region from the answer page
+        const overlayDiv = document.createElement('div');
+        overlayDiv.className = 'answer-overlay show';
+        overlayDiv.style.top = q.y0 + '%';
+        overlayDiv.style.height = (q.y1 - q.y0) + '%';
+        overlayDiv.style.left = '0';
+        overlayDiv.style.width = '100%';
+
+        const canvas = document.createElement('canvas');
+        canvas.style.width = '100%';
+        canvas.style.height = '100%';
+        canvas.style.display = 'block';
+
+        overlayDiv.appendChild(canvas);
+        layer.appendChild(overlayDiv);
+
+        // Draw the clipped region once image is loaded
+        const drawClip = () => {
+          const natW = ansImg.naturalWidth;
+          const natH = ansImg.naturalHeight;
+          if (!natW || !natH) return;
+
+          // Source region in pixels
+          const sy = Math.round(q.y0 / 100 * natH);
+          const sh = Math.round((q.y1 - q.y0) / 100 * natH);
+          const sx = 0;
+          const sw = natW;
+
+          canvas.width = sw;
+          canvas.height = sh;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(ansImg, sx, sy, sw, sh, 0, 0, sw, sh);
+        };
+
+        if (ansImg.complete && ansImg.naturalWidth) {
+          drawClip();
+        } else {
+          ansImg.onload = drawClip;
+        }
+      }
+    }
+  });
+}
+
+// ===================== WRITING PANEL =====================
+let activeWritePanel = null;
+
+function openWritePanel(key, q, layer) {
+  // Close any existing panel
+  if (activeWritePanel) {
+    activeWritePanel.remove();
+    activeWritePanel = null;
+  }
+
+  const panel = document.createElement('div');
+  panel.className = 'write-panel show';
+  // Position: overlay the question area
+  panel.style.top = q.y0 + '%';
+  panel.style.left = '5%';
+  panel.style.width = '70%';
+
+  // Header
+  const header = document.createElement('div');
+  header.className = 'write-panel-header';
+  header.innerHTML = `<span>اكتب إجابتك — سؤال ${q.number}</span>`;
+  const closeBtn = document.createElement('button');
+  closeBtn.className = 'write-panel-close';
+  closeBtn.textContent = '✕';
+  closeBtn.onclick = () => { panel.remove(); activeWritePanel = null; };
+  header.appendChild(closeBtn);
+  panel.appendChild(header);
+
+  // Canvas
+  const canvasW = 400;
+  const canvasH = 120;
+  const canvas = document.createElement('canvas');
+  canvas.className = 'write-canvas';
+  canvas.width = canvasW;
+  canvas.height = canvasH;
+  canvas.style.width = '100%';
+  canvas.style.height = canvasH + 'px';
+  panel.appendChild(canvas);
+
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = '#fafafa';
+  ctx.fillRect(0, 0, canvasW, canvasH);
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+  ctx.lineWidth = 2.5;
+  ctx.strokeStyle = '#1e293b';
+
+  // Load existing drawing
+  if (drawings[key]) {
+    const savedImg = new Image();
+    savedImg.onload = () => { ctx.drawImage(savedImg, 0, 0, canvasW, canvasH); };
+    savedImg.src = drawings[key];
+  }
+
+  // Drawing state
+  let isDrawing = false;
+  let lastX = 0, lastY = 0;
+  let isEraser = false;
+
+  function getPos(e) {
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvasW / rect.width;
+    const scaleY = canvasH / rect.height;
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    return [(clientX - rect.left) * scaleX, (clientY - rect.top) * scaleY];
+  }
+
+  function startDraw(e) {
+    e.preventDefault();
+    isDrawing = true;
+    [lastX, lastY] = getPos(e);
+  }
+  function moveDraw(e) {
+    if (!isDrawing) return;
+    e.preventDefault();
+    const [x, y] = getPos(e);
+    ctx.beginPath();
+    if (isEraser) {
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.lineWidth = 15;
+    } else {
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.lineWidth = 2.5;
+    }
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(x, y);
+    ctx.stroke();
+    lastX = x; lastY = y;
+  }
+  function endDraw(e) {
+    if (!isDrawing) return;
+    isDrawing = false;
+    // Auto-save
+    drawings[key] = canvas.toDataURL('image/png');
+    saveState();
+  }
+
+  canvas.addEventListener('mousedown', startDraw);
+  canvas.addEventListener('mousemove', moveDraw);
+  canvas.addEventListener('mouseup', endDraw);
+  canvas.addEventListener('mouseleave', endDraw);
+  canvas.addEventListener('touchstart', startDraw, {passive: false});
+  canvas.addEventListener('touchmove', moveDraw, {passive: false});
+  canvas.addEventListener('touchend', endDraw);
+
+  // Tools
+  const tools = document.createElement('div');
+  tools.className = 'write-tools';
+
+  const penBtn = document.createElement('button');
+  penBtn.textContent = '✏️ قلم';
+  penBtn.className = 'active';
+  penBtn.onclick = () => { isEraser = false; penBtn.classList.add('active'); eraserBtn.classList.remove('active'); };
+
+  const eraserBtn = document.createElement('button');
+  eraserBtn.textContent = '🧹 ممحاة';
+  eraserBtn.onclick = () => { isEraser = true; eraserBtn.classList.add('active'); penBtn.classList.remove('active'); };
+
+  const clearBtn = document.createElement('button');
+  clearBtn.textContent = '🗑️ مسح';
+  clearBtn.onclick = () => {
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.fillStyle = '#fafafa';
+    ctx.fillRect(0, 0, canvasW, canvasH);
+    delete drawings[key];
+    saveState();
+  };
+
+  const saveBtn = document.createElement('button');
+  saveBtn.textContent = '💾 حفظ وإغلاق';
+  saveBtn.style.background = '#4caf50';
+  saveBtn.style.color = '#fff';
+  saveBtn.onclick = () => {
+    drawings[key] = canvas.toDataURL('image/png');
+    saveState();
+    panel.remove();
+    activeWritePanel = null;
+    renderQuizLayer();
+    showToast('تم حفظ إجابتك', 'info');
+  };
+
+  tools.appendChild(penBtn);
+  tools.appendChild(eraserBtn);
+  tools.appendChild(clearBtn);
+  tools.appendChild(saveBtn);
+  panel.appendChild(tools);
+
+  layer.appendChild(panel);
+  activeWritePanel = panel;
+}
+
+// ===================== SCORE =====================
+function updateScore() {
+  let mcqCorrect = 0, mcqTotal = 0, openTotal = 0;
+  for (const key in revealed) {
+    if (!revealed[key]) continue;
+    mcqTotal++;
+    const [pg, qn] = key.split('-').map(Number);
+    const pd = QUIZ_DATA.pages[String(pg)];
+    if (pd) {
+      const q = pd.questions.find(q => q.number === qn);
+      if (q && studentAnswers[key] === q.correct) mcqCorrect++;
+    }
+  }
+  for (const key in openRevealed) { if (openRevealed[key]) openTotal++; }
+
+  document.getElementById('scoreText').textContent = `الاختيار: ${mcqCorrect}/${mcqTotal} | المكشوف: ${openTotal}`;
+  document.getElementById('scoreFill').style.width = mcqTotal > 0 ? (mcqCorrect / mcqTotal * 100) + '%' : '0%';
+}
+
+function showStats() {
+  let correct = 0, wrong = 0, openCount = 0;
+  for (const key in revealed) {
+    if (!revealed[key]) continue;
+    const [pg, qn] = key.split('-').map(Number);
+    const pd = QUIZ_DATA.pages[String(pg)];
+    if (pd) {
+      const q = pd.questions.find(q => q.number === qn);
+      if (q && studentAnswers[key] === q.correct) correct++; else wrong++;
+    }
+  }
+  for (const key in openRevealed) { if (openRevealed[key]) openCount++; }
+  document.getElementById('statCorrect').textContent = correct;
+  document.getElementById('statWrong').textContent = wrong;
+  document.getElementById('statRevealed').textContent = openCount;
+  const total = correct + wrong;
+  document.getElementById('statPct').textContent = total > 0 ? Math.round(correct / total * 100) + '%' : '—';
+  document.getElementById('statsModal').classList.add('show');
+}
+
+function resetAll() {
+  if (!confirm('هل تريد إعادة الاختبار؟ سيتم حذف جميع إجاباتك.')) return;
+  studentAnswers = {}; revealed = {}; openRevealed = {}; drawings = {};
+  saveState(); renderQuizLayer(); updateScore();
+}
+
+function showToast(msg, type) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show ' + (type === 'correct' ? 'correct-toast' : type === 'info' ? 'info-toast' : 'wrong-toast');
+  setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+// Keyboard
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight') prevPage();
+  if (e.key === 'ArrowLeft') nextPage();
+});
+
+// Init
+buildNav();
+loadPage(2);
+</script>
+</body>
+</html>
