@@ -241,13 +241,13 @@ function renderQuizLayer() {
     }
     layer.appendChild(row);
 
-    // Option zones
+    // Option zones — extend to full row width for easier clicking
     q.options.forEach((opt, oi) => {
       const zone = document.createElement('div');
       zone.className = 'opt-zone';
-      zone.style.left = opt.x0 + '%';
+      zone.style.left = '2%';
       zone.style.top = opt.y0 + '%';
-      zone.style.width = (opt.x1 - opt.x0) + '%';
+      zone.style.width = '90%';
       zone.style.height = (opt.y1 - opt.y0) + '%';
 
       if (studentAns === oi && !isRevealed) zone.classList.add('selected');
