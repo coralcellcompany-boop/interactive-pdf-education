@@ -3,142 +3,253 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Neuropsychiatry & Neurosurgery QBank</title>
+<title>Neuropsychiatry & Neurosurgery QBank — Interactive Viewer</title>
 <script src="quiz-embedded.js"></script>
 <style>
 :root {
-  --accent: #1565c0;
-  --green: #4caf50;
-  --red: #f44336;
-  --blue: #2196f3;
-  --bg: #f0f2f5;
-  --card: #fff;
+  --sidebar-w: 280px;
+  --toolbar-h: 52px;
+  --accent: #2563eb;
+  --accent-light: #dbeafe;
+  --bg: #f1f5f9;
+  --sidebar-bg: #1e293b;
+  --sidebar-text: #e2e8f0;
+  --card: #ffffff;
   --text: #1e293b;
-  --sidebar-w: 260px;
-  --toolbar-h: 50px;
+  --hl-color: rgba(255, 235, 59, 0.4);
+  --hl-colors: #ffeb3b, #4caf50, #2196f3, #ff5722, #e91e63;
+}
+[data-theme="dark"] {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --text: #e2e8f0;
+  --sidebar-bg: #0f172a;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); color: var(--text); overflow: hidden; height: 100vh; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background:var(--bg); color:var(--text); overflow:hidden; height:100vh; }
 
+/* SIDEBAR */
 #sidebar {
-  position: fixed; left: 0; top: 0; bottom: 0; width: var(--sidebar-w);
-  background: #1a237e; color: #e2e8f0; display: flex; flex-direction: column; z-index: 100;
+  position:fixed; left:0; top:0; bottom:0; width:var(--sidebar-w);
+  background:var(--sidebar-bg); color:var(--sidebar-text);
+  display:flex; flex-direction:column; z-index:100;
+  transition: transform 0.3s; overflow:hidden;
 }
-.logo { padding: 12px 14px; font-size: 14px; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.1); line-height: 1.3; }
-.logo small { font-weight: 400; opacity: 0.6; font-size: 11px; display: block; margin-top: 2px; }
-.nav-search { padding: 8px 12px; }
-.nav-search input {
-  width: 100%; padding: 6px 10px; border-radius: 6px; border: none;
-  background: rgba(255,255,255,0.1); color: #fff; font-size: 12px; outline: none;
-}
-.nav-search input::placeholder { color: rgba(255,255,255,0.4); }
-.nav-list { flex: 1; overflow-y: auto; padding: 4px 0; }
-.nav-item {
-  padding: 8px 14px; cursor: pointer; font-size: 12px; display: flex;
-  justify-content: space-between; align-items: center; transition: background 0.15s;
-}
-.nav-item:hover { background: rgba(255,255,255,0.08); }
-.nav-item.active { background: var(--accent); }
-.nav-item.quiz-page { border-left: 3px solid var(--blue); }
-.nav-item .badge { font-size: 9px; padding: 2px 5px; border-radius: 8px; background: rgba(255,255,255,0.15); }
-.sidebar-footer {
-  padding: 10px 14px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 11px;
-}
-.score-bar { height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; margin-top: 4px; }
-.score-fill { height: 100%; background: var(--green); border-radius: 2px; transition: width 0.3s; }
+#sidebar.collapsed { transform: translateX(calc(-1 * var(--sidebar-w))); }
+#sidebar .logo { padding:16px 20px; font-size:15px; font-weight:700; border-bottom:1px solid rgba(255,255,255,0.1); display:flex; justify-content:space-between; align-items:center; }
+#sidebar .logo small { font-size:11px; opacity:0.6; display:block; margin-top:4px; }
+#sidebar .logo .close-btn { cursor:pointer; opacity:0.6; font-size:20px; background:none; border:none; color:inherit; }
+#sidebar .logo .close-btn:hover { opacity:1; }
+#sidebar .nav-section { padding:12px 0; flex:1; overflow-y:auto; }
+#sidebar .nav-section::-webkit-scrollbar { width:4px; }
+#sidebar .nav-section::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.2); border-radius:2px; }
+.nav-group { margin-bottom:4px; }
+.nav-group-title { padding:8px 20px; font-size:11px; text-transform:uppercase; letter-spacing:1px; opacity:0.5; }
+.nav-item { padding:8px 20px; cursor:pointer; font-size:13px; display:flex; align-items:center; gap:8px; transition:background 0.15s; }
+.nav-item:hover { background:rgba(255,255,255,0.08); }
+.nav-item.active { background:var(--accent); color:#fff; border-radius:0; }
+.nav-item.quiz-page { border-left:3px solid var(--accent); }
+.nav-item .page-num { font-size:11px; opacity:0.6; margin-left:auto; }
+.nav-item .badge { font-size:9px; padding:2px 5px; border-radius:8px; background:rgba(255,255,255,0.15); }
+.sidebar-footer { padding:12px 20px; border-top:1px solid rgba(255,255,255,0.1); font-size:12px; opacity:0.5; }
+.progress-bar { height:4px; background:rgba(255,255,255,0.1); border-radius:2px; margin-top:6px; }
+.progress-fill { height:100%; background:var(--accent); border-radius:2px; transition:width 0.3s; }
 
+/* TOOLBAR */
 #toolbar {
-  position: fixed; top: 0; left: var(--sidebar-w); right: 0; height: var(--toolbar-h);
-  background: var(--card); border-bottom: 1px solid rgba(0,0,0,0.08);
-  display: flex; align-items: center; padding: 0 16px; gap: 10px; z-index: 90;
+  position:fixed; top:0; right:0; left:var(--sidebar-w); height:var(--toolbar-h);
+  background:var(--card); border-bottom:1px solid rgba(0,0,0,0.08);
+  display:flex; align-items:center; padding:0 16px; gap:8px; z-index:90;
+  transition: left 0.3s;
 }
-.tb-btn {
-  border: none; background: none; cursor: pointer; padding: 6px 12px;
-  border-radius: 6px; font-size: 13px; color: var(--text); transition: background 0.15s;
-}
-.tb-btn:hover { background: rgba(0,0,0,0.06); }
-#pageInfo { font-size: 14px; font-weight: 600; }
-.spacer { flex: 1; }
-#pageHint { font-size: 12px; opacity: 0.5; }
+#toolbar.expanded { left:0; }
+.tb-btn { border:none; background:none; cursor:pointer; padding:6px 10px; border-radius:6px; font-size:13px; color:var(--text); display:flex; align-items:center; gap:4px; transition:background 0.15s; }
+.tb-btn:hover { background:rgba(0,0,0,0.06); }
+.tb-btn.active { background:var(--accent); color:#fff; }
+.tb-divider { width:1px; height:24px; background:rgba(0,0,0,0.1); margin:0 4px; }
+.tb-group { display:flex; align-items:center; gap:2px; }
+#pageIndicator { font-size:13px; font-weight:600; min-width:80px; text-align:center; }
+#searchBox { padding:6px 10px; border:1px solid rgba(0,0,0,0.15); border-radius:6px; font-size:13px; width:180px; outline:none; background:var(--bg); color:var(--text); }
+#searchBox:focus { border-color:var(--accent); }
+.color-dot { width:18px; height:18px; border-radius:50%; border:2px solid transparent; cursor:pointer; }
+.color-dot.active { border-color:var(--text); }
+select.tb-select { padding:4px 8px; border:1px solid rgba(0,0,0,0.15); border-radius:4px; font-size:12px; background:var(--bg); color:var(--text); }
 
+/* MAIN */
 #main {
-  position: fixed; top: var(--toolbar-h); left: var(--sidebar-w); right: 0; bottom: 0;
-  display: flex; justify-content: center; align-items: flex-start;
-  overflow: auto; padding: 20px; background: var(--bg);
+  position:fixed; top:var(--toolbar-h); left:var(--sidebar-w); right:0; bottom:0;
+  display:flex; transition:left 0.3s; overflow:hidden;
 }
+#main.expanded { left:0; }
 
+/* PAGE VIEWER */
+#pageViewer {
+  flex:1; display:flex; justify-content:center; align-items:flex-start;
+  overflow:auto; padding:20px; background:var(--bg);
+}
 #pageWrap {
-  position: relative; display: inline-block;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15); border-radius: 4px; overflow: hidden;
+  position:relative; display:inline-block; box-shadow:0 4px 20px rgba(0,0,0,0.15);
+  border-radius:4px; overflow:hidden; background:#fff;
 }
-#pageImg { display: block; height: calc(100vh - var(--toolbar-h) - 40px); width: auto; user-select: none; }
-#quizLayer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; }
+#pageImg {
+  display:block; height:calc(100vh - var(--toolbar-h) - 40px); width:auto;
+  user-select:none; -webkit-user-drag:none;
+}
 
-.opt-zone {
-  position: absolute; cursor: pointer;
-  border: 2px solid transparent; border-radius: 6px; transition: all 0.2s;
+/* WORD LAYER - for text selection highlighting */
+#wordLayer {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  z-index:10; cursor:default;
 }
-.opt-zone:hover { background: rgba(33,150,243,0.12); border-color: rgba(33,150,243,0.4); }
-.opt-zone.selected { border-color: var(--blue); background: rgba(33,150,243,0.15); }
-.opt-zone.correct { border-color: var(--green) !important; background: rgba(76,175,80,0.2) !important; }
-.opt-zone.wrong { border-color: var(--red) !important; background: rgba(244,67,54,0.18) !important; }
+.word-zone {
+  position:absolute; cursor:text; border-radius:2px; transition:background 0.1s;
+}
+.word-zone:hover { background:rgba(37,99,235,0.15); }
+.word-zone.highlighted { background:var(--hl-color); }
+
+/* DRAWING LAYER */
+#drawCanvas {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  z-index:11; display:none; cursor:crosshair;
+}
+
+/* QUIZ OVERLAY LAYER - highest z-index for quiz interaction */
+#quizLayer {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  z-index:9; pointer-events:none;
+}
+
+/* OPTION ZONES FOR QUIZ */
+.opt-zone {
+  position:absolute; cursor:pointer;
+  border:2px solid transparent; border-radius:6px; transition:all 0.2s;
+}
+.opt-zone:hover { background:rgba(33,150,243,0.12); border-color:rgba(33,150,243,0.4); }
+.opt-zone.selected { border-color:#2196f3; background:rgba(33,150,243,0.15); }
+.opt-zone.correct { border-color:#4caf50 !important; background:rgba(76,175,80,0.2) !important; }
+.opt-zone.wrong { border-color:#f44336 !important; background:rgba(244,67,54,0.18) !important; }
+.opt-zone.hovered { background:rgba(33,150,243,0.12); border-color:rgba(33,150,243,0.4); }
 
 .q-row {
-  position: absolute; left: 0; width: 100%; pointer-events: none;
-  border-radius: 4px; transition: background 0.2s;
+  position:absolute; left:0; width:100%; pointer-events:none;
+  border-radius:4px; transition:background 0.2s;
 }
-.q-row.answered-correct { background: rgba(76,175,80,0.07); }
-.q-row.answered-wrong { background: rgba(244,67,54,0.05); }
+.q-row.answered-correct { background:rgba(76,175,80,0.07); }
+.q-row.answered-wrong { background:rgba(244,67,54,0.05); }
 
 .result-badge {
-  position: absolute; font-size: 10px; font-weight: 700; padding: 2px 8px;
-  border-radius: 10px; pointer-events: none; z-index: 15; opacity: 0; transition: opacity 0.3s;
+  position:absolute; font-size:10px; font-weight:700; padding:2px 8px;
+  border-radius:10px; pointer-events:none; z-index:15; opacity:0; transition:opacity 0.3s;
 }
-.result-badge.show { opacity: 1; }
-.result-badge.correct { background: var(--green); color: #fff; }
-.result-badge.wrong { background: var(--red); color: #fff; }
-.result-badge.no-answer { background: #ff9800; color: #fff; }
+.result-badge.show { opacity:1; }
+.result-badge.correct { background:#4caf50; color:#fff; }
+.result-badge.wrong { background:#f44336; color:#fff; }
+.result-badge.no-answer { background:#ff9800; color:#fff; }
 
+/* NOTE LAYER */
+#noteLayer {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  z-index:12;
+}
+
+.sticky-note {
+  position:absolute; background:#fff9c4; border:1px solid #f0e68c;
+  border-radius:4px; box-shadow:0 2px 8px rgba(0,0,0,0.15);
+  min-width:140px; max-width:200px;
+  padding:8px; font-size:12px; cursor:move;
+  z-index:12;
+}
+.sticky-note.dark { background:#424242; color:#fff; border-color:#616161; }
+.sticky-note textarea {
+  width:100%; border:none; background:transparent; color:inherit;
+  font-family:inherit; font-size:12px; resize:none; outline:none;
+  max-height:100px;
+}
+.sticky-note .note-close {
+  position:absolute; top:2px; right:2px; cursor:pointer; background:none;
+  border:none; color:inherit; opacity:0.6; font-size:16px;
+}
+.sticky-note .note-close:hover { opacity:1; }
+
+/* RIGHT PANEL - for search results, quiz details */
+#rightPanel {
+  position:fixed; top:var(--toolbar-h); right:0; bottom:0;
+  width:0; overflow:hidden; background:var(--card); border-left:1px solid rgba(0,0,0,0.08);
+  z-index:85; transition:width 0.3s;
+}
+#rightPanel.open { width:340px; }
+.panel-header { padding:12px 16px; border-bottom:1px solid rgba(0,0,0,0.08); display:flex; justify-content:space-between; align-items:center; font-weight:600; font-size:13px; }
+.panel-close { cursor:pointer; opacity:0.5; background:none; border:none; font-size:18px; color:var(--text); }
+.panel-close:hover { opacity:1; }
+#panelInner { padding:12px; overflow-y:auto; height:calc(100vh - var(--toolbar-h) - 44px); }
+
+.search-result {
+  padding:10px; margin-bottom:8px; background:rgba(0,0,0,0.04); border-radius:6px;
+  cursor:pointer; transition:background 0.15s;
+}
+.search-result:hover { background:rgba(0,0,0,0.08); }
+.search-result .sr-word { font-weight:600; color:var(--accent); }
+.search-result .sr-page { font-size:11px; color:var(--accent); font-weight:600; margin-top:4px; }
+.search-result .sr-context { font-size:11px; color:var(--text); opacity:0.6; margin-top:2px; }
+
+/* SELECTION BOX */
+#selectionBox { position:absolute; border:2px dashed var(--accent); background:rgba(37,99,235,0.08); z-index:13; pointer-events:none; display:none; }
+
+/* TOOLBAR GROUPS */
+#hlColors { display:none; gap:4px; align-items:center; }
+#drawTools { display:none; gap:8px; align-items:center; }
+
+/* TOAST */
 .toast {
-  position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-  padding: 10px 24px; border-radius: 8px; font-size: 14px; font-weight: 600;
-  z-index: 999; opacity: 0; transition: opacity 0.3s; pointer-events: none;
+  position:fixed; bottom:20px; left:50%; transform:translateX(-50%);
+  padding:10px 24px; border-radius:8px; font-size:14px; font-weight:600;
+  z-index:999; opacity:0; transition:opacity 0.3s; pointer-events:none;
+  background:#333; color:#fff;
 }
-.toast.show { opacity: 1; }
-.toast.correct-toast { background: var(--green); color: #fff; }
-.toast.wrong-toast { background: var(--red); color: #fff; }
-.toast.info-toast { background: #ff9800; color: #fff; }
+.toast.show { opacity:1; }
+.toast.correct { background:#4caf50; }
+.toast.wrong { background:#f44336; }
 
-#statsModal {
-  display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5);
-  z-index: 200; justify-content: center; align-items: center;
+/* QUIZ DETAILS PANEL */
+.quiz-card { background:var(--bg); border-radius:8px; padding:12px; margin-bottom:10px; }
+.q-text { font-weight:600; font-size:12px; margin-bottom:8px; }
+.quiz-opt {
+  padding:8px; margin:4px 0; background:var(--card); border:1px solid rgba(0,0,0,0.1);
+  border-radius:6px; cursor:pointer; font-size:12px; transition:all 0.15s;
 }
-#statsModal.show { display: flex; }
-.stats-card {
-  background: var(--card); border-radius: 16px; padding: 30px; min-width: 340px;
-  text-align: center; box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+.quiz-opt:hover { border-color:var(--accent); background:var(--accent-light); }
+.quiz-opt.disabled { cursor:default; pointer-events:none; }
+.quiz-opt.correct { background:#e8f5e9; border-color:#4caf50; }
+.quiz-opt.wrong { background:#ffebee; border-color:#f44336; }
+
+/* SCROLL BAR */
+::-webkit-scrollbar { width:8px; height:8px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:rgba(0,0,0,0.2); border-radius:4px; }
+::-webkit-scrollbar-thumb:hover { background:rgba(0,0,0,0.3); }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  #rightPanel.open { width:280px; }
+  #searchBox { width:120px; }
 }
-.stats-card h2 { font-size: 20px; margin-bottom: 16px; }
-.stat-num { font-size: 42px; font-weight: 800; }
-.stat-num.good { color: var(--green); }
-.stat-num.bad { color: var(--red); }
-.stat-label { font-size: 12px; opacity: 0.6; margin-top: 4px; }
-.stats-row { display: flex; gap: 24px; justify-content: center; margin: 16px 0; }
 </style>
 </head>
 <body>
 
 <div id="sidebar">
   <div class="logo">
-    Neuropsychiatry & Neurosurgery
-    <small>ASM Minds QBank — 470 Questions</small>
+    <div>
+      Neuropsychiatry & Neurosurgery
+      <small>ASM Minds QBank — 470 Questions</small>
+    </div>
+    <button class="close-btn" onclick="toggleSidebar()">&#x2715;</button>
   </div>
-  <div class="nav-search"><input type="text" id="navSearch" placeholder="Search pages..." oninput="filterNav()"></div>
-  <div class="nav-list" id="navList"></div>
+  <div class="nav-section" id="navList"></div>
   <div class="sidebar-footer">
     <div id="scoreText">Score: 0 / 0</div>
-    <div class="score-bar"><div class="score-fill" id="scoreFill" style="width:0%"></div></div>
-    <div style="margin-top:6px;display:flex;gap:6px">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    <div style="margin-top:8px;display:flex;gap:6px">
       <button class="tb-btn" onclick="resetAll()" style="background:rgba(255,255,255,0.1);color:#fff;flex:1;font-size:11px">Reset</button>
       <button class="tb-btn" onclick="showStats()" style="background:rgba(255,255,255,0.1);color:#fff;flex:1;font-size:11px">📊 Stats</button>
     </div>
@@ -146,96 +257,249 @@ body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); color
 </div>
 
 <div id="toolbar">
-  <button class="tb-btn" onclick="prevPage()">&#9664;</button>
-  <span id="pageInfo">1 / 142</span>
-  <button class="tb-btn" onclick="nextPage()">&#9654;</button>
-  <span class="spacer"></span>
-  <span id="pageHint"></span>
+  <button class="tb-btn" id="menuBtn" onclick="toggleSidebar()" title="Menu">&#9776;</button>
+  <div class="tb-group">
+    <button class="tb-btn" onclick="prevPage()" title="Previous page">&#9664;</button>
+    <span id="pageIndicator">1 / 142</span>
+    <button class="tb-btn" onclick="nextPage()" title="Next page">&#9654;</button>
+  </div>
+  <div class="tb-divider"></div>
+
+  <div class="tb-group" id="modeGroup">
+    <button class="tb-btn active" data-mode="read" onclick="setMode('read')" title="Read mode (1)">📖 Read</button>
+    <button class="tb-btn" data-mode="hl" onclick="setMode('hl')" title="Highlight mode (2)">🔍 Highlight</button>
+    <button class="tb-btn" data-mode="draw" onclick="setMode('draw')" title="Draw mode (3)">✏️ Draw</button>
+    <button class="tb-btn" data-mode="note" onclick="setMode('note')" title="Note mode (4)">📝 Notes</button>
+  </div>
+  <div class="tb-divider"></div>
+
+  <div id="hlColors" style="display:none">
+    <span style="font-size:11px;opacity:0.6">Color:</span>
+    <div class="color-dot active" style="background:#ffeb3b" onclick="setHlColor('#ffeb3b')" title="Yellow"></div>
+    <div class="color-dot" style="background:#4caf50" onclick="setHlColor('#4caf50')" title="Green"></div>
+    <div class="color-dot" style="background:#2196f3" onclick="setHlColor('#2196f3')" title="Blue"></div>
+    <div class="color-dot" style="background:#ff5722" onclick="setHlColor('#ff5722')" title="Orange"></div>
+    <div class="color-dot" style="background:#e91e63" onclick="setHlColor('#e91e63')" title="Pink"></div>
+  </div>
+
+  <div id="drawTools" style="display:none">
+    <span style="font-size:11px;opacity:0.6">Size:</span>
+    <select class="tb-select" id="brushSize" onchange="brushSize=parseInt(this.value)">
+      <option value="2">2</option>
+      <option value="3" selected>3</option>
+      <option value="5">5</option>
+      <option value="8">8</option>
+      <option value="12">12</option>
+    </select>
+    <button class="tb-btn" id="eraserBtn" onclick="toggleEraser()" title="Eraser">🧹</button>
+    <button class="tb-btn" onclick="undoDraw()" title="Undo (Ctrl+Z)">↶</button>
+    <button class="tb-btn" onclick="clearAllDrawings()" title="Clear all">✕</button>
+  </div>
+
+  <span style="flex:1"></span>
+
+  <input type="text" id="searchBox" placeholder="Search text..." onkeyup="doSearch()">
+  <button class="tb-btn" id="themeBtn" onclick="toggleTheme()" title="Toggle theme">🌙</button>
 </div>
 
 <div id="main">
-  <div id="pageWrap">
-    <img id="pageImg">
-    <div id="quizLayer"></div>
+  <div id="pageViewer">
+    <div id="pageWrap">
+      <img id="pageImg" alt="Page">
+      <canvas id="drawCanvas"></canvas>
+      <div id="wordLayer"></div>
+      <div id="noteLayer"></div>
+      <div id="quizLayer"></div>
+      <div id="selectionBox"></div>
+    </div>
+  </div>
+  <div id="rightPanel">
+    <div class="panel-header">
+      <span id="panelTitle">Search Results</span>
+      <button class="panel-close" onclick="closePanel()">&#x2715;</button>
+    </div>
+    <div id="panelInner"></div>
   </div>
 </div>
 
 <div class="toast" id="toast"></div>
-<div id="statsModal" onclick="if(event.target===this)this.classList.remove('show')">
-  <div class="stats-card">
-    <h2>Quiz Results</h2>
-    <div class="stats-row">
-      <div><div class="stat-num good" id="statCorrect">0</div><div class="stat-label">Correct ✓</div></div>
-      <div><div class="stat-num bad" id="statWrong">0</div><div class="stat-label">Wrong ✗</div></div>
-    </div>
-    <div id="statPct" style="font-size:24px;font-weight:700;margin:10px 0">0%</div>
-    <div id="statTotal" style="font-size:13px;opacity:0.6"></div>
-    <button class="tb-btn" onclick="document.getElementById('statsModal').classList.remove('show')" style="background:#eee;padding:8px 24px;margin-top:10px">Close</button>
-  </div>
-</div>
 
 <script>
+// ===== STATE =====
 const TOTAL_PAGES = 142;
 let curPage = 1;
+let mode = 'read';
 let studentAnswers = {};
 let revealed = {};
+let userData = {
+  highlights: {},
+  drawings: {},
+  notes: {},
+  visited: new Set()
+};
+let hlColor = '#ffeb3b';
+let brushSize = 3;
+let isDrawing = false;
+let currentStroke = null;
+let erasing = false;
+let highlightStart = null;
+let highlightColor = '#ffeb3b';
 
+// Load from localStorage
 try {
-  const s1 = localStorage.getItem('neuroQB_answers'); if (s1) studentAnswers = JSON.parse(s1);
-  const s2 = localStorage.getItem('neuroQB_revealed'); if (s2) revealed = JSON.parse(s2);
+  const stored = localStorage.getItem('neuroQB_full');
+  if (stored) {
+    const data = JSON.parse(stored);
+    studentAnswers = data.studentAnswers || {};
+    revealed = data.revealed || {};
+    userData = data.userData || userData;
+    userData.visited = new Set(userData.visited || []);
+  }
+  const theme = localStorage.getItem('neuroQB_theme');
+  if (theme === 'dark') {
+    document.body.setAttribute('data-theme', 'dark');
+    document.getElementById('themeBtn').innerHTML = '☀️';
+  }
 } catch(e) {}
 
 function saveState() {
-  localStorage.setItem('neuroQB_answers', JSON.stringify(studentAnswers));
-  localStorage.setItem('neuroQB_revealed', JSON.stringify(revealed));
+  const toSave = {
+    studentAnswers,
+    revealed,
+    userData: {
+      ...userData,
+      visited: Array.from(userData.visited)
+    }
+  };
+  localStorage.setItem('neuroQB_full', JSON.stringify(toSave));
 }
 
+// ===== NAVIGATION & PAGE LOADING =====
 function buildNav() {
   const nav = document.getElementById('navList');
-  const filter = (document.getElementById('navSearch').value || '').toLowerCase();
   let html = '';
+  let quizSection = '';
+  let otherSection = '';
+
   for (let p = 1; p <= TOTAL_PAGES; p++) {
     const qd = QUIZ_DATA.pages[String(p)];
     const qCount = qd ? qd.questions.length : 0;
     const isQuiz = qCount > 0;
-    const label = `Page ${p}`;
+    const visited = userData.visited.has(p) ? '✓' : '';
     const badge = isQuiz ? `<span class="badge">${qCount}Q</span>` : '';
+    const itemHtml = `<div class="nav-item${p === curPage ? ' active' : ''}${isQuiz ? ' quiz-page' : ''}" onclick="loadPage(${p})">Page ${p}${badge}<span class="page-num">${visited}</span></div>`;
 
-    if (filter && !label.toLowerCase().includes(filter) && !String(p).includes(filter)) continue;
-
-    html += `<div class="nav-item${p === curPage ? ' active' : ''}${isQuiz ? ' quiz-page' : ''}" onclick="loadPage(${p})">${label}${badge}</div>`;
+    if (isQuiz) {
+      quizSection += itemHtml;
+    } else {
+      otherSection += itemHtml;
+    }
   }
+
+  if (quizSection) {
+    html += '<div class="nav-group"><div class="nav-group-title">Question Pages</div>' + quizSection + '</div>';
+  }
+  if (otherSection) {
+    html += '<div class="nav-group"><div class="nav-group-title">Other Pages</div>' + otherSection + '</div>';
+  }
+
   nav.innerHTML = html;
 }
-
-function filterNav() { buildNav(); }
 
 function loadPage(num) {
   if (num < 1 || num > TOTAL_PAGES) return;
   curPage = num;
-  document.getElementById('pageInfo').textContent = `${num} / ${TOTAL_PAGES}`;
+  userData.visited.add(num);
+
+  document.getElementById('pageIndicator').textContent = `${num} / ${TOTAL_PAGES}`;
   document.getElementById('pageImg').src = PAGE_IMAGES[num];
 
-  const pd = QUIZ_DATA.pages[String(num)];
-  const hint = document.getElementById('pageHint');
-  if (pd && pd.questions.length > 0) {
-    const withAns = pd.questions.filter(q => q.correct !== null).length;
-    hint.textContent = `${pd.questions.length} questions (${withAns} with answers) — Click to select, double-click to reveal`;
-  } else {
-    hint.textContent = '';
-  }
-
   buildNav();
+  renderWordLayer();
   renderQuizLayer();
+  renderNoteLayer();
+  renderDrawings();
   updateScore();
+  saveState();
 }
 
 function prevPage() { loadPage(curPage - 1); }
 function nextPage() { loadPage(curPage + 1); }
 
+// ===== WORD LAYER - for text highlighting =====
+function renderWordLayer() {
+  const layer = document.getElementById('wordLayer');
+  layer.innerHTML = '';
+
+  const wd = WORD_DATA[String(curPage)];
+  if (!wd || !wd.words) return;
+
+  const wrap = document.getElementById('pageWrap');
+  const imgWidth = document.getElementById('pageImg').offsetWidth;
+  const imgHeight = document.getElementById('pageImg').offsetHeight;
+
+  wd.words.forEach((word, idx) => {
+    const zone = document.createElement('div');
+    zone.className = 'word-zone';
+    zone.textContent = word.t;
+    zone.style.left = (word.x0 / 100 * imgWidth) + 'px';
+    zone.style.top = (word.y0 / 100 * imgHeight) + 'px';
+    zone.style.width = ((word.x1 - word.x0) / 100 * imgWidth) + 'px';
+    zone.style.height = ((word.y1 - word.y0) / 100 * imgHeight) + 'px';
+    zone.style.fontSize = '10px';
+    zone.style.overflow = 'hidden';
+    zone.style.padding = '2px 4px';
+
+    if (mode === 'hl') {
+      zone.onmousedown = (e) => {
+        highlightStart = idx;
+        e.stopPropagation();
+      };
+      zone.onmouseup = (e) => {
+        if (highlightStart !== null) {
+          const start = Math.min(highlightStart, idx);
+          const end = Math.max(highlightStart, idx) + 1;
+          const key = curPage + '_' + start + '_' + end;
+          if (!userData.highlights[curPage]) userData.highlights[curPage] = [];
+          userData.highlights[curPage].push({ start, end, color: hlColor });
+          saveState();
+          renderWordLayer();
+        }
+        highlightStart = null;
+        e.stopPropagation();
+      };
+      zone.onmouseover = () => {
+        if (highlightStart !== null && mode === 'hl') {
+          zone.style.background = 'rgba(37,99,235,0.15)';
+        }
+      };
+    }
+
+    // Apply highlights
+    if (userData.highlights[curPage]) {
+      userData.highlights[curPage].forEach(hl => {
+        if (idx >= hl.start && idx < hl.end) {
+          zone.style.background = hl.color;
+        }
+      });
+    }
+
+    layer.appendChild(zone);
+  });
+}
+
+// ===== QUIZ LAYER =====
 function renderQuizLayer() {
   const layer = document.getElementById('quizLayer');
   layer.innerHTML = '';
+
+  // Quiz layer only interactive in read mode
+  if (mode !== 'read') {
+    layer.style.pointerEvents = 'none';
+    return;
+  }
+  layer.style.pointerEvents = 'auto';
+
   const pd = QUIZ_DATA.pages[String(curPage)];
   if (!pd || !pd.questions) return;
 
@@ -278,8 +542,10 @@ function renderQuizLayer() {
         e.stopPropagation();
         if (isRevealed) return;
         studentAnswers[key] = oi;
-        saveState(); renderQuizLayer();
+        saveState();
+        renderQuizLayer();
       };
+
       zone.ondblclick = e => {
         e.stopPropagation();
         if (studentAnswers[key] === undefined) {
@@ -287,15 +553,21 @@ function renderQuizLayer() {
           return;
         }
         revealed[key] = true;
-        saveState(); renderQuizLayer(); updateScore();
+        saveState();
+        renderQuizLayer();
+        updateScore();
         if (q.correct === null) {
-          showToast('Answer recorded (no answer key available)', 'info');
+          showToast('Answer recorded (no answer key)', 'wrong');
         } else if (studentAnswers[key] === q.correct) {
           showToast('Correct! ✓', 'correct');
         } else {
           showToast('Wrong ✗', 'wrong');
         }
       };
+
+      zone.onmouseover = () => { if (!isRevealed) zone.classList.add('hovered'); };
+      zone.onmouseout = () => { zone.classList.remove('hovered'); };
+
       layer.appendChild(zone);
     });
 
@@ -304,7 +576,7 @@ function renderQuizLayer() {
       badge.className = 'result-badge show';
       if (q.correct === null) {
         badge.className += ' no-answer';
-        badge.textContent = 'No key';
+        badge.textContent = '?';
       } else if (studentAns === q.correct) {
         badge.className += ' correct';
         badge.textContent = '✓';
@@ -319,6 +591,322 @@ function renderQuizLayer() {
   });
 }
 
+// ===== HIGHLIGHTING =====
+function setHlColor(color) {
+  hlColor = color;
+  document.querySelectorAll('.color-dot').forEach(d => {
+    d.classList.toggle('active', d.style.background === color);
+  });
+}
+
+// ===== DRAWING CANVAS =====
+function setupDrawing() {
+  const canvas = document.getElementById('drawCanvas');
+  const wrap = document.getElementById('pageWrap');
+  canvas.width = wrap.offsetWidth;
+  canvas.height = wrap.offsetHeight;
+  const ctx = canvas.getContext('2d');
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+
+  canvas.addEventListener('mousedown', (e) => {
+    const r = canvas.getBoundingClientRect();
+    const x = e.clientX - r.left;
+    const y = e.clientY - r.top;
+    isDrawing = true;
+    currentStroke = { points: [{ x, y }], color: '#000', size: brushSize };
+  });
+
+  canvas.addEventListener('mousemove', (e) => {
+    if (!isDrawing) return;
+    const r = canvas.getBoundingClientRect();
+    const x = e.clientX - r.left;
+    const y = e.clientY - r.top;
+
+    if (erasing) {
+      eraseAt(x, y);
+      return;
+    }
+
+    if (currentStroke) {
+      currentStroke.points.push({ x, y });
+      drawStrokeSegment(currentStroke);
+    }
+  });
+
+  canvas.addEventListener('mouseup', () => {
+    if (currentStroke && currentStroke.points.length > 1) {
+      const cw = canvas.width;
+      const ch = canvas.height;
+      const saved = {
+        points: currentStroke.points.map(p => ({ x: p.x / cw * 100, y: p.y / ch * 100 })),
+        color: currentStroke.color,
+        size: currentStroke.size,
+      };
+      if (!userData.drawings[curPage]) userData.drawings[curPage] = [];
+      userData.drawings[curPage].push(saved);
+      saveState();
+    }
+    isDrawing = false;
+    currentStroke = null;
+  });
+}
+
+function drawStrokeSegment(stroke) {
+  const canvas = document.getElementById('drawCanvas');
+  const ctx = canvas.getContext('2d');
+  const pts = stroke.points;
+  if (pts.length < 2) return;
+  ctx.strokeStyle = erasing ? 'rgba(255,255,255,0.8)' : stroke.color;
+  ctx.lineWidth = erasing ? stroke.size * 4 : stroke.size;
+  ctx.globalCompositeOperation = erasing ? 'destination-out' : 'source-over';
+  ctx.beginPath();
+  ctx.moveTo(pts[pts.length - 2].x, pts[pts.length - 2].y);
+  ctx.lineTo(pts[pts.length - 1].x, pts[pts.length - 1].y);
+  ctx.stroke();
+  ctx.globalCompositeOperation = 'source-over';
+}
+
+function renderDrawings() {
+  const canvas = document.getElementById('drawCanvas');
+  const wrap = document.getElementById('pageWrap');
+  if (!wrap.offsetWidth) {
+    setTimeout(renderDrawings, 100);
+    return;
+  }
+  canvas.width = wrap.offsetWidth;
+  canvas.height = wrap.offsetHeight;
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  const strokes = userData.drawings[curPage];
+  if (!strokes) return;
+
+  const cw = canvas.width;
+  const ch = canvas.height;
+
+  strokes.forEach(stroke => {
+    const pts = stroke.points.map(p => ({ x: p.x / 100 * cw, y: p.y / 100 * ch }));
+    if (pts.length < 2) return;
+    ctx.strokeStyle = stroke.color;
+    ctx.lineWidth = stroke.size;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.beginPath();
+    ctx.moveTo(pts[0].x, pts[0].y);
+    for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y);
+    ctx.stroke();
+  });
+}
+
+function eraseAt(x, y) {
+  const strokes = userData.drawings[curPage];
+  if (!strokes || !strokes.length) return;
+  const canvas = document.getElementById('drawCanvas');
+  const cw = canvas.width;
+  const ch = canvas.height;
+  const threshold = 15;
+
+  for (let i = strokes.length - 1; i >= 0; i--) {
+    const pts = strokes[i].points;
+    for (const p of pts) {
+      const px = p.x / 100 * cw;
+      const py = p.y / 100 * ch;
+      const dist = Math.sqrt((px - x) ** 2 + (py - y) ** 2);
+      if (dist < threshold) {
+        strokes.splice(i, 1);
+        saveState();
+        renderDrawings();
+        return;
+      }
+    }
+  }
+}
+
+function undoDraw() {
+  if (userData.drawings[curPage]) {
+    userData.drawings[curPage].pop();
+    saveState();
+    renderDrawings();
+  }
+}
+
+function clearAllDrawings() {
+  userData.drawings[curPage] = [];
+  saveState();
+  renderDrawings();
+}
+
+function toggleEraser() {
+  erasing = !erasing;
+  document.getElementById('eraserBtn').classList.toggle('active', erasing);
+}
+
+// ===== NOTES =====
+function renderNoteLayer() {
+  const layer = document.getElementById('noteLayer');
+  layer.innerHTML = '';
+
+  if (mode !== 'note') {
+    layer.style.pointerEvents = 'none';
+    return;
+  }
+  layer.style.pointerEvents = 'auto';
+
+  if (!userData.notes[curPage]) return;
+  const wrap = document.getElementById('pageWrap');
+  const imgWidth = wrap.offsetWidth;
+  const imgHeight = wrap.offsetHeight;
+
+  userData.notes[curPage].forEach((note, idx) => {
+    const el = document.createElement('div');
+    el.className = 'sticky-note';
+    el.style.left = (note.x || 10) + '%';
+    el.style.top = (note.y || 10) + '%';
+
+    const textarea = document.createElement('textarea');
+    textarea.value = note.text || '';
+    textarea.onchange = () => {
+      userData.notes[curPage][idx].text = textarea.value;
+      saveState();
+    };
+
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'note-close';
+    closeBtn.innerHTML = '✕';
+    closeBtn.onclick = (e) => {
+      userData.notes[curPage].splice(idx, 1);
+      saveState();
+      renderNoteLayer();
+      e.stopPropagation();
+    };
+
+    el.appendChild(textarea);
+    el.appendChild(closeBtn);
+
+    let dragging = false;
+    let offX = 0, offY = 0;
+    el.onmousedown = (e) => {
+      if (e.target === closeBtn) return;
+      dragging = true;
+      const r = el.getBoundingClientRect();
+      const wr = wrap.getBoundingClientRect();
+      offX = e.clientX - r.left;
+      offY = e.clientY - r.top;
+    };
+
+    document.addEventListener('mousemove', (e) => {
+      if (!dragging) return;
+      const wr = wrap.getBoundingClientRect();
+      const nx = (e.clientX - wr.left - offX) / wr.offsetWidth * 100;
+      const ny = (e.clientY - wr.top - offY) / wr.offsetHeight * 100;
+      el.style.left = nx + '%';
+      el.style.top = ny + '%';
+    });
+
+    document.addEventListener('mouseup', () => {
+      if (dragging) {
+        dragging = false;
+        userData.notes[curPage][idx].x = parseFloat(el.style.left);
+        userData.notes[curPage][idx].y = parseFloat(el.style.top);
+        saveState();
+      }
+    });
+
+    layer.appendChild(el);
+  });
+
+  // Add note on click
+  if (mode === 'note') {
+    layer.addEventListener('dblclick', (e) => {
+      const r = layer.getBoundingClientRect();
+      const wr = wrap.getBoundingClientRect();
+      const x = (e.clientX - wr.left) / wr.offsetWidth * 100;
+      const y = (e.clientY - wr.top) / wr.offsetHeight * 100;
+      if (!userData.notes[curPage]) userData.notes[curPage] = [];
+      userData.notes[curPage].push({ x, y, text: 'New note...' });
+      saveState();
+      renderNoteLayer();
+    });
+  }
+}
+
+// ===== MODE SWITCHING =====
+function setMode(m) {
+  mode = m;
+  document.querySelectorAll('#modeGroup .tb-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.mode === m);
+  });
+
+  const canvas = document.getElementById('drawCanvas');
+  const wordLayer = document.getElementById('wordLayer');
+  const quizLayer = document.getElementById('quizLayer');
+
+  document.getElementById('hlColors').style.display = m === 'hl' ? 'flex' : 'none';
+  document.getElementById('drawTools').style.display = m === 'draw' ? 'flex' : 'none';
+
+  canvas.style.display = m === 'draw' ? 'block' : 'none';
+  if (m === 'draw') {
+    setupDrawing();
+    renderDrawings();
+  }
+
+  wordLayer.style.pointerEvents = (m === 'hl') ? 'auto' : 'none';
+  quizLayer.style.pointerEvents = (m === 'read') ? 'auto' : 'none';
+
+  renderNoteLayer();
+
+  if (m !== 'draw') {
+    erasing = false;
+    const eb = document.getElementById('eraserBtn');
+    if (eb) eb.classList.remove('active');
+  }
+}
+
+// ===== SEARCH =====
+function doSearch() {
+  const query = document.getElementById('searchBox').value.trim().toLowerCase();
+  if (!query || !SEARCH_INDEX) {
+    closePanel();
+    return;
+  }
+
+  const results = [];
+  const seen = new Set();
+  SEARCH_INDEX.forEach(entry => {
+    if (entry.word.includes(query)) {
+      const key = entry.page + '-' + entry.word;
+      if (!seen.has(key) && results.length < 50) {
+        seen.add(key);
+        results.push(entry);
+      }
+    }
+  });
+
+  if (results.length === 0) {
+    document.getElementById('panelInner').innerHTML = '<p style="padding:16px;opacity:0.6">No results found</p>';
+  } else {
+    let html = '';
+    results.forEach(r => {
+      const excerpt = r.text ? r.text.substring(0, 60) + '...' : '';
+      html += `<div class="search-result" onclick="loadPage(${r.page});closePanel()">
+        <div class="sr-word">"${r.word}"</div>
+        <div class="sr-page">Page ${r.page}</div>
+        <div class="sr-context">${excerpt}</div>
+      </div>`;
+    });
+    document.getElementById('panelInner').innerHTML = html;
+  }
+
+  document.getElementById('rightPanel').classList.add('open');
+  document.getElementById('panelTitle').textContent = `Search: "${query}" (${results.length})`;
+}
+
+function closePanel() {
+  document.getElementById('rightPanel').classList.remove('open');
+}
+
+// ===== QUIZ SCORING =====
 function updateScore() {
   let correct = 0, total = 0;
   for (const key in revealed) {
@@ -334,7 +922,7 @@ function updateScore() {
     }
   }
   document.getElementById('scoreText').textContent = `Score: ${correct} / ${total}`;
-  document.getElementById('scoreFill').style.width = total > 0 ? (correct/total*100)+'%' : '0%';
+  document.getElementById('progressFill').style.width = total > 0 ? (correct/total*100)+'%' : '0%';
 }
 
 function showStats() {
@@ -350,34 +938,82 @@ function showStats() {
       }
     }
   }
-  document.getElementById('statCorrect').textContent = correct;
-  document.getElementById('statWrong').textContent = wrong;
   const total = correct + wrong;
-  document.getElementById('statPct').textContent = total > 0 ? Math.round(correct/total*100)+'%' : '—';
-  document.getElementById('statTotal').textContent = `${total} of 470 questions answered`;
-  document.getElementById('statsModal').classList.add('show');
+  alert(`Quiz Results\n\nCorrect: ${correct}\nWrong: ${wrong}\nTotal: ${total}\nScore: ${total > 0 ? Math.round(correct/total*100) : 0}%\n\nVisited ${userData.visited.size} pages`);
 }
 
 function resetAll() {
-  if (!confirm('Reset all answers?')) return;
-  studentAnswers = {}; revealed = {};
-  saveState(); renderQuizLayer(); updateScore();
+  if (!confirm('Reset all answers, highlights, and notes?')) return;
+  studentAnswers = {};
+  revealed = {};
+  userData = { highlights: {}, drawings: {}, notes: {}, visited: new Set() };
+  saveState();
+  renderQuizLayer();
+  renderWordLayer();
+  renderDrawings();
+  renderNoteLayer();
+  updateScore();
 }
 
 function showToast(msg, type) {
   const t = document.getElementById('toast');
   t.textContent = msg;
-  t.className = 'toast show ' + (type==='correct'?'correct-toast':type==='info'?'info-toast':'wrong-toast');
-  setTimeout(() => t.classList.remove('show'), 2000);
+  t.className = 'toast show ' + (type || '');
+  setTimeout(() => t.classList.remove('show'), 2500);
 }
 
-document.addEventListener('keydown', e => {
-  if (e.key === 'ArrowLeft') prevPage();
-  if (e.key === 'ArrowRight') nextPage();
+// ===== THEME =====
+function toggleTheme() {
+  const isDark = document.body.getAttribute('data-theme') === 'dark';
+  if (isDark) {
+    document.body.removeAttribute('data-theme');
+    document.getElementById('themeBtn').innerHTML = '🌙';
+    localStorage.setItem('neuroQB_theme', 'light');
+  } else {
+    document.body.setAttribute('data-theme', 'dark');
+    document.getElementById('themeBtn').innerHTML = '☀️';
+    localStorage.setItem('neuroQB_theme', 'dark');
+  }
+}
+
+// ===== SIDEBAR =====
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('collapsed');
+  document.getElementById('toolbar').classList.toggle('expanded');
+  document.getElementById('main').classList.toggle('expanded');
+  setTimeout(() => {
+    renderDrawings();
+  }, 350);
+}
+
+// ===== KEYBOARD =====
+function setupKeyboard() {
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); nextPage(); }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); prevPage(); }
+    if (e.key === '1') setMode('read');
+    if (e.key === '2') setMode('hl');
+    if (e.key === '3') setMode('draw');
+    if (e.key === '4') setMode('note');
+    if (e.ctrlKey && e.key === 'z') { e.preventDefault(); undoDraw(); }
+    if (e.ctrlKey && e.key === 'f') { e.preventDefault(); document.getElementById('searchBox').focus(); }
+  });
+}
+
+// ===== WINDOW RESIZE =====
+window.addEventListener('resize', () => {
+  renderDrawings();
 });
 
-buildNav();
-loadPage(1);
+// ===== INIT =====
+function init() {
+  setupKeyboard();
+  buildNav();
+  loadPage(1);
+}
+
+init();
 </script>
 </body>
 </html>
