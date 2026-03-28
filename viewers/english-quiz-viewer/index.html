@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Quiz — Unit 9</title>
+<script src="quiz-embedded.js"></script>
+<style>
+:root {
+  --accent: #1565c0;
+  --green: #4caf50;
+  --red: #f44336;
+  --blue: #2196f3;
+  --bg: #f0f2f5;
+  --card: #ffffff;
+  --text: #1e293b;
+  --sidebar-w: 220px;
+  --toolbar-h: 50px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); color: var(--text); overflow: hidden; height: 100vh; }
+
+/* SIDEBAR */
+#sidebar {
+  position: fixed; left: 0; top: 0; bottom: 0; width: var(--sidebar-w);
+  background: #1e293b; color: #e2e8f0; display: flex; flex-direction: column; z-index: 100;
+}
+.logo { padding: 14px 16px; font-size: 15px; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.nav-list { flex: 1; overflow-y: auto; padding: 8px 0; }
+.nav-item {
+  padding: 10px 16px; cursor: pointer; font-size: 13px; display: flex;
+  justify-content: space-between; align-items: center; transition: background 0.15s;
+}
+.nav-item:hover { background: rgba(255,255,255,0.08); }
+.nav-item.active { background: var(--accent); }
+.nav-item .badge { font-size: 10px; padding: 2px 6px; border-radius: 10px; background: rgba(255,255,255,0.15); }
+.sidebar-footer {
+  padding: 12px 16px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px;
+}
+.score-bar { height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; margin-top: 6px; }
+.score-fill { height: 100%; background: var(--green); border-radius: 2px; transition: width 0.3s; }
+
+/* TOOLBAR */
+#toolbar {
+  position: fixed; top: 0; left: var(--sidebar-w); right: 0; height: var(--toolbar-h);
+  background: var(--card); border-bottom: 1px solid rgba(0,0,0,0.08);
+  display: flex; align-items: center; padding: 0 16px; gap: 10px; z-index: 90;
+}
+.tb-btn {
+  border: none; background: none; cursor: pointer; padding: 6px 12px;
+  border-radius: 6px; font-size: 13px; color: var(--text); transition: background 0.15s;
+}
+.tb-btn:hover { background: rgba(0,0,0,0.06); }
+#pageInfo { font-size: 14px; font-weight: 600; }
+.spacer { flex: 1; }
+#pageHint { font-size: 12px; opacity: 0.5; }
+
+/* MAIN */
+#main {
+  position: fixed; top: var(--toolbar-h); left: var(--sidebar-w); right: 0; bottom: 0;
+  display: flex; justify-content: center; align-items: flex-start;
+  overflow: auto; padding: 20px; background: var(--bg);
+}
+
+/* PAGE */
+#pageWrap {
+  position: relative; display: inline-block;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15); border-radius: 4px; overflow: hidden;
+}
+#pageImg {
+  display: block; height: calc(100vh - var(--toolbar-h) - 40px); width: auto;
+  user-select: none;
+}
+#quizLayer {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10;
+}
+
+/* OPTION ZONES — horizontal rows for English */
+.opt-zone {
+  position: absolute; cursor: pointer;
+  border: 2px solid transparent; border-radius: 6px;
+  transition: all 0.2s;
+}
+.opt-zone:hover { background: rgba(33,150,243,0.12); border-color: rgba(33,150,243,0.4); }
+.opt-zone.selected { border-color: var(--blue); background: rgba(33,150,243,0.15); box-shadow: 0 0 8px rgba(33,150,243,0.3); }
+.opt-zone.correct { border-color: var(--green) !important; background: rgba(76,175,80,0.2) !important; box-shadow: 0 0 10px rgba(76,175,80,0.4) !important; }
+.opt-zone.wrong { border-color: var(--red) !important; background: rgba(244,67,54,0.18) !important; box-shadow: 0 0 10px rgba(244,67,54,0.3) !important; }
+
+/* Q ROW */
+.q-row {
+  position: absolute; left: 0; width: 100%; pointer-events: none;
+  border-radius: 4px; transition: background 0.2s;
+}
+.q-row.answered-correct { background: rgba(76,175,80,0.07); }
+.q-row.answered-wrong { background: rgba(244,67,54,0.05); }
+
+/* RESULT BADGE */
+.result-badge {
+  position: absolute; font-size: 11px; font-weight: 700; padding: 3px 10px;
+  border-radius: 12px; pointer-events: none; z-index: 15;
+  opacity: 0; transition: opacity 0.3s;
+}
+.result-badge.show { opacity: 1; }
+.result-badge.correct { background: var(--green); color: #fff; }
+.result-badge.wrong { background: var(--red); color: #fff; }
+
+/* TOAST */
+.toast {
+  position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+  padding: 10px 24px; border-radius: 8px; font-size: 14px; font-weight: 600;
+  z-index: 999; opacity: 0; transition: opacity 0.3s; pointer-events: none;
+}
+.toast.show { opacity: 1; }
+.toast.correct-toast { background: var(--green); color: #fff; }
+.toast.wrong-toast { background: var(--red); color: #fff; }
+
+/* STATS MODAL */
+#statsModal {
+  display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+  z-index: 200; justify-content: center; align-items: center;
+}
+#statsModal.show { display: flex; }
+.stats-card {
+  background: var(--card); border-radius: 16px; padding: 30px; min-width: 320px;
+  text-align: center; box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+.stats-card h2 { font-size: 20px; margin-bottom: 16px; }
+.stat-num { font-size: 48px; font-weight: 800; }
+.stat-num.good { color: var(--green); }
+.stat-num.bad { color: var(--red); }
+.stat-label { font-size: 13px; opacity: 0.6; margin-top: 4px; }
+.stats-row { display: flex; gap: 30px; justify-content: center; margin: 20px 0; }
+</style>
+</head>
+<body>
+
+<div id="sidebar">
+  <div class="logo">Shakespeare In English — Unit 9</div>
+  <div class="nav-list" id="navList"></div>
+  <div class="sidebar-footer">
+    <div id="scoreText">Score: 0 / 0</div>
+    <div class="score-bar"><div class="score-fill" id="scoreFill" style="width:0%"></div></div>
+    <div style="margin-top:8px">
+      <button class="tb-btn" onclick="resetAll()" style="background:rgba(255,255,255,0.1);color:#fff;width:100%">Reset Quiz</button>
+    </div>
+  </div>
+</div>
+
+<div id="toolbar">
+  <button class="tb-btn" onclick="prevPage()">&#9664;</button>
+  <span id="pageInfo">1 / 4</span>
+  <button class="tb-btn" onclick="nextPage()">&#9654;</button>
+  <span class="spacer"></span>
+  <span id="pageHint">Click an option, then double-click to reveal the answer</span>
+  <button class="tb-btn" onclick="showStats()">📊 Results</button>
+</div>
+
+<div id="main">
+  <div id="pageWrap">
+    <img id="pageImg">
+    <div id="quizLayer"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<div id="statsModal" onclick="if(event.target===this)this.classList.remove('show')">
+  <div class="stats-card">
+    <h2>Quiz Results</h2>
+    <div class="stats-row">
+      <div><div class="stat-num good" id="statCorrect">0</div><div class="stat-label">Correct ✓</div></div>
+      <div><div class="stat-num bad" id="statWrong">0</div><div class="stat-label">Wrong ✗</div></div>
+    </div>
+    <div id="statPct" style="font-size:24px;font-weight:700;margin:10px 0">0%</div>
+    <button class="tb-btn" onclick="document.getElementById('statsModal').classList.remove('show')" style="background:#eee;padding:8px 24px;margin-top:10px">Close</button>
+  </div>
+</div>
+
+<script>
+let curPage = 1;
+const totalPages = QUIZ_DATA.question_pages.length;
+let studentAnswers = {};
+let revealed = {};
+
+try {
+  const s1 = localStorage.getItem('engQuiz_answers'); if (s1) studentAnswers = JSON.parse(s1);
+  const s2 = localStorage.getItem('engQuiz_revealed'); if (s2) revealed = JSON.parse(s2);
+} catch(e) {}
+
+function saveState() {
+  localStorage.setItem('engQuiz_answers', JSON.stringify(studentAnswers));
+  localStorage.setItem('engQuiz_revealed', JSON.stringify(revealed));
+}
+
+function buildNav() {
+  const nav = document.getElementById('navList');
+  let html = '';
+  for (let i = 0; i < totalPages; i++) {
+    const p = QUIZ_DATA.question_pages[i];
+    const qd = QUIZ_DATA.pages[String(p)];
+    const qCount = qd ? qd.questions.length : 0;
+    html += `<div class="nav-item${(i+1) === curPage ? ' active' : ''}" onclick="loadPage(${i+1})">Page ${p}<span class="badge">${qCount} Q</span></div>`;
+  }
+  nav.innerHTML = html;
+}
+
+function loadPage(num) {
+  if (num < 1 || num > totalPages) return;
+  curPage = num;
+  const actualPage = QUIZ_DATA.question_pages[num - 1];
+  document.getElementById('pageInfo').textContent = `${num} / ${totalPages}`;
+  document.getElementById('pageImg').src = PAGE_IMAGES[actualPage];
+  buildNav();
+  renderQuizLayer();
+  updateScore();
+}
+
+function prevPage() { loadPage(curPage - 1); }
+function nextPage() { loadPage(curPage + 1); }
+
+function renderQuizLayer() {
+  const layer = document.getElementById('quizLayer');
+  layer.innerHTML = '';
+  const actualPage = QUIZ_DATA.question_pages[curPage - 1];
+  const pageData = QUIZ_DATA.pages[String(actualPage)];
+  if (!pageData) return;
+
+  pageData.questions.forEach((q) => {
+    if (!q.options || q.options.length === 0) return;
+    const key = `${actualPage}-${q.number}`;
+    const studentAns = studentAnswers[key];
+    const isRevealed = revealed[key];
+
+    // Row highlight
+    const row = document.createElement('div');
+    row.className = 'q-row';
+    row.style.top = q.y0 + '%';
+    row.style.height = (q.y1 - q.y0) + '%';
+    if (isRevealed && studentAns !== undefined) {
+      row.className += studentAns === q.correct ? ' answered-correct' : ' answered-wrong';
+    }
+    layer.appendChild(row);
+
+    // Option zones
+    q.options.forEach((opt, oi) => {
+      const zone = document.createElement('div');
+      zone.className = 'opt-zone';
+      zone.style.left = opt.x0 + '%';
+      zone.style.top = opt.y0 + '%';
+      zone.style.width = (opt.x1 - opt.x0) + '%';
+      zone.style.height = (opt.y1 - opt.y0) + '%';
+
+      if (studentAns === oi && !isRevealed) zone.classList.add('selected');
+      if (isRevealed) {
+        if (oi === q.correct) zone.classList.add('correct');
+        if (studentAns === oi && oi !== q.correct) zone.classList.add('wrong');
+      }
+
+      zone.onclick = (e) => {
+        e.stopPropagation();
+        if (isRevealed) return;
+        studentAnswers[key] = oi;
+        saveState(); renderQuizLayer();
+      };
+      zone.ondblclick = (e) => {
+        e.stopPropagation();
+        if (studentAnswers[key] === undefined) {
+          showToast('Select an answer first!', 'wrong');
+          return;
+        }
+        revealed[key] = true;
+        saveState(); renderQuizLayer(); updateScore();
+        showToast(
+          studentAnswers[key] === q.correct ? 'Correct! ✓' : 'Wrong ✗',
+          studentAnswers[key] === q.correct ? 'correct' : 'wrong'
+        );
+      };
+      layer.appendChild(zone);
+    });
+
+    // Result badge
+    if (isRevealed && studentAns !== undefined) {
+      const badge = document.createElement('div');
+      badge.className = 'result-badge show ' + (studentAns === q.correct ? 'correct' : 'wrong');
+      badge.textContent = studentAns === q.correct ? 'Correct ✓' : 'Wrong ✗';
+      badge.style.right = '3%';
+      badge.style.top = (q.cy - 0.5) + '%';
+      layer.appendChild(badge);
+    }
+  });
+}
+
+function updateScore() {
+  let correct = 0, total = 0;
+  for (const key in revealed) {
+    if (!revealed[key]) continue;
+    total++;
+    const [pg, qn] = key.split('-').map(Number);
+    const pd = QUIZ_DATA.pages[String(pg)];
+    if (pd) {
+      const q = pd.questions.find(q => q.number === qn);
+      if (q && studentAnswers[key] === q.correct) correct++;
+    }
+  }
+  document.getElementById('scoreText').textContent = `Score: ${correct} / ${total}`;
+  document.getElementById('scoreFill').style.width = total > 0 ? (correct/total*100) + '%' : '0%';
+}
+
+function showStats() {
+  let correct = 0, wrong = 0;
+  for (const key in revealed) {
+    if (!revealed[key]) continue;
+    const [pg, qn] = key.split('-').map(Number);
+    const pd = QUIZ_DATA.pages[String(pg)];
+    if (pd) {
+      const q = pd.questions.find(q => q.number === qn);
+      if (q && studentAnswers[key] === q.correct) correct++; else wrong++;
+    }
+  }
+  document.getElementById('statCorrect').textContent = correct;
+  document.getElementById('statWrong').textContent = wrong;
+  const total = correct + wrong;
+  document.getElementById('statPct').textContent = total > 0 ? Math.round(correct/total*100) + '%' : '—';
+  document.getElementById('statsModal').classList.add('show');
+}
+
+function resetAll() {
+  if (!confirm('Reset all answers?')) return;
+  studentAnswers = {}; revealed = {};
+  saveState(); renderQuizLayer(); updateScore();
+}
+
+function showToast(msg, type) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show ' + (type === 'correct' ? 'correct-toast' : 'wrong-toast');
+  setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowLeft') prevPage();
+  if (e.key === 'ArrowRight') nextPage();
+});
+
+buildNav();
+loadPage(1);
+</script>
+</body>
+</html>
